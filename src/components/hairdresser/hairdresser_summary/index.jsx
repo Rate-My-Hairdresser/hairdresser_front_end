@@ -67,7 +67,6 @@ const TopSection = styled.div`
 const BottomSection = styled.div`
     width: 100%;
     height: 18rem;
-    border-bottom: 1px solid ${colors.secondary};
     display: flex;
     justify-content: space-between;
 `

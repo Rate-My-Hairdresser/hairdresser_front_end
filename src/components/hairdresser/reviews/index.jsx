@@ -1,13 +1,14 @@
-import { Box, Typography, Rating } from "@mui/material";
+import { Box, Rating } from "@mui/material";
 import styled from "styled-components";
-import { colors } from "../../general/colors";
+import { colors } from "../../../general/colors";
+import img1 from "./download.jpeg"
 const Reviews = () => {
     // Updated sample reviews data with optional photo
     const reviews = [
         {
             rating: 5,
             comment: "Amazing experience! The stylist was very attentive and skilled.",
-            photo: "src/components/reviews/download.jpeg",
+            photo: img1,
         },
         {
             rating: 1,

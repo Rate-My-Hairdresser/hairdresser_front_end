@@ -1,7 +1,7 @@
 import { Grid2 } from "@mui/material";
 import HairdresserSummary from "../../components/hairdresser/hairdresser_summary";
 import HairDresserSideBio from "../../components/hairdresser/hairdresser_side_bio";
-import Reviews from "../../components/reviews"; // Adjust the path as necessary
+import Reviews from "../../components/hairdresser/reviews"; // Adjust the path as necessary
 
 const HairdresserPage = () => {
     return (

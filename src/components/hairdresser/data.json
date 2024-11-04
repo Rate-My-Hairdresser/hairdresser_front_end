@@ -9,5 +9,10 @@
         }
     },
     "name": "Karen Blephy",
-    "photo": "imghere"
+    "photo": "imghere",
+    "biography": "With [X years] in the beauty industry, I love transforming hair into stunning styles.\nAfter training at [Your School/Training Institution], I specialize in [specific specialties like balayage or precision cuts].\n\nAt [Salon Name], I focus on creating looks that enhance each client’s unique features.\nI believe in strong communication to achieve the perfect style and continuously update my skills with the latest trends.\n\nWhen I'm not at the salon, I enjoy [mention hobbies or interests].\nI’m excited to bring my passion for hair to [Salon Name] and can’t wait to work with you!",
+    "links": {
+        "Website": "example.com",
+        "Instagram": "instagram.com/example"
+    }
 }

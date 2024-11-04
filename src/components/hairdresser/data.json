@@ -14,5 +14,16 @@
     "links": {
         "Website": "example.com",
         "Instagram": "instagram.com/example"
+    },
+    "gallery": {
+        "image1": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image2": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image3": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image4": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image5": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image6": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image7": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image8": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+        "image9": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg"
     }
 }

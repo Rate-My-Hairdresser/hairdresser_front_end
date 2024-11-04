@@ -42,7 +42,7 @@ const HairDresserSideBio = () => {
                 </HeaderText>
                 <SubText>
                     {Object.entries(data.links).map(([key, value]) => (
-                        <SubText>{key}: <a href={value} target="_blank">{value}</a></SubText>
+                        <SubText>{key}: <a href={value} target="_blank" rel="noreferrer">{value}</a></SubText>
                     ))}
                 </SubText>
             </TextBox>

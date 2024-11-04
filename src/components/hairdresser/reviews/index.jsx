@@ -46,7 +46,6 @@ const Container = styled.div`
     background-color: ${colors.offwhite};
     border-radius: 15px;
     padding: 1rem;
-    margin-top: 1rem;
 `;
 
 const Title = styled.h2`

@@ -1,6 +1,6 @@
 import { Grid2 } from "@mui/material";
-import HairdresserSummary from "../../components/hairdresser_summary";
-import HairDresserSideBio from "../../components/hairdresser_side_bio";
+import HairdresserSummary from "../../components/hairdresser/hairdresser_summary";
+import HairDresserSideBio from "../../components/hairdresser/hairdresser_side_bio";
 
 
 const HairdresserPage = () => {

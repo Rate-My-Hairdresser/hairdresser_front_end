@@ -1,0 +1,13 @@
+{
+    "salon": {
+        "name": "Diva",
+        "location": "3625 Shaganappi Trail Northwest M003A",
+        "coordinates": {"lng": -114.1549181, "lat": 51.084709},
+        "contact": {
+            "phone-number": "4032890808",
+            "email": "yadayada@example.com"
+        }
+    },
+    "name": "Karen Blephy",
+    "photo": "imghere"
+}

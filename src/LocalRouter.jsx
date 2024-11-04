@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
 
 
+  
+
 /*
     How to use the router:
 

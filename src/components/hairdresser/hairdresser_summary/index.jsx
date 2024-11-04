@@ -1,8 +1,9 @@
-import { Avatar, Grid2, IconButton } from "@mui/material";
+import { Avatar, Grid2, IconButton, Tooltip, Button } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors"
 import styled from "styled-components"
+import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
 import data from "../data.json";
 
@@ -22,7 +23,13 @@ const HairdresserSummary = () => {
                     {data.name}
                 </HairdresserText>
                 <RatingContainer>
-                    <Rating name="read-only" value={4} readOnly />
+                    <Tooltip title="Jump to ratings" placement="top">
+                        <HashLink to="#review" smooth>
+                            <Button>
+                                <Rating name="read-only" value={4} readOnly />
+                            </Button>
+                        </HashLink>
+                    </Tooltip>
                 </RatingContainer>
             </TopSection>
             <BottomSection>

@@ -28,7 +28,7 @@ const ReviewModal = ({ open, handleClose }) => {
         <Modal open={open} onClose={handleClose}>
             <ModalContent>
                 <CloseButton onClick={handleClose}>✕</CloseButton>
-                <Title>Write a Review</Title>  {/* Use styled Title here */}
+                <Title>Write a Review</Title>
                 <StarContainer>
                     {[...Array(STAR_COUNT)].map((_, index) => (
                         <Star
@@ -97,63 +97,62 @@ const CloseButton = styled.button`
 `;
 
 const Title = styled.h2`
-    text-align: center;  // Center the title text
-    margin: 0;          // Remove default margin
-    margin-bottom: 1rem; // Space below the title
+    text-align: center;
+    margin: 0 0 1rem;
 `;
 
 const StarContainer = styled.div`
     display: flex;
-    justify-content: center;  // Center the stars horizontally
+    justify-content: center;
     margin-bottom: 1rem;
 `;
 
 const Star = styled.span`
     font-size: 4rem;
     cursor: pointer;
-    color: ${({ filled }) => (filled ? colors.star_yellow : "#ccc")};
+    color: ${({ filled }) => (filled ? colors.star_color : "#ccc")};
     transition: color 0.2s;
-    
+
     &:hover {
-        color: ${colors.star_yellow};
+        color: ${colors.star_color};
     }
 `;
 
-// Container for buttons
 const ButtonContainer = styled.div`
     display: flex;
-    flex-direction: column; // Arrange buttons in a column
-    margin-top: 1rem; // Space above buttons
+    flex-direction: column;
+    margin-top: 1rem;
 `;
 
-// Styled components for buttons
 const UploadButton = styled.button`
-    background-color: black; // Black background for upload button
-    color: white; // White text
-    border: none; // No border
-    border-radius: 5px; // Rounded corners
-    padding: 0.5rem 1rem; // Adjusted padding for the button
-    font-size: 0.8rem; // Font size
-    cursor: pointer; // Pointer on hover
-    width: fit-content; // Button width based on content
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: fit-content;
 
     &:hover {
-        opacity: 0.8; // Slight opacity change on hover
+        opacity: 0.8;
     }
 `;
 
 const SubmitButton = styled.button`
-    background-color: ${colors.star_yellow}; // Star yellow background for submit button
-    color: black; // Black text
-    border: none; // No border
-    border-radius: 5px; // Rounded corners
-    padding: 0.75rem 1.75rem; // Padding for button
-    font-size: 1.2rem; // Font size
-    cursor: pointer; // Pointer on hover
-
-    margin-top: 1rem; // Ensure space between buttons
+    background-color: ${colors.star_color};
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.75rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1rem;
 
     &:hover {
-        opacity: 0.8; // Slight opacity change on hover
+        background-color: ${colors.dark_star};
+    }
+    &:active {
+        opacity: 0.4;
     }
 `;

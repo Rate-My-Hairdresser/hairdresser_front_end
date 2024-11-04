@@ -4,7 +4,7 @@ import { Box, Rating } from "@mui/material";
 import styled from "styled-components";
 import { colors } from "../../../general/colors";
 import img1 from "./download.jpeg";
-import ReviewModal from "./reviewModal"; // Import the new modal component
+import ReviewModal from "./reviewModal"; // Import the review modal component
 
 const Reviews = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -20,7 +20,7 @@ const Reviews = () => {
         },
         {
             rating: 1,
-            comment: "Great haircut, but had to wait a bit longer than expected. Filler for more words to see what happens when it is a really long comment. I HATED my service. It was TERRIBLE. I will never get my hair cut ever again. Genuineky tramautic. My hair will never be the same ",
+            comment: "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience.",
         },
         {
             rating: 3,
@@ -42,7 +42,7 @@ const Reviews = () => {
                     {review.photo && <ReviewPhoto src={review.photo} alt={`Review ${index + 1}`} />}
                 </ReviewBox>
             ))}
-            <ReviewModal open={openModal} handleClose={handleClose} /> {/* Use the new modal component */}
+            <ReviewModal open={openModal} handleClose={handleClose} />
         </Container>
     );
 };
@@ -93,15 +93,18 @@ const LeaveReviewButton = styled.button`
     position: absolute;
     top: 10px; 
     right: 10px; 
-    background-color: ${colors.star_yellow}; // Set to the same color as the stars
+    background-color: ${colors.star_color};
     color: black; 
     border: none;
     border-radius: 5px;
-    padding: .75rem 1.75rem;
-    font-size: 1.2rem; // Increase font size here
-
+    padding: 0.75rem 1.75rem;
+    font-size: 1.2rem;
     cursor: pointer;
+
     &:hover {
         background-color: ${colors.dark_star}; 
     }
+    &:click {
+        opacity: 0.4;
+}
 `;

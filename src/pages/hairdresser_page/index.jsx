@@ -1,7 +1,7 @@
 import { Grid2, Stack } from "@mui/material";
 import HairdresserSummary from "../../components/hairdresser/hairdresser_summary";
 import HairDresserSideBio from "../../components/hairdresser/hairdresser_side_bio";
-import Reviews from "../../components/hairdresser/reviews"; 
+import Reviews from "../../components/hairdresser/reviews/reviews"; 
 import HairdresserGallery from "../../components/hairdresser/gallery";
 
 const HairdresserPage = () => {

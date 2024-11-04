@@ -1,9 +1,17 @@
+// Reviews.js
+import React, { useState } from "react";
 import { Box, Rating } from "@mui/material";
 import styled from "styled-components";
 import { colors } from "../../../general/colors";
-import img1 from "./download.jpeg"
+import img1 from "./download.jpeg";
+import ReviewModal from "./reviewModal"; // Import the new modal component
+
 const Reviews = () => {
-    // Updated sample reviews data with optional photo
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
+
     const reviews = [
         {
             rating: 5,
@@ -13,7 +21,6 @@ const Reviews = () => {
         {
             rating: 1,
             comment: "Great haircut, but had to wait a bit longer than expected. Filler for more words to see what happens when it is a really long comment. I HATED my service. It was TERRIBLE. I will never get my hair cut ever again. Genuineky tramautic. My hair will never be the same ",
-            // No photo for this review
         },
         {
             rating: 3,
@@ -25,6 +32,7 @@ const Reviews = () => {
     return (
         <Container>
             <Title>Reviews</Title>
+            <LeaveReviewButton onClick={handleOpen}>Leave a Review</LeaveReviewButton>
             {reviews.map((review, index) => (
                 <ReviewBox key={index}>
                     <ReviewContent>
@@ -34,7 +42,7 @@ const Reviews = () => {
                     {review.photo && <ReviewPhoto src={review.photo} alt={`Review ${index + 1}`} />}
                 </ReviewBox>
             ))}
-            <LeaveReviewButton variant="contained">Leave a Review</LeaveReviewButton>
+            <ReviewModal open={openModal} handleClose={handleClose} /> {/* Use the new modal component */}
         </Container>
     );
 };
@@ -47,6 +55,7 @@ const Container = styled.div`
     border-radius: 15px;
     padding: 1rem;
     margin-top: 1rem;
+    position: relative;
 `;
 
 const Title = styled.h2`
@@ -57,7 +66,7 @@ const Title = styled.h2`
 
 const ReviewBox = styled(Box)`
     display: flex;
-    justify-content: space-between; // Ensures the photo is aligned to the right
+    justify-content: space-between;
     margin-bottom: 1rem;
     padding: 0.5rem;
     border: 1px solid ${colors.secondary};
@@ -65,7 +74,7 @@ const ReviewBox = styled(Box)`
 `;
 
 const ReviewContent = styled.div`
-    flex: 1; // Ensures the content takes up space without overlapping the photo
+    flex: 1;
 `;
 
 const Comment = styled.p`
@@ -73,22 +82,26 @@ const Comment = styled.p`
 `;
 
 const ReviewPhoto = styled.img`
-    max-width: 100px; // Adjust as needed
+    max-width: 100px;
     max-height: 100px;
     margin-left: 1rem;
-    border-radius: 8px; // Rounded corners for the photo
-    object-fit: cover; // Ensures the photo is properly cropped and scaled
+    border-radius: 8px;
+    object-fit: cover;
 `;
 
 const LeaveReviewButton = styled.button`
-    background-color: ${colors.primary};
-    color: white;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    background-color: ${colors.star_yellow}; // Set to the same color as the stars
+    color: black; 
     border: none;
     border-radius: 5px;
-    padding: 0.5rem 1rem;
+    padding: .75rem 1.75rem;
+    font-size: 1.2rem; // Increase font size here
+
     cursor: pointer;
-    width: 100%;
     &:hover {
-        background-color: ${colors.secondary};
+        background-color: ${colors.dark_star}; 
     }
 `;

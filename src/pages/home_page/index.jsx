@@ -21,6 +21,7 @@ const Homepage = () => {
     const [maximumPrice, setMaximumPrice] = useState()
     const [modalVisible, setModalVisible] = useState(false)
     const [searchResults, setSearchResults] = useState([])
+    const [coordinateResults, setCoordinateResults] = useState([])
 
 
 
@@ -29,16 +30,18 @@ const Homepage = () => {
     useEffect(() => {
         console.log("max: ", maximumPrice)
         let tempArr = []
+        let tempCoords = []
 
         Object.entries(hairdresserData).map(([key, value], index) => {
             if(maximumPrice) {
                 if(value.minimum_price < maximumPrice) {
                     //price matches
                     tempArr.push(value)
+                    tempCoords.push(value.salon.coordinates)
                 }
             }
         })
-
+        setCoordinateResults(tempCoords)
         setSearchResults(tempArr)
 
     }, [searchValue, filters, maximumPrice]);
@@ -107,7 +110,7 @@ const Homepage = () => {
         <>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
             <MapContainer>
-                <MapComp markers={[]}/>
+                <MapComp markers={coordinateResults}/>
             </MapContainer>
             <Topbar>
                 <Title>Rate My Hairdresser</Title>

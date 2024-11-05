@@ -10,9 +10,10 @@ import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import { IconButton, Stack } from "@mui/material";
-import data from "../data.json"
+import hairData from "../../../data/hairdresserList.json";
 import { Link } from 'react-router-dom';
 
+const data = hairData[1];
 
 const logos = {
     "instagram": <InstagramIcon />,

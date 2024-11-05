@@ -16,6 +16,7 @@ const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "";
 */
 
 const MapComp = ({ markers, zoomLocation }) => {
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const MapComp = ({ markers, zoomLocation }) => {
       {!loading ? (
         <APIProvider apiKey={API_KEY}>
           <Map
-            defaultCenter={zoomLocation || { lat: 50, lng: -100 }}
-            defaultZoom={zoomLocation ? 14 : 3}
+            defaultCenter={zoomLocation || { lat: 51.0447, lng: -114.0719 }}
+            defaultZoom={zoomLocation ? 14 : 11}
             gestureHandling="greedy"
             disableDefaultUI
             mapId="DEMO_MAP_ID"

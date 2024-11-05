@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, IconButton, Stack, InputBase, Chip } from "@mui/material";
 import { Title } from "../../general/Text";
 import style from "styled-components";
@@ -7,6 +7,9 @@ import MapComp from "../../components/map/MapComp";
 import { colors } from "../../general/colors";
 import SearchIcon from '@mui/icons-material/Search';
 import './animation.css';
+import FilterModal from "../../components/filter_modal/FilterModal";
+import hairdresserData from "../../data/hairdresserList.json"
+import SearchResult from "../../components/search_result/SearchResult";
 
 
 
@@ -15,47 +18,139 @@ const Homepage = () => {
 
     const [searchValue, setSearchValue] = useState("");
     const [filters, setFilters] = useState([])
+    const [maximumPrice, setMaximumPrice] = useState()
+    const [modalVisible, setModalVisible] = useState(false)
+    const [searchResults, setSearchResults] = useState([])
 
-    const onChange = (event) => {
-        setSearchValue(event.target.value)
+
+
+    // search algorithm -- currently only checks for price
+
+    useEffect(() => {
+        console.log("max: ", maximumPrice)
+        let tempArr = []
+
+        Object.entries(hairdresserData).map(([key, value], index) => {
+            if(maximumPrice) {
+                if(value.minimum_price < maximumPrice) {
+                    //price matches
+                    tempArr.push(value)
+                }
+            }
+        })
+
+        setSearchResults(tempArr)
+
+    }, [searchValue, filters, maximumPrice]);
+
+
+    const hairServiceFilters = [
+        "Haircut",
+        "Hair Coloring",
+        "Highlights",
+        "Balayage",
+        "Ombre",
+        "Root Touch-Up",
+        "Gloss Treatment",
+        "Hair Styling",
+        "Blowout",
+        "Updo",
+        "Braiding",
+        "Hair Extensions",
+        "Keratin Treatment",
+        "Perm",
+        "Relaxer",
+        "Hair Smoothing",
+        "Scalp Treatment",
+        "Hair Mask",
+        "Deep Conditioning",
+        "Bang Trim",
+        "Children's Haircut",
+        "Men's Haircut",
+        "Beard Trim",
+        "Hair Consultation",
+        "Color Correction",
+        "Wedding Hair",
+        "Event Styling",
+        "Curling",
+        "Straightening",
+        "Texturizing",
+        "Dry Cut",
+        "Hair Detox",
+        "Custom Color"
+    ];
+
+    const onSearchChange = (event) => {
+        setSearchValue(event.target.value);
+    };
+
+    const handleClose = useCallback(() => {
+        setModalVisible(false);
+    }, []);
+
+    const handleApply = useCallback((filterObject) => {
+        const { selectedChips, maximumPrice } = filterObject;
+
+        setMaximumPrice(maximumPrice)
+
+        console.log(selectedChips)
+        setFilters(selectedChips)
+        setModalVisible(false);
+    }, []);
+
+    const handleChipDelete = (index) => {
+        const tempArr = filters.filter(item => item !== filters[index])
+        setFilters(tempArr)
     }
-
-
 
     return (
         <>
+            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
             <MapContainer>
                 <MapComp markers={[]}/>
             </MapContainer>
             <Topbar>
                 <Title>Rate My Hairdresser</Title>
-                
             </Topbar>
             <LoginContainer>
                 <Button variant="contained">Login</Button>
             </LoginContainer>
-            <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0) ? 'slide-up' : 'slide-down'}`}>
-                <SearchBox>
-                    <SearchInsides>
-                        <SearchIcon style={styles.largeIcon}/>
-                        <SearchText
-                            placeholder="Search for a hairdresser…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            value={searchValue}
-                            onChange={onChange}
-                        />
-                        <Button variant="contained" disableElevation style={styles.filterButton}>
-                            Filters
-                        </Button>
-                    </SearchInsides>
-                    <ChipSection>
-                        {
-                            filters.map((value, index) => (
-                                <NewChips label={value} onDelete={() => {}}/>
-                            ))
-                        }
-                    </ChipSection>
-                </SearchBox>
+            <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
+                <Stack direction="column">
+                    <SearchBox>
+                        <SearchInsides>
+                            <SearchIcon style={styles.largeIcon}/>
+                            <SearchText
+                                placeholder="Search for a hairdresser…"
+                                inputProps={{ 'aria-label': 'search' }}
+                                value={searchValue}
+                                onChange={onSearchChange}
+                            />
+                            <Button variant="contained" disableElevation style={styles.filterButton} onClick={() => setModalVisible(true)}>
+                                Filters
+                            </Button>
+                        </SearchInsides>
+                        <ChipSection>
+                            {
+                                maximumPrice ?
+                                    (<NewChips label={"Maximum price: $" + maximumPrice} onDelete={() => setMaximumPrice(false)}/>)
+                                :
+                                (<></>)
+                            }
+                            {
+                                filters.map((value, index) => (
+                                    <NewChips label={hairServiceFilters[value]} onDelete={() => handleChipDelete(index)}/>
+                                ))
+                            }
+                            
+                        </ChipSection>
+                    </SearchBox>
+                    <SearchResultsBox>
+                        {searchResults.map((value, index) => (
+                            <SearchResult name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters}/>
+                        ))}
+                    </SearchResultsBox>
+                </Stack>
                 
             </SearchContainer>
         </>
@@ -130,5 +225,13 @@ const SearchInsides = style.div`
 `
 
 const ChipSection = style.div`
+
+`
+
+const SearchResultsBox = style.div`
+    margin-top: 1rem;
+    width: 36rem;
+    background-color: ${colors.offwhite};
+    border-radius: 15px;
 
 `

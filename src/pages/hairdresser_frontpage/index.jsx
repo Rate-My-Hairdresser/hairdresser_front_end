@@ -1,13 +1,31 @@
-import { Grid2, Typography } from "@mui/material";
+import {Button, Grid2, Typography, TextField} from "@mui/material";
 import HairdresserSummary from "../../components/hairdresser_summary";
 import HairDresserSideBio from "../../components/hairdresser_side_bio";
+import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
+import {useState} from "react";
 
-const HairdresserFrontPage = () => {
+export default function HairdresserFrontPage() {
+    const [filterOn, setFilterOn] = useState(false);
+    const [query, setQuery] = useState("");
+    const [searchOn, setSearchOn] = useState(false);
+
+    const handleFilter = () => {
+        if (filterOn) {
+            setFilterOn(false);
+        } else {
+            setFilterOn(true);
+        }
+    }
+    const handleSearch = () => {
+        setSearchOn(true);
+    }
+
     return (
-        <Grid2 container spacing={2} margin={7}>
-            <Grid2 size="grow">
+        <Grid2 container spacing={2} rowSpacing={5} margin={7} columns={16}>
+            {/*This is line 1*/}
+            <Grid2 size={2}>
             </Grid2>
-            <Grid2 size={5}>
+            <Grid2 size={8}>
                 <Typography
                     component="h1"
                     variant="h2"
@@ -16,13 +34,50 @@ const HairdresserFrontPage = () => {
                     Rate My Hairdresser
                 </Typography>
             </Grid2>
-            <Grid2 size={3}>
-                <HairDresserSideBio/>
+            <Grid2 size={4}>
+                <HairDresserSignInBtn/>
             </Grid2>
-            <Grid2 size="grow">
+            <Grid2 size={2}>
+            </Grid2>
+            {/*This is line 2*/}
+            <Grid2 size={3}>
+            </Grid2>
+            <Grid2 size={1}>
+                <Button
+                    type={"button"}
+                    size={"large"}
+                    fullWidth
+                    variant={"contained"}
+                    onClick={handleFilter}
+                >
+                    Filter
+                </Button>
+            </Grid2>
+            <Grid2 size={4}>
+                <TextField
+                    name="query"
+                    placeholder="search..."
+                    type="query"
+                    id="query"
+                    autoComplete="search"
+                    fullWidth
+                    variant="outlined"
+                    color={'primary'}
+                />
+            </Grid2>
+            <Grid2 size={1}>
+                <Button
+                    type={"button"}
+                    fullWidth
+                    size={"large"}
+                    variant={"contained"}
+                    onClick={handleFilter}
+                >
+                    Search
+                </Button>
+            </Grid2>
+            <Grid2 size={2}>
             </Grid2>
         </Grid2>
     )
 }
-
-export default HairdresserFrontPage;

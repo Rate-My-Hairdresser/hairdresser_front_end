@@ -1,44 +1,60 @@
-import {Button, FormLabel, TextField} from "@mui/material";
+import {Button, FormLabel, TextField, Typography} from "@mui/material";
 
 import styled from "styled-components"
 import { colors } from "../../general/colors"
 import {useState} from "react";
 
-const HairDresserLogin = () => {
-    return (
-        <Boxing>
-            <TopSection>
-                <Button
-                    type={"button"}
-                    fullWidth
-                    variant={"contained"}
-                    onClick={}
+export default function HairDresserSignInBtn() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [userName, setUserName] = useState("User1234");
+
+    const handleLogin = () => {
+        if (loggedIn) {
+            setLoggedIn(false);
+        } else {
+            setLoggedIn(true);
+        }
+    }
+
+    if (loggedIn) {
+        return (
+            <Boxing>
+                <TopSection>
+                    <Button
+                        type={"button"}
+                        fullWidth
+                        variant={"contained"}
+                        onClick={handleLogin}
                     >
-                    Log in
-                </Button>
-            </TopSection>
-        </Boxing>
-    )
-}
-
-export default function HairDresserLogin() {
-    const [loggedIn, setLoggedIn] = React.useState(false);
-    const [userName, setUserName] = React.useState("");
-
-    return (
-        <Boxing>
-            <TopSection>
-                <Button
-                    type={"button"}
-                    fullWidth
-                    variant={"contained"}
-                    onClick={}
+                        Log out
+                    </Button>
+                </TopSection>
+                <Typography
+                    component="h1"
+                    variant="h2"
+                    sx={{ width: '100%', fontSize: 'clamp(1rem, 5vw, 1.15rem)' }}
                 >
-                    Log in
-                </Button>
-            </TopSection>
-        </Boxing>
-    )
+                    Welcome, {userName}!
+                </Typography>
+            </Boxing>
+        )
+    } else {
+        return (
+            <Boxing>
+                <TopSection>
+                    <Button
+                        type={"button"}
+                        fullWidth
+                        variant={"contained"}
+                        onClick={handleLogin}
+                    >
+                        Log in
+                    </Button>
+                </TopSection>
+            </Boxing>
+        )
+    }
+
 }
 
 const Boxing = styled.div`
@@ -54,7 +70,7 @@ const Boxing = styled.div`
 
 const TopSection = styled.div`
     width: 100%;
-    height: 7rem;
+    height: 5rem;
     border-bottom: 1px solid ${colors.secondary};
     display: flex;
     justify-content: space-between;

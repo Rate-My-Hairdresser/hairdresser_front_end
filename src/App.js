@@ -1,9 +1,13 @@
 import './App.css';
-import HairdresserPage from './pages/hairdresser_page';
+import LoadGoogleMaps from './LoadMaps';
+import LocalRouter from "./LocalRouter"
 
 function App() {
   return (
-      <HairdresserPage/>
+    <div>
+      <LoadGoogleMaps />
+      <LocalRouter />
+    </div>
   );
 }
 

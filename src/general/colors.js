@@ -5,6 +5,7 @@ export const colors = {
     dark_star: '#fa9600',
     text: {
         "primary": "#000000",
-        "secondary": "#696969"
+        "secondary": "#696969",
+        "darkGray": "#333333"
     }
 }

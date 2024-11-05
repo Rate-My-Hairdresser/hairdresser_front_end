@@ -39,6 +39,7 @@ export default function HairdresserFrontPage() {
             </Grid2>
             <Grid2 size={2}>
             </Grid2>
+
             {/*This is line 2*/}
             <Grid2 size={3}>
             </Grid2>

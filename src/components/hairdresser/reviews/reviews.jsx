@@ -25,7 +25,7 @@ const Reviews = () => {
         {
             rating: 3,
             comment: "Okay service, but the atmosphere could be better.",
-            photo: "path/to/photo2.jpg",
+            photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s",
         },
     ];
 

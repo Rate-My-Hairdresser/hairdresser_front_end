@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { colors } from "../../../general/colors";
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
-import { ImageList, ImageListItem, ImageListItemBar, IconButton, Modal, Box, Paper } from "@mui/material";
-import tinycolor from "tinycolor2";
+import { ImageList, ImageListItem, ImageListItemBar, IconButton, Modal, Box } from "@mui/material";
+import { HeaderText } from "../../../general/Text";
+//import tinycolor from "tinycolor2";
 import data from "../data.json"
 import { useState } from "react";
 
@@ -46,20 +47,20 @@ const HairdresserGallery = () => {
     //       };
     //     });
     //   };
-    
     return (
         <Container id={"review"}>
             <HeaderText>Gallery</HeaderText>
             <ImageList sx={{height: "30rem"}} cols={3} rowHeight={400}>
                 {
                     Object.entries(data.gallery).map(([key, value], index) => (
-                        <ImageListItem key={index}>
+                        <ImageListItem key={index} >
                             <Pics
                                 src={`${value}`}
                                 alt={key}
                                 loading="lazy"
                             />
                             <ImageListItemBar
+                                sx={{borderRadius: "0px 0px 15px 15px"}}
                                 title={key}
                                 actionIcon={
                                     <IconButton
@@ -99,11 +100,6 @@ const Container = styled.div`
     flex-direction: column;
 `
 
-const HeaderText = styled.h2`
-    margin: 0 0 1rem 0;
-    color: ${colors.primary};
-    text-align: center;
-`
 const Pics = styled.img`
     height: 100%;
     width: 100%;

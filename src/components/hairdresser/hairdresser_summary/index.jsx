@@ -2,6 +2,7 @@ import { Avatar, Grid2, IconButton, Tooltip, Button } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors"
+import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components"
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
@@ -19,9 +20,9 @@ const HairdresserSummary = () => {
                 <AvatarBox>
                     <Avatar sx={{width: 110, height: 110}}/>
                 </AvatarBox>
-                <HairdresserText>
+                <HeaderText style={{marginTop: "auto"}}>
                     {data.name}
-                </HairdresserText>
+                </HeaderText>
                 <RatingContainer>
                     <Tooltip title="Jump to ratings" placement="top">
                         <HashLink to="#review" smooth>
@@ -36,9 +37,11 @@ const HairdresserSummary = () => {
                 <Grid2 container sx={{height: "100%", width: "100%", padding: 1}}>
                     <Grid2 size={6}>
                         <InfoContainer>
-                            <><MiniHeaderText>Salon: </MiniHeaderText><SubText>{data.salon.name}</SubText></>
-                            <><MiniHeaderText>Location: </MiniHeaderText><SubText>{data.salon.location}</SubText></>
-                            <><MiniHeaderText>Contact Info: </MiniHeaderText></>
+                            <MiniHeaderText>Salon: </MiniHeaderText>
+                            <SubText>&nbsp; {data.salon.name}</SubText>
+                            <MiniHeaderText>Location: </MiniHeaderText>
+                            <SubText>&nbsp; {data.salon.location}</SubText>
+                            <MiniHeaderText>Contact Info: </MiniHeaderText>
                             {
                                 Object.entries(data.salon.contact).map(([key, value]) => (
                                     <SubText key={key}>&nbsp; {key}: {value}</SubText>
@@ -84,10 +87,6 @@ const RatingContainer = styled.div`
 
 const BackContainer = styled.div``
 
-const HairdresserText = styled.p`
-    margin-top: auto;
-`
-
 const AvatarBox = styled.div`
     margin-top: 3.5rem;
     margin-left: -20%;
@@ -98,16 +97,4 @@ const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`
-
-const SubText = styled.p`
-    color: ${colors.text.secondary};
-    font-size: 14px;
-    margin: 0
-`
-
-const MiniHeaderText = styled.p`
-    color: ${colors.text.primary};
-    font-size: 16px;
-    margin: 0;
 `

@@ -1,10 +1,27 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 import { colors } from "../../../general/colors"
+import { HeaderText, SubText } from '../../../general/Text';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { IconButton } from "@mui/material";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LanguageIcon from '@mui/icons-material/Language';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import XIcon from '@mui/icons-material/X';
+import { IconButton, Stack } from "@mui/material";
 import data from "../data.json"
+import { Link } from 'react-router-dom';
+
+
+const logos = {
+    "instagram": <InstagramIcon />,
+    "facebook": <FacebookIcon/>,
+    "website": <LanguageIcon/>,
+    "linkedin": <LinkedInIcon/>,
+    "twitter": <XIcon/>,
+    "x": <XIcon/>
+}
 
 const HairDresserSideBio = () => {
 
@@ -40,11 +57,15 @@ const HairDresserSideBio = () => {
                 <HeaderText>
                     Links
                 </HeaderText>
-                <SubText>
+                <Stack direction="row">
                     {Object.entries(data.links).map(([key, value]) => (
-                        <SubText>{key}: <a href={value} target="_blank" rel="noreferrer">{value}</a></SubText>
+                        <IconButton key={key}>
+                            <Link to={value} target="_blank" rel="noopener noreferrer" style={{height: "24px"}}>
+                                {logos[key]}
+                            </Link>
+                        </IconButton>
                     ))}
-                </SubText>
+                </Stack>
             </TextBox>
         </Container>
     )
@@ -70,16 +91,6 @@ const TextBox = styled.div`
     width: 100%;
     overflow-wrap: break-word;
     border-bottom: 1px solid ${colors.secondary};
-`
-
-const SubText = styled.p`
-    overflow-wrap: break-word;
-`
-
-const HeaderText = styled.h2`
-    margin: 0 0 1rem 0;
-    color: ${colors.primary};
-    text-align: center;
 `
 
 const Container = styled.div`

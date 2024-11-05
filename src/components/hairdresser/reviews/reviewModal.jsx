@@ -43,7 +43,7 @@ const ReviewModal = ({ open, handleClose }) => {
                     ))}
                 </StarContainer>
                 <TextField
-                    label="Comment"
+                    label="How was your service?"
                     multiline
                     rows={4}
                     variant="outlined"
@@ -54,7 +54,7 @@ const ReviewModal = ({ open, handleClose }) => {
                 />
                 <ButtonContainer>
                     <UploadButton onClick={() => document.getElementById('image-upload').click()}>
-                        Upload Image
+                        Upload Image (optional)
                     </UploadButton>
                     <SubmitButton onClick={handleSubmit}>
                         Submit

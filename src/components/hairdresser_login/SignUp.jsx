@@ -52,10 +52,8 @@ export default function HairDresserLogin(pass) {
                 <SignInContainer direction="column" justifyContent="space-between">
                     <Typography
                         component="h1"
-                        variant="h7"
-                        sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
-                        paddingLeft={4}
-                        paddingTop={12}
+                        variant="h4"
+                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
                         Sign in
                     </Typography>
@@ -67,11 +65,11 @@ export default function HairDresserLogin(pass) {
                             display: 'flex',
                             flexDirection: 'column',
                             width: '100%',
-                            gap: 3,
+                            gap: 2,
                         }}
                     >
                         <FormControl>
-                            <FormLabel htmlFor="email">ID</FormLabel>
+                            <FormLabel htmlFor="email">Email</FormLabel>
                             <TextField
                                 error={loginError}
                                 helperText={loginErrorMessage}
@@ -90,22 +88,13 @@ export default function HairDresserLogin(pass) {
                         </FormControl>
                         <FormControl>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <FormLabel htmlFor="password">Password</FormLabel>
-                                <Link
-                                    component="button"
-                                    type="button"
-                                    onClick={handleClickOpen}
-                                    variant="body2"
-                                    sx={{ alignSelf: 'baseline' }}
-                                >
-                                    Forgot your password?
-                                </Link>
+                                <FormLabel htmlFor="password">New Password</FormLabel>
                             </Box>
                             <TextField
                                 error={loginError}
                                 helperText={loginErrorMessage}
                                 name="password"
-                                placeholder="••••••"
+                                placeholder=""
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
@@ -117,8 +106,8 @@ export default function HairDresserLogin(pass) {
                             />
                         </FormControl>
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            control={<Checkbox value="stylist" color="primary" />}
+                            label="I am a stylist"
                         />
                         <Button
                             type="submit"
@@ -126,16 +115,7 @@ export default function HairDresserLogin(pass) {
                             variant="contained"
                             onClick={navTo}
                         >
-                            Sign in
-                        </Button>
-                        <Button
-                            type="button"
-                            fullWidth
-                            color={"secondary"}
-                            variant="contained"
-                            onClick={funcPrototype}
-                        >
-                            Register for new account
+                            Register
                         </Button>
                     </Box>
                 </SignInContainer>

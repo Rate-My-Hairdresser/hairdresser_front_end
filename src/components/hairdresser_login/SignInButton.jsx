@@ -3,10 +3,13 @@ import {Button, FormLabel, TextField, Typography} from "@mui/material";
 import styled from "styled-components"
 import { colors } from "../../general/colors"
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function HairDresserSignInBtn() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userName, setUserName] = useState("User1234");
+
+    const navigate = useNavigate();
 
     const handleLogin = () => {
         if (loggedIn) {
@@ -14,6 +17,7 @@ export default function HairDresserSignInBtn() {
         } else {
             setLoggedIn(true);
         }
+        navigate("/login");
     }
 
     if (loggedIn) {

@@ -1,13 +1,14 @@
 import {Button, Grid2, Typography, TextField} from "@mui/material";
-import HairdresserSummary from "../../components/hairdresser_summary";
-import HairDresserSideBio from "../../components/hairdresser_side_bio";
 import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function HairdresserFrontPage() {
     const [filterOn, setFilterOn] = useState(false);
     const [query, setQuery] = useState("");
     const [searchOn, setSearchOn] = useState(false);
+
+
 
     const handleFilter = () => {
         if (filterOn) {

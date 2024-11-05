@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
+import HairdresserFrontPage from "./pages/hairdresser_frontpage";
+import HairdresserLoginPage from "./pages/hairdresser_login";
 
 
   
@@ -25,6 +27,8 @@ const RoutesTree = () => {
       <Routes>
         <Fragment>
             <Route path="/" element={<HairdresserPage />}/>
+            <Route path="/frontpage" element={<HairdresserFrontPage/>}/>
+            <Route path="/login" element={<HairdresserLoginPage />}/>
         </Fragment>
       </Routes>
     </div>

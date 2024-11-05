@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
-
+import Homepage from "./pages/home_page";
 
   
 
@@ -24,7 +24,8 @@ const RoutesTree = () => {
     <div>
       <Routes>
         <Fragment>
-            <Route path="/" element={<HairdresserPage />}/>
+            <Route path="/hair_page" element={<HairdresserPage />}/>
+            <Route path="/" element={<Homepage />}/>
         </Fragment>
       </Routes>
     </div>

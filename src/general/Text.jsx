@@ -18,6 +18,9 @@ export const MiniHeaderText = styled.h4`
     color: ${colors.text.primary};
     font-size: 16px;
     margin: 0;
-
     font-weight: 500;
+`
+
+export const Title = styled.h1`
+    font-size: 80px;
 `

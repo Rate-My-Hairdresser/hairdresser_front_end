@@ -24,7 +24,7 @@ export default function HairDresserLogin({pass}) {
     const [open, setOpen] = useState(false);
 
     const nav = useNavigate();
-    const navTo = () => nav.push("/frontpage");
+    const navTo = () => nav("/");
 
     const handleClickOpen = () => {
         setOpen(true);

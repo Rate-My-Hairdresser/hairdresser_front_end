@@ -23,8 +23,6 @@ export default function HairDresserSignUp({pass}) {
     const [accountErrorMessage, setaccountErrorMessage] = useState("");
     const [isStylist, setisStylist] = useState(false);
 
-    const nav = useNavigate();
-    const navTo = () => nav.push("/frontpage");
 
     const handleSubmit = (event) => {
         if (accountError) {
@@ -47,6 +45,7 @@ export default function HairDresserSignUp({pass}) {
     }
 
     function StylistForm() {
+        return null;
         if (isStylist) {
             return <FormControl>
                     <FormLabel htmlFor="address">Salon Address</FormLabel>

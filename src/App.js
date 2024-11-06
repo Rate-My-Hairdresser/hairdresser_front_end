@@ -8,7 +8,8 @@ import Homepage from "./pages/home_page";
 function App() {
   return (
     <div className='app'>
-        <Homepage />
+        <LoadGoogleMaps />
+        <LocalRouter />
     </div>
   );
 }

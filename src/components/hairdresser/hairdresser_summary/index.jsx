@@ -1,4 +1,4 @@
-import { Avatar, Grid2, IconButton, Tooltip, Button } from "@mui/material";
+import { Avatar, Grid2, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors"
@@ -6,9 +6,12 @@ import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components"
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
-import data from "../data.json";
+import hairData from "../../../data/hairdresserList.json";
 
 const HairdresserSummary = () => {
+
+    const data = hairData[1];
+
     return (
         <Container>
             <TopSection>
@@ -34,8 +37,8 @@ const HairdresserSummary = () => {
                 </RatingContainer>
             </TopSection>
             <BottomSection>
-                <Grid2 container sx={{height: "100%", width: "100%", padding: 1}}>
-                    <Grid2 size={6}>
+                <Grid2 container sx={{height: "100%", width: "100%", padding: 1}} spacing={1}>
+                    <Grid2 size={3}>
                         <InfoContainer>
                             <MiniHeaderText>Salon: </MiniHeaderText>
                             <SubText>&nbsp; {data.salon.name}</SubText>
@@ -49,8 +52,13 @@ const HairdresserSummary = () => {
                             }
                         </InfoContainer>
                     </Grid2>
-                    <Grid2 size={6}>
+                    <Grid2 size={7}>
                         <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]}/>
+                    </Grid2>
+                    <Grid2 size={2}>
+                        {data.filters.map((value, index) => (
+                            <NewChips label={value} />
+                        ))}
                     </Grid2>
                 </Grid2>
             </BottomSection>
@@ -60,16 +68,20 @@ const HairdresserSummary = () => {
 
 export default HairdresserSummary;
 
+const NewChips = styled(Chip)(({}) => ({
+    marginBottom: '1rem',
+    marginRight: '0.5rem'
+}))
+
 const Container = styled.div`
     background-color: ${colors.offwhite};
-    height: 25rem;
     border-radius: 15px;
     padding: 1rem;
 `
 
 const TopSection = styled.div`
     width: 100%;
-    height: 7rem;
+    height: 4rem;
     border-bottom: 1px solid ${colors.secondary};
     display: flex;
     justify-content: space-between;
@@ -88,7 +100,7 @@ const RatingContainer = styled.div`
 const BackContainer = styled.div``
 
 const AvatarBox = styled.div`
-    margin-top: 3.5rem;
+    margin-top: 0.5rem;
     margin-left: -20%;
 `
 

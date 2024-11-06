@@ -5,8 +5,10 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Modal, Box } from "@mui/material";
 import { HeaderText } from "../../../general/Text";
 //import tinycolor from "tinycolor2";
-import data from "../data.json"
+import hairData from "../../../data/hairdresserList.json";
 import { useState } from "react";
+
+const data = hairData[1];
 
 const HairdresserGallery = () => {
 

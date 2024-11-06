@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "profilePic": "https://www.shutterstock.com/image-photo/close-portrait-smiling-30s-caucasian-260nw-2246095709.jpg",
+      "galleryPics": [
+        "https://i.redd.it/boys-haircut-fade-haircut-v0-4gpsizeqiovc1.jpg?width=3000&format=pjpg&auto=webp&s=23a555ce6ff52f54e8c0912227986979cafdbbed",
+        "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+        "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780",
+        "https://i0.wp.com/thesalonproject.com/wp-content/uploads/2024/03/The-evolution-of-mens-haircuts-and-styling-1.jpg"
+      ],
+      "name": "Jane Doe",
+      "bio": "Expert in hairstyling and color techniques."
+    },
+    {
+      "id": 2,
+      "profilePic": "https://icieducation.co.uk/blog/wp-content/uploads/2021/07/guide-to-becoming-a-hairdresser.jpg",
+      "galleryPics": [
+        "https://i.redd.it/boys-haircut-fade-haircut-v0-4gpsizeqiovc1.jpg?width=3000&format=pjpg&auto=webp&s=23a555ce6ff52f54e8c0912227986979cafdbbed",
+        "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+        "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780"
+      ],
+      "name": "John Smith",
+      "bio": "Specializes in modern cuts and styling."
+    }
+  ]

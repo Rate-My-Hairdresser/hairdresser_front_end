@@ -10,6 +10,7 @@ import './animation.css';
 import FilterModal from "../../components/filter_modal/FilterModal";
 import hairdresserData from "../../data/hairdresserList.json"
 import SearchResult from "../../components/search_result/SearchResult";
+import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 
 
 
@@ -116,7 +117,7 @@ const Homepage = () => {
                 <Title>Rate My Hairdresser</Title>
             </Topbar>
             <LoginContainer>
-                <Button variant="contained">Login</Button>
+                <HairDresserSignInBtn/>
             </LoginContainer>
             <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
                 <Stack direction="column">

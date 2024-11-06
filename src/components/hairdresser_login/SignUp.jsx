@@ -16,29 +16,59 @@ import { colors } from "../../general/colors"
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function HairDresserLogin(pass) {
+export default function HairDresserSignUp({pass}) {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState(false);
-    const [loginErrorMessage, setLoginErrorMessage] = useState("");
-    const [open, setOpen] = useState(false);
+    const [accountError, setaccountError] = useState(false);
+    const [accountErrorMessage, setaccountErrorMessage] = useState("");
+    const [isStylist, setisStylist] = useState(false);
 
     const nav = useNavigate();
     const navTo = () => nav.push("/frontpage");
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
-    }
-
     const handleSubmit = (event) => {
-        if (loginError) {
+        if (accountError) {
             event.preventDefault();
             return;
         }
         const data =new FormData(event.currentTarget);
+    }
+
+    const handleSignUp = (event) => {
+        pass(false);
+    }
+
+    const handleCheckbox = (event) => {
+        if (isStylist) {
+            setisStylist(false);
+        } else {
+            setisStylist(true);
+        }
+    }
+
+    function StylistForm() {
+        if (isStylist) {
+            return <FormControl>
+                    <FormLabel htmlFor="address">Salon Address</FormLabel>
+                    <TextField
+                        error={accountError}
+                        helperText={accountErrorMessage}
+                        id="address"
+                        type="address"
+                        name="address"
+                        placeholder="Address..."
+                        autoComplete="address"
+                        autoFocus
+                        required
+                        fullWidth
+                        variant="outlined"
+                        color={accountError ? 'error' : 'primary'}
+                        sx={{ ariaLabel: 'address' }}
+                    />
+                </FormControl>
+        } else {
+            return null
+        }
     }
 
     const funcPrototype = () => {
@@ -49,7 +79,7 @@ export default function HairDresserLogin(pass) {
         <Grid2 container>
             <Grid2 size="grow"></Grid2>
             <Grid2 size={4}>
-                <SignInContainer direction="column" justifyContent="space-between">
+                <SignInContainer direction="column" alignItems="center" justifyContent="space-between">
                     <Typography
                         component="h1"
                         variant="h4"
@@ -57,6 +87,7 @@ export default function HairDresserLogin(pass) {
                     >
                         Sign in
                     </Typography>
+                    <div style={{height: '3rem'}}></div>
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
@@ -69,21 +100,21 @@ export default function HairDresserLogin(pass) {
                         }}
                     >
                         <FormControl>
-                            <FormLabel htmlFor="email">Email</FormLabel>
+                            <FormLabel htmlFor="username">Username</FormLabel>
                             <TextField
-                                error={loginError}
-                                helperText={loginErrorMessage}
-                                id="email"
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                autoComplete="email"
+                                error={accountError}
+                                helperText={accountErrorMessage}
+                                id="username"
+                                type="username"
+                                name="username"
+                                placeholder="new username..."
+                                autoComplete="username"
                                 autoFocus
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={loginError ? 'error' : 'primary'}
-                                sx={{ ariaLabel: 'email' }}
+                                color={accountError ? 'error' : 'primary'}
+                                sx={{ ariaLabel: 'username' }}
                             />
                         </FormControl>
                         <FormControl>
@@ -91,29 +122,63 @@ export default function HairDresserLogin(pass) {
                                 <FormLabel htmlFor="password">New Password</FormLabel>
                             </Box>
                             <TextField
-                                error={loginError}
-                                helperText={loginErrorMessage}
+                                error={accountError}
+                                helperText={accountErrorMessage}
                                 name="password"
-                                placeholder=""
+                                placeholder="new password..."
                                 type="password"
                                 id="password"
-                                autoComplete="current-password"
                                 autoFocus
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={loginError ? 'error' : 'primary'}
+                                color={accountError ? 'error' : 'primary'}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <TextField
+                                error={accountError}
+                                helperText={accountErrorMessage}
+                                name="confpassword"
+                                placeholder="confirm password..."
+                                type="confpassword"
+                                id="confpassword"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={accountError ? 'error' : 'primary'}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel htmlFor="email">Email</FormLabel>
+                            <TextField
+                                error={accountError}
+                                helperText={accountErrorMessage}
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="example@sample.com"
+                                autoComplete="email"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={accountError ? 'error' : 'primary'}
+                                sx={{ ariaLabel: 'email' }}
                             />
                         </FormControl>
                         <FormControlLabel
+                            onChange={handleCheckbox}
                             control={<Checkbox value="stylist" color="primary" />}
                             label="I am a stylist"
                         />
+                        <StylistForm/>
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={navTo}
+                            onClick={handleSignUp}
                         >
                             Register
                         </Button>
@@ -128,6 +193,7 @@ export default function HairDresserLogin(pass) {
 const SignInContainer = styled(Stack)(({ theme }) => ({
     height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
     minHeight: '100%',
+    maxHeight: '300%',
     '&::before': {
         content: '""',
         display: 'block',
@@ -143,7 +209,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 const Boxing = styled.div`
     background-color: ${colors.offwhite};
     align-self: center;
-    max-height: 450px;
+    max-height: 650px;
     min-height: 200px;
     max-width: 400px;
     min-width: 300px;

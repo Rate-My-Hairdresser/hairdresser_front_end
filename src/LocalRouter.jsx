@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
 import Homepage from "./pages/home_page";import FavoritesPage from './pages/favorite_page';
+import HairDresserLogin from "./components/hairdresser_login/SignIn";
 
 
   
@@ -28,6 +29,7 @@ const RoutesTree = () => {
             <Route path="/hair_page" element={<HairdresserPage />}/>
             <Route path="/" element={<Homepage />}/>
             <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/login" element={<HairDresserLogin />} />
         </Fragment>
       </Routes>
     </div>

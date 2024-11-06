@@ -16,7 +16,7 @@ import { colors } from "../../general/colors"
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function HairDresserLogin(pass) {
+export default function HairDresserLogin({pass}) {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
@@ -38,7 +38,11 @@ export default function HairDresserLogin(pass) {
             event.preventDefault();
             return;
         }
-        const data =new FormData(event.currentTarget);
+        const data = new FormData(event.currentTarget);
+    }
+
+    const handleSignUp = (event) => {
+        pass(true);
     }
 
     const funcPrototype = () => {
@@ -133,7 +137,7 @@ export default function HairDresserLogin(pass) {
                             fullWidth
                             color={"secondary"}
                             variant="contained"
-                            onClick={funcPrototype}
+                            onClick={handleSignUp}
                         >
                             Register for new account
                         </Button>

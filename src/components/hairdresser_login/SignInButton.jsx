@@ -36,7 +36,7 @@ export default function HairDresserSignInBtn() {
                 <Typography
                     component="h1"
                     variant="h2"
-                    sx={{ width: '100%', fontSize: 'clamp(1rem, 5vw, 1.15rem)' }}
+                    sx={{ width: '110%', fontSize: 'clamp(0.9rem, 3vw, 0.9rem)' }}
                 >
                     Welcome, {userName}!
                 </Typography>
@@ -64,17 +64,17 @@ export default function HairDresserSignInBtn() {
 const Boxing = styled.div`
     background-color: ${colors.offwhite};
     align-self: center;
-    max-height: 200px;
-    min-height: 100px;
-    max-width: 200px;
-    min-width: 100px;
+    max-height: 6rem;
+    min-height: 4rem;
+    max-width: 8rem;
+    min-width: 8rem;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 0.5rem;
 `
 
 const TopSection = styled.div`
     width: 100%;
-    height: 5rem;
+    height: 3rem;
     border-bottom: 1px solid ${colors.secondary};
     display: flex;
     justify-content: space-between;

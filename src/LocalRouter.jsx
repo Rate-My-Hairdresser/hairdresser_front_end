@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
 import Homepage from "./pages/home_page";import FavoritesPage from './pages/favorite_page';
 import HairDresserLogin from "./components/hairdresser_login/SignIn";
+import HairDresserSignUp from "./components/hairdresser_login/SignUp";
 
 
   
@@ -30,6 +31,7 @@ const RoutesTree = () => {
             <Route path="/" element={<Homepage />}/>
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/login" element={<HairDresserLogin />} />
+            <Route path="/register" element={<HairDresserSignUp/>} />
         </Fragment>
       </Routes>
     </div>

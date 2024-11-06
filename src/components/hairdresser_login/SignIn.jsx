@@ -16,7 +16,7 @@ import { colors } from "../../general/colors"
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function HairDresserLogin({pass}) {
+export default function HairDresserLogin() {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
@@ -24,7 +24,8 @@ export default function HairDresserLogin({pass}) {
     const [open, setOpen] = useState(false);
 
     const nav = useNavigate();
-    const navTo = () => nav("/");
+    const navHome = () => nav("/");
+    const navRegister = () => nav("/register");
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,10 +40,6 @@ export default function HairDresserLogin({pass}) {
             return;
         }
         const data = new FormData(event.currentTarget);
-    }
-
-    const handleSignUp = (event) => {
-        pass(true);
     }
 
     const funcPrototype = () => {
@@ -128,7 +125,7 @@ export default function HairDresserLogin({pass}) {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={navTo}
+                            onClick={navHome}
                         >
                             Sign in
                         </Button>
@@ -137,7 +134,7 @@ export default function HairDresserLogin({pass}) {
                             fullWidth
                             color={"secondary"}
                             variant="contained"
-                            onClick={handleSignUp}
+                            onClick={navRegister}
                         >
                             Register for new account
                         </Button>

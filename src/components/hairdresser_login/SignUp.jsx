@@ -16,13 +16,15 @@ import { colors } from "../../general/colors"
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function HairDresserSignUp({pass}) {
+export default function HairDresserSignUp() {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
     const [accountError, setaccountError] = useState(false);
     const [accountErrorMessage, setaccountErrorMessage] = useState("");
     const [isStylist, setisStylist] = useState(false);
 
+    const nav = useNavigate();
+    const navLogin = () => nav("/login");
 
     const handleSubmit = (event) => {
         if (accountError) {
@@ -30,10 +32,6 @@ export default function HairDresserSignUp({pass}) {
             return;
         }
         const data =new FormData(event.currentTarget);
-    }
-
-    const handleSignUp = (event) => {
-        pass(false);
     }
 
     const handleCheckbox = (event) => {
@@ -177,7 +175,7 @@ export default function HairDresserSignUp({pass}) {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={handleSignUp}
+                            onClick={navLogin}
                         >
                             Register
                         </Button>

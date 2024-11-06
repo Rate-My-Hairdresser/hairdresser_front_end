@@ -76,15 +76,15 @@ export default function HairDresserSignUp() {
         <Grid2 container>
             <Grid2 size="grow"></Grid2>
             <Grid2 size={4}>
-                <SignInContainer direction="column" alignItems="center" justifyContent="space-between">
+                <SignInContainer direction="column" justifyContent="space-between">
                     <Typography
                         component="h1"
-                        variant="h4"
+                        variant="h7"
+                        marginTop="3rem"
                         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
-                        Sign in
+                        Register New Account
                     </Typography>
-                    <div style={{height: '3rem'}}></div>
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
@@ -190,7 +190,7 @@ export default function HairDresserSignUp() {
 const SignInContainer = styled(Stack)(({ theme }) => ({
     height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
     minHeight: '100%',
-    maxHeight: '300%',
+    maxHeight: '200%',
     '&::before': {
         content: '""',
         display: 'block',

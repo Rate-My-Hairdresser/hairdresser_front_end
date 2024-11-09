@@ -9,9 +9,13 @@ import { hairServiceFilters } from "../data/filterChips";
  * @returns {JSON}
  */
 export const search = (maximumPrice, text, filterChips) => {
+    //basic constants(weights, number of results)
     const textWeight = 10
     const priceWeight = 5
     const filterWeight = 1;
+    const numberOfResults = 10;
+
+
     // Convert filterChips indices to filter text
     const filterText = filterChips
         .filter((chip) => hairServiceFilters[chip] !== undefined)
@@ -45,7 +49,7 @@ export const search = (maximumPrice, text, filterChips) => {
         })
         .filter(({ stylistRelevance }) => stylistRelevance > 0) // Only keep relevant items
         .sort((a, b) => b.stylistRelevance - a.stylistRelevance) // Sort by relevance descending
-        .slice(0, 10); // Limit to top 10
+        .slice(0, numberOfResults); // Limit to top 10
 
     // Build final array based on sorted keys
     return mapArr.map(({ key }) => hairdresserData[key]);

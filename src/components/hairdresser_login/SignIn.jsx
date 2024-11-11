@@ -15,23 +15,27 @@ import styled from "styled-components"
 import { colors } from "../../general/colors"
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signIn } from "../../general/redux/actions.js";
+import { userType } from "../../general/redux/actions.js";
 
 export default function HairDresserLogin() {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState("");
     const [open, setOpen] = useState(false);
 
     const nav = useNavigate();
-    const navHome = () => nav("/");
+    const dispatch = useDispatch();
     const navRegister = () => nav("/register");
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
+    const handleLogin = () => {
+        console.log("HIT")
+        //this is where error checking would be added
+        dispatch(signIn(email, userType.STANDARD)) //----work here
+        nav("/");
     }
 
     const handleSubmit = (event) => {
@@ -62,7 +66,7 @@ export default function HairDresserLogin() {
                     </Typography>
                     <Box
                         component="form"
-                        onSubmit={handleSubmit}
+                        // onSubmit={handleSubmit}
                         noValidate
                         sx={{
                             display: 'flex',
@@ -72,7 +76,7 @@ export default function HairDresserLogin() {
                         }}
                     >
                         <FormControl>
-                            <FormLabel htmlFor="email">ID</FormLabel>
+                            <FormLabel htmlFor="email">Email</FormLabel>
                             <TextField
                                 error={loginError}
                                 helperText={loginErrorMessage}
@@ -85,6 +89,8 @@ export default function HairDresserLogin() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 color={loginError ? 'error' : 'primary'}
                                 sx={{ ariaLabel: 'email' }}
                             />
@@ -95,7 +101,6 @@ export default function HairDresserLogin() {
                                 <Link
                                     component="button"
                                     type="button"
-                                    onClick={handleClickOpen}
                                     variant="body2"
                                     sx={{ alignSelf: 'baseline' }}
                                 >
@@ -114,6 +119,8 @@ export default function HairDresserLogin() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 color={loginError ? 'error' : 'primary'}
                             />
                         </FormControl>
@@ -125,7 +132,7 @@ export default function HairDresserLogin() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={navHome}
+                            onClick={handleLogin}
                         >
                             Sign in
                         </Button>

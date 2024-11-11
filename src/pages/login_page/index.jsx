@@ -3,7 +3,7 @@ import HairDresserLogin from "../../components/hairdresser_login/SignIn";
 import {useCallback, useState} from "react";
 import HairDresserSignUp from "../../components/hairdresser_login/SignUp";
 
-const HairdresserLoginPage = () => {
+const LoginPage = () => {
     return (
         <Grid2 container spacing={3} margin={3}>
             <Grid2 size={9}>
@@ -15,4 +15,4 @@ const HairdresserLoginPage = () => {
     )
 }
 
-export default HairdresserLoginPage;
+export default LoginPage;

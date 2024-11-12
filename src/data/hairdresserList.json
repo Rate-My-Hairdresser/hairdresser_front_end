@@ -32,7 +32,23 @@
             "Braiding"
         ],
         "minimum_price": 50,
-        "maximum_price": 180
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "2": {
         "salon": {
@@ -67,7 +83,23 @@
             "Bang Trim"
         ],
         "minimum_price": 70,
-        "maximum_price": 120
+        "maximum_price": 120,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "3": {
         "salon": {
@@ -94,7 +126,23 @@
         },
         "filters": ["Beard Trim", "Men's Haircut", "Haircut"],
         "minimum_price": 60,
-        "maximum_price": 150
+        "maximum_price": 150,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "4": {
         "salon": {
@@ -121,7 +169,23 @@
         },
         "filters": ["Color Correction", "Highlights", "Balayage"],
         "minimum_price": 80,
-        "maximum_price": 200
+        "maximum_price": 200,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "5": {
         "salon": {
@@ -147,7 +211,23 @@
         },
         "filters": ["Ombre", "Balayage", "Blowout"],
         "minimum_price": 75,
-        "maximum_price": 160
+        "maximum_price": 160,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "6": {
         "salon": {
@@ -174,7 +254,23 @@
         },
         "filters": ["Men's Haircut", "Beard Trim", "Dry Cut"],
         "minimum_price": 50,
-        "maximum_price": 120
+        "maximum_price": 120,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "7": {
         "salon": {
@@ -201,7 +297,23 @@
         },
         "filters": ["Gloss Treatment", "Color Correction", "Custom Color"],
         "minimum_price": 90,
-        "maximum_price": 250
+        "maximum_price": 250,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "8": {
         "salon": {
@@ -227,7 +339,23 @@
         },
         "filters": ["Balayage", "Root Touch-Up", "Gloss Treatment"],
         "minimum_price": 100,
-        "maximum_price": 220
+        "maximum_price": 220,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "9": {
         "salon": {
@@ -253,7 +381,23 @@
         },
         "filters": ["Updo", "Blowout", "Texturizing"],
         "minimum_price": 85,
-        "maximum_price": 180
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "10": {
         "salon": {
@@ -279,7 +423,23 @@
         },
         "filters": ["Custom Color", "Highlights", "Color Correction"],
         "minimum_price": 90,
-        "maximum_price": 250
+        "maximum_price": 250,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "11": {
         "salon": {
@@ -305,7 +465,23 @@
         },
         "filters": ["Dry Cut", "Scalp Treatment", "Men's Haircut"],
         "minimum_price": 70,
-        "maximum_price": 160
+        "maximum_price": 160,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "12": {
         "salon": {
@@ -331,7 +507,23 @@
         },
         "filters": ["Keratin Treatment", "Hair Smoothing", "Hair Mask"],
         "minimum_price": 95,
-        "maximum_price": 210
+        "maximum_price": 210,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "13": {
         "salon": {
@@ -357,7 +549,23 @@
         },
         "filters": ["Precision Cuts", "Gloss Treatment", "Hair Consultation"],
         "minimum_price": 80,
-        "maximum_price": 180
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "14": {
         "salon": {
@@ -383,7 +591,23 @@
         },
         "filters": ["Fade", "Beard Trim", "Men's Haircut"],
         "minimum_price": 60,
-        "maximum_price": 150
+        "maximum_price": 150,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "15": {
         "salon": {
@@ -409,7 +633,23 @@
         },
         "filters": ["Highlights", "Balayage", "Custom Color"],
         "minimum_price": 120,
-        "maximum_price": 270
+        "maximum_price": 270,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "16": {
         "salon": {
@@ -435,7 +675,23 @@
         },
         "filters": ["Updo", "Wedding Hair", "Event Styling"],
         "minimum_price": 110,
-        "maximum_price": 240
+        "maximum_price": 240,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "17": {
         "salon": {
@@ -461,6 +717,22 @@
         },
         "filters": ["Men's Haircut", "Precision Cuts", "Bang Trim"],
         "minimum_price": 75,
-        "maximum_price": 170
+        "maximum_price": 170,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     }
 }

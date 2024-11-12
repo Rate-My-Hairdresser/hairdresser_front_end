@@ -5,8 +5,9 @@ import { colors } from "../../../general/colors";
 
 const STAR_COUNT = 5;
 
-const ReviewModal = ({ open, handleClose }) => {
+const ReviewModal = ({ open, handleClose, onSubmit }) => {
     const [rating, setRating] = useState(0);
+    const photo = ""
     const [hoveredStar, setHoveredStar] = useState(-1);
     const [comment, setComment] = useState("");
 
@@ -19,8 +20,7 @@ const ReviewModal = ({ open, handleClose }) => {
     };
 
     const handleSubmit = () => {
-        console.log("Rating:", rating);
-        console.log("Comment:", comment);
+        onSubmit(comment, photo, rating);
         handleClose();
     };
 

@@ -6,9 +6,8 @@ import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components"
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
-import hairData from "../../../data/hairdresserList.json";
 
-const HairdresserSummary = ({data}) => {
+const HairdresserSummary = ({data, reviewNumber}) => {
 
     // const data = hairData[1];
 
@@ -30,7 +29,7 @@ const HairdresserSummary = ({data}) => {
                     <Tooltip title="Jump to ratings" placement="top">
                         <HashLink to="#review" smooth>
                             <Button>
-                                <Rating name="read-only" value={4} readOnly />
+                                <Rating name="read-only" value={reviewNumber || 0} readOnly />
                             </Button>
                         </HashLink>
                     </Tooltip>
@@ -57,7 +56,7 @@ const HairdresserSummary = ({data}) => {
                     </Grid2>
                     <Grid2 size={2}>
                         {data.filters.map((value, index) => (
-                            <NewChips label={value} />
+                            <NewChips label={value} key={index}/>
                         ))}
                     </Grid2>
                 </Grid2>

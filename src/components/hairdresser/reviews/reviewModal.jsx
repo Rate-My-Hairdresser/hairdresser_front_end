@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal, TextField } from "@mui/material";
+import React, { useRef, useState } from "react";
+import { Modal, TextField, Stack } from "@mui/material";
 import styled from "styled-components";
 import { colors } from "../../../general/colors";
 
@@ -7,9 +7,10 @@ const STAR_COUNT = 5;
 
 const ReviewModal = ({ open, handleClose, onSubmit }) => {
     const [rating, setRating] = useState(0);
-    const photo = ""
+    const [photo, setPhoto] = useState()
     const [hoveredStar, setHoveredStar] = useState(-1);
     const [comment, setComment] = useState("");
+    const fileInputRef = useRef();
 
     const handleStarClick = (index) => {
         setRating(index + 1);
@@ -23,6 +24,12 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
         onSubmit(comment, photo, rating);
         handleClose();
     };
+
+    const handleUpload = (event) => {
+        const files = event.target.files
+        console.log(files);
+        setPhoto(URL.createObjectURL(files[0]))
+    }
 
     return (
         <Modal open={open} onClose={handleClose}>
@@ -42,18 +49,24 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
                         </Star>
                     ))}
                 </StarContainer>
-                <TextField
-                    label="How was your service?"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={comment}
-                    onChange={handleCommentChange}
-                />
+                <Stack direction="row" spacing={2}>
+                    <TextField
+                        label="How was your service?"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={comment}
+                        onChange={handleCommentChange}
+                    />
+                    <ImageContainer>
+                        <ImagePreview src={photo} />
+                    </ImageContainer>
+                </Stack>
                 <ButtonContainer>
-                    <UploadButton onClick={() => document.getElementById('image-upload').click()}>
+                    <input onChange={(e) => handleUpload(e)} multiple={false} ref={fileInputRef} type="file" accept="image/*" hidden/>
+                    <UploadButton onClick={() => fileInputRef.current.click()}>
                         Upload Image (optional)
                     </UploadButton>
                     <SubmitButton onClick={handleSubmit}>
@@ -79,6 +92,21 @@ const ModalContent = styled.div`
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 `;
+
+const ImageContainer = styled.div`
+    margin-top: 16px;
+    margin-bottom: 8px;
+    width: 140px;
+    height: 125px;
+    // background-color: ${colors.secondary};
+`
+
+const ImagePreview = styled.img`
+    width: 140px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 5px;
+`
 
 const CloseButton = styled.button`
     position: absolute;

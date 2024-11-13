@@ -169,7 +169,6 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     alignItems: "space-between",
     justifyContent: "space-between",
     padding: theme.spacing(3),
-    boxShadow: theme.shadows[3],
     backgroundColor: theme.palette.background.paper,
     borderRadius: theme.shape.borderRadius,
 }));

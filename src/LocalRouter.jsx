@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
 import Homepage from "./pages/home_page";import FavoritesPage from './pages/favorite_page';
-import HairDresserLogin from "./components/hairdresser_login/SignIn";
-import HairDresserSignUp from "./components/hairdresser_login/SignUp";
+import HairDresserLogin from "./pages/login_page/index";
+import HairDresserSignUp from "./pages/signup_page/index";
 
 
   

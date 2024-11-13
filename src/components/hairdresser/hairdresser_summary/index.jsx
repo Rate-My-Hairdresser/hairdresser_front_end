@@ -8,9 +8,9 @@ import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
 import hairData from "../../../data/hairdresserList.json";
 
-const HairdresserSummary = () => {
+const HairdresserSummary = ({data}) => {
 
-    const data = hairData[1];
+    // const data = hairData[1];
 
     return (
         <Container>

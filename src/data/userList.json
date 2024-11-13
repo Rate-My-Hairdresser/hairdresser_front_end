@@ -1,10 +1,14 @@
 {
     "1": {
-        "email": "user@test.com",
-        "password": "password"
+        "email": "stylist@test.com",
+        "password": "password",
+        "userId": 1,
+        "userType": "stylist"
     },
     "2": {
-        "email": "stylist@test.com",
-        "password": "password"
+        "email": "user@test.com",
+        "password": "password",
+        "userId": 10001,
+        "userType": "standard"
     }
 }

@@ -11,10 +11,9 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components"
-import { colors } from "../../general/colors"
+import style from "styled-components";
+import { styled } from '@mui/material/styles';
 import {useState} from "react";
-import {Link} from "react-router-dom";
 
 export default function HairDresserSignUp() {
     const [account, setAccount] = useState("");
@@ -73,10 +72,8 @@ export default function HairDresserSignUp() {
     }
 
     return (
-        <Grid2 container>
-            <Grid2 size="grow"></Grid2>
-            <Grid2 size={4}>
-                <SignInContainer direction="column" justifyContent="space-between">
+        <MasterBox>
+                <SignUpContainer direction="column" justifyContent="space-between">
                     <Typography
                         component="h1"
                         variant="h7"
@@ -180,44 +177,32 @@ export default function HairDresserSignUp() {
                             Register
                         </Button>
                     </Box>
-                </SignInContainer>
-            </Grid2>
-            <Grid2 size="grow"></Grid2>
-        </Grid2>
+                </SignUpContainer>
+        </MasterBox>
     )
 }
 
-const SignInContainer = styled(Stack)(({ theme }) => ({
-    height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
-    minHeight: '100%',
-    maxHeight: '200%',
-    '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        zIndex: -1,
-        inset: 0,
-        backgroundImage:
-            'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
-        backgroundRepeat: 'no-repeat',
-    },
-}));
-
-const Boxing = styled.div`
-    background-color: ${colors.offwhite};
-    align-self: center;
-    max-height: 650px;
-    min-height: 200px;
-    max-width: 400px;
-    min-width: 300px;
-    border-radius: 15px;
-    padding: 1rem;
-`
-
-const TopSection = styled.div`
-    width: 100%;
-    height: 7rem;
-    border-bottom: 1px solid ${colors.secondary};
+const MasterBox = style.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 `
+
+const SignUpContainer = styled(Stack)(({ theme }) => ({
+    position: 'absolute',
+    height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
+    width: '33%',
+    minWidth: '32rem',
+    display: 'flex',
+    flexDirection: "column",
+    alignItems: "space-between",
+    justifyContent: "space-between",
+    padding: theme.spacing(3),
+    boxShadow: theme.shadows[3],
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+}));

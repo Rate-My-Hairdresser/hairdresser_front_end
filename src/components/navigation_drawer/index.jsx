@@ -1,36 +1,16 @@
-import {Fragment, useState} from "react";
-import HairDresserSignInBtn from "../hairdresser_login/SignInButton";
+import {useState} from "react";
 import {
-    Avatar,
-    Box,
-    Button,
     Divider,
-    IconButton,
-    ListItemIcon,
-    Menu,
-    MenuItem,
     Stack,
-    Tooltip,
-    Typography
 } from "@mui/material";
-import {
-    ArrowBack,
-    ArrowBackOutlined,
-    ArrowBackRounded,
-    Backspace,
-    Bookmarks,
-    Logout,
-    PersonSearch,
-    Settings
-} from "@mui/icons-material";
+import {useNavigate} from "react-router-dom";
 import {PreviousPageButton} from "./previous";
 import HairDresserUserMenu from "./hairdresser_usermenu";
 import {selectUser} from "../../general/redux/selectors";
 import {useSelector} from "react-redux";
 import {TitleButton} from "./home";
 
-export default function TopAnchoredMenu({ getToken }) {
-    const token = null;
+export default function TopAnchoredMenu() {
     const user = useSelector(selectUser);
     const [anchorEl, setAnchorEl] = useState(null);
 

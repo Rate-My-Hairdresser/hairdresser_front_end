@@ -28,6 +28,7 @@ import {PreviousPageButton} from "./previous";
 import HairDresserUserMenu from "./hairdresser_usermenu";
 import {selectUser} from "../../general/redux/selectors";
 import {useSelector} from "react-redux";
+import {TitleButton} from "./home";
 
 export default function TopAnchoredMenu({ getToken }) {
     const token = null;
@@ -43,6 +44,8 @@ export default function TopAnchoredMenu({ getToken }) {
     return (
         <Stack direction="row" spacing={1} bgcolor={"text.secondary"} padding={user.signedIn? 2 : 1}>
             <PreviousPageButton navigate={navigate} />
+            <Divider orientation="vertical" color={"secondary"} flexItem />
+            <TitleButton navigate={navigate()} />
             <Divider orientation="vertical" color={"secondary"} flexItem />
             <HairDresserUserMenu navigate={navigate} handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
         </Stack>

@@ -1,6 +1,7 @@
-import { Box, Modal, InputBase, Input, Chip, Button } from "@mui/material"
+import { Box, Modal, InputBase, Input, Chip, Button, IconButton } from "@mui/material"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
+import CloseIcon from '@mui/icons-material/Close';
 import { HeaderText, MiniHeaderText } from "../../general/Text"
 
 
@@ -57,6 +58,12 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice}) => {
         <>
             <Modal open={open} onClose={handleClose}>
                 <Box sx={containerStyle}>
+                    <CloseContainer>
+                        <IconButton onClick={handleClose}>
+                            <CloseIcon />
+                        </IconButton>
+                    </CloseContainer>
+
                     <FilterRow>
                         <HeaderText style={localheaderStyle}>
                             Maximum price: $
@@ -148,4 +155,10 @@ const ApplyFiltersBox = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+`
+
+const CloseContainer = styled.div`
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 `

@@ -32,7 +32,23 @@
             "Braiding"
         ],
         "minimum_price": 50,
-        "maximum_price": 180
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     },
     "2": {
         "salon": {
@@ -67,6 +83,656 @@
             "Bang Trim"
         ],
         "minimum_price": 70,
-        "maximum_price": 120
+        "maximum_price": 120,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "3": {
+        "salon": {
+            "name": "Elegance Studio",
+            "location": "125 Kensington Road Southeast B201",
+            "coordinates": {"lng": -114.0924713, "lat": 51.0445082},
+            "contact": {
+                "phone-number": "4031234567",
+                "email": "contact@elegancestudio.com"
+            }
+        },
+        "name": "Liam Carter",
+        "photo": "imghere",
+        "biography": "With over 15 years in the beauty industry, I have a passion for precision and style.\nI trained at New York Academy of Hair, specializing in classic cuts and beard trims.\n\nAt Elegance Studio, I focus on delivering tailored experiences for each client. I enjoy exploring new techniques and staying updated with trends.\n\nOutside the salon, I enjoy outdoor adventures and photography. Excited to bring my expertise to Elegance Studio!",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/elegance_liam"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image2": "https://i.redd.it/boys-haircut-fade-haircut-v0-4gpsizeqiovc1.jpg?width=3000&format=pjpg&auto=webp&s=23a555ce6ff52f54e8c0912227986979cafdbbed",
+            "image3": "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+            "image4": "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780"
+        },
+        "filters": ["Beard Trim", "Men's Haircut", "Haircut"],
+        "minimum_price": 60,
+        "maximum_price": 150,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "4": {
+        "salon": {
+            "name": "Urban Chic",
+            "location": "2215 Macleod Trail South Suite 210",
+            "coordinates": {"lng": -114.070799, "lat": 51.038608},
+            "contact": {
+                "phone-number": "4035557890",
+                "email": "hello@urbanchic.com"
+            }
+        },
+        "name": "Sophia Torres",
+        "photo": "imghere",
+        "biography": "With a decade in the hair industry, I bring artistry and precision to every client interaction.\nI graduated from the Toronto School of Hair Design, focusing on color correction and creative styling.\n\nAt Urban Chic, I am dedicated to helping clients find the best version of their hair.\nI love to explore fashion trends and blend them into my techniques. Outside of work, I'm an avid traveler and foodie.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/sophia_urban_chic"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image5": "https://lifestylebyps.com/cdn/shop/articles/Best_Short_Fade_Haircuts_For_Men_2025_1080x.jpg?v=1724222186",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp",
+            "image7": "https://content.latest-hairstyles.com/wp-content/uploads/medium-layered-haircuts.jpg"
+        },
+        "filters": ["Color Correction", "Highlights", "Balayage"],
+        "minimum_price": 80,
+        "maximum_price": 200,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "5": {
+        "salon": {
+            "name": "Diva",
+            "location": "3625 Shaganappi Trail Northwest M003A",
+            "coordinates": {"lng": -114.1549181, "lat": 51.084709},
+            "contact": {
+                "phone-number": "4032890808",
+                "email": "yadayada@example.com"
+            }
+        },
+        "name": "Amelia Brown",
+        "photo": "imghere",
+        "biography": "Passionate about hair for 8 years, I am committed to delivering the perfect look.\nI trained at the Alberta Beauty Institute and specialize in ombre and balayage techniques.\n\nAt Diva, I focus on creating styles that reflect each client's personality and lifestyle.\nI love learning about new trends and bringing them to life in the salon. In my free time, I enjoy yoga and painting.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/amelia_diva"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image8": "https://i0.wp.com/thesalonproject.com/wp-content/uploads/2024/03/The-evolution-of-mens-haircuts-and-styling-1.jpg",
+            "image9": "https://wellgroomedgentleman.com/wp-content/uploads/2023/10/1_-_High_Fade_Haircut_with_Mohawk.width-800.jpg"
+        },
+        "filters": ["Ombre", "Balayage", "Blowout"],
+        "minimum_price": 75,
+        "maximum_price": 160,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "6": {
+        "salon": {
+            "name": "Trendy Touch",
+            "location": "415 Willow Park Centre Southeast",
+            "coordinates": {"lng": -114.0667, "lat": 50.9801},
+            "contact": {
+                "phone-number": "4036783211",
+                "email": "info@trendytouch.com"
+            }
+        },
+        "name": "Daniel Brooks",
+        "photo": "imghere",
+        "biography": "With over 20 years in hairstyling, my specialty lies in men's cuts and classic styles.\nTrained at Vidal Sassoon Academy, I bring precision and creativity to every appointment.\n\nAt Trendy Touch, I believe in personalizing each cut to match the client's lifestyle.\nWhen not at the salon, I enjoy carpentry and reading. Excited to help clients look their best!",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/daniel_trendy"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image2": "https://i.redd.it/boys-haircut-fade-haircut-v0-4gpsizeqiovc1.jpg?width=3000&format=pjpg&auto=webp&s=23a555ce6ff52f54e8c0912227986979cafdbbed",
+            "image3": "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+            "image4": "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780"
+        },
+        "filters": ["Men's Haircut", "Beard Trim", "Dry Cut"],
+        "minimum_price": 50,
+        "maximum_price": 120,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "7": {
+        "salon": {
+            "name": "Style Haven",
+            "location": "7819 Glenmore Trail Southeast Suite 130",
+            "coordinates": {"lng": -114.003, "lat": 50.9674},
+            "contact": {
+                "phone-number": "4039991122",
+                "email": "contact@stylehaven.com"
+            }
+        },
+        "name": "Olivia Miles",
+        "photo": "imghere",
+        "biography": "As a stylist with 5 years of experience, I have a flair for creative color and texture.\nAfter graduating from Vancouver Hair Academy, I developed a passion for unique, vibrant color styles.\n\nAt Style Haven, I focus on enhancing each client's individuality through color and styling.\nIn my spare time, I enjoy painting and visiting art galleries.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/olivia_stylehaven"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image5": "https://lifestylebyps.com/cdn/shop/articles/Best_Short_Fade_Haircuts_For_Men_2025_1080x.jpg?v=1724222186",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp",
+            "image7": "https://content.latest-hairstyles.com/wp-content/uploads/medium-layered-haircuts.jpg"
+        },
+        "filters": ["Gloss Treatment", "Color Correction", "Custom Color"],
+        "minimum_price": 90,
+        "maximum_price": 250,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "8": {
+        "salon": {
+            "name": "Pure Glamour",
+            "location": "1840 14 Street Southwest Suite 300",
+            "coordinates": {"lng": -114.0941, "lat": 51.0342},
+            "contact": {
+                "phone-number": "4035552345",
+                "email": "info@pureglamour.com"
+            }
+        },
+        "name": "Isabella Roy",
+        "photo": "imghere",
+        "biography": "With a strong foundation in hairstyling for over 7 years, I love bringing my clients' vision to life.\nI trained at Calgary's Finest Academy and specialize in balayage and color techniques.\n\nAt Pure Glamour, I believe in creating a relaxing experience while achieving vibrant styles.\nOutside of work, I enjoy baking and spending time with my dog.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/isabella_pureglamour"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image8": "https://i0.wp.com/thesalonproject.com/wp-content/uploads/2024/03/The-evolution-of-mens-haircuts-and-styling-1.jpg",
+            "image9": "https://wellgroomedgentleman.com/wp-content/uploads/2023/10/1_-_High_Fade_Haircut_with_Mohawk.width-800.jpg"
+        },
+        "filters": ["Balayage", "Root Touch-Up", "Gloss Treatment"],
+        "minimum_price": 100,
+        "maximum_price": 220,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "9": {
+        "salon": {
+            "name": "Shear Elegance",
+            "location": "620 17 Avenue Southwest Unit 102",
+            "coordinates": {"lng": -114.0805, "lat": 51.0375},
+            "contact": {
+                "phone-number": "4035558765",
+                "email": "contact@shearelegance.com"
+            }
+        },
+        "name": "Mason Lee",
+        "photo": "imghere",
+        "biography": "I bring 12 years of styling experience, with a passion for sophisticated and timeless looks.\nI trained in Los Angeles at the School of Modern Cuts, focusing on precision cuts and updos.\n\nAt Shear Elegance, I am dedicated to crafting styles that showcase my clients' best features.\nWhen not at work, I enjoy exploring Calgary's food scene.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/mason_shearelegance"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image3": "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp"
+        },
+        "filters": ["Updo", "Blowout", "Texturizing"],
+        "minimum_price": 85,
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "10": {
+        "salon": {
+            "name": "The Hair Lab",
+            "location": "1702 8 Street Southwest Suite 215",
+            "coordinates": {"lng": -114.0812, "lat": 51.0381},
+            "contact": {
+                "phone-number": "4035559988",
+                "email": "bookings@thehairlab.com"
+            }
+        },
+        "name": "Charlotte Nguyen",
+        "photo": "imghere",
+        "biography": "With a passion for creative hair coloring, I have been transforming looks for 6 years.\nAfter graduating from Vancouver Hair School, I became known for my vibrant and bold styles.\n\nAt The Hair Lab, I create looks that express individuality and personality.\nIn my free time, I love painting and exploring Calgary’s art scene.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/charlotte_thehairlab"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image7": "https://content.latest-hairstyles.com/wp-content/uploads/medium-layered-haircuts.jpg",
+            "image9": "https://wellgroomedgentleman.com/wp-content/uploads/2023/10/1_-_High_Fade_Haircut_with_Mohawk.width-800.jpg"
+        },
+        "filters": ["Custom Color", "Highlights", "Color Correction"],
+        "minimum_price": 90,
+        "maximum_price": 250,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "11": {
+        "salon": {
+            "name": "Glam Salon",
+            "location": "1408 17 Avenue Southwest Suite 110",
+            "coordinates": {"lng": -114.0870, "lat": 51.0379},
+            "contact": {
+                "phone-number": "4035554433",
+                "email": "glamsalon@beauty.com"
+            }
+        },
+        "name": "Lucas Ford",
+        "photo": "imghere",
+        "biography": "With 15 years in the industry, I specialize in modern styles and cutting-edge techniques.\nI trained at the Toronto Hair Institute, and am passionate about texture and layers.\n\nAt Glam Salon, I aim to make each client feel refreshed and stylish.\nOutside of work, I enjoy fitness and hiking in the Rockies.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/lucas_glamsalon"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image4": "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp"
+        },
+        "filters": ["Dry Cut", "Scalp Treatment", "Men's Haircut"],
+        "minimum_price": 70,
+        "maximum_price": 160,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "12": {
+        "salon": {
+            "name": "Vivid Glow",
+            "location": "635 10 Avenue Southwest Suite 101",
+            "coordinates": {"lng": -114.0798, "lat": 51.0459},
+            "contact": {
+                "phone-number": "4035556655",
+                "email": "vividglow@hair.com"
+            }
+        },
+        "name": "Emily Reid",
+        "photo": "imghere",
+        "biography": "A stylist with 10 years of experience, I have a love for natural, glowing hair.\nI trained at the New York Hair Academy, specializing in keratin and smoothing treatments.\n\nAt Vivid Glow, my goal is to create radiant, effortless styles.\nOutside of work, I enjoy photography and spending time with family.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/emily_vividglow"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image3": "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+            "image8": "https://i0.wp.com/thesalonproject.com/wp-content/uploads/2024/03/The-evolution-of-mens-haircuts-and-styling-1.jpg"
+        },
+        "filters": ["Keratin Treatment", "Hair Smoothing", "Hair Mask"],
+        "minimum_price": 95,
+        "maximum_price": 210,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "13": {
+        "salon": {
+            "name": "Studio Luxe",
+            "location": "345 9 Avenue Southeast Suite 202",
+            "coordinates": {"lng": -114.0596, "lat": 51.0454},
+            "contact": {
+                "phone-number": "4035554455",
+                "email": "contact@studioluxe.com"
+            }
+        },
+        "name": "Sophia Lane",
+        "photo": "imghere",
+        "biography": "I bring over 8 years of experience in hair design, with a love for chic, modern looks.\nTrained at the Vancouver Institute of Hair Design, I specialize in precision cuts and sleek styles.\n\nAt Studio Luxe, I aim to provide a comfortable experience while enhancing each client’s natural beauty.\nWhen I’m not styling hair, I enjoy yoga and exploring new cafes.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/sophia_studioluxe"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image4": "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780",
+            "image7": "https://content.latest-hairstyles.com/wp-content/uploads/medium-layered-haircuts.jpg"
+        },
+        "filters": ["Precision Cuts", "Gloss Treatment", "Hair Consultation"],
+        "minimum_price": 80,
+        "maximum_price": 180,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "14": {
+        "salon": {
+            "name": "Elegance and Edge",
+            "location": "802 16 Avenue Northwest Unit 201",
+            "coordinates": {"lng": -114.0852, "lat": 51.0647},
+            "contact": {
+                "phone-number": "4035555566",
+                "email": "info@eleganceedge.com"
+            }
+        },
+        "name": "Jake Tanner",
+        "photo": "imghere",
+        "biography": "With a flair for trendy and bold styles, I’ve been crafting unique looks for over 9 years.\nI honed my skills in Toronto, specializing in fades and contemporary cuts.\n\nAt Elegance and Edge, I love helping clients express their individuality through style.\nIn my free time, I’m passionate about music and photography.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/jake_eleganceedge"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image2": "https://i.redd.it/boys-haircut-fade-haircut-v0-4gpsizeqiovc1.jpg?width=3000&format=pjpg&auto=webp&s=23a555ce6ff52f54e8c0912227986979cafdbbed",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp"
+        },
+        "filters": ["Fade", "Beard Trim", "Men's Haircut"],
+        "minimum_price": 60,
+        "maximum_price": 150,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "15": {
+        "salon": {
+            "name": "Blissful Hair Lounge",
+            "location": "675 11 Avenue Southwest Suite 120",
+            "coordinates": {"lng": -114.0815, "lat": 51.0442},
+            "contact": {
+                "phone-number": "4035557788",
+                "email": "hello@blissfulhairlounge.com"
+            }
+        },
+        "name": "Emma Riley",
+        "photo": "imghere",
+        "biography": "A color expert with over 11 years of experience, I specialize in creating custom shades and highlights.\nI trained at the London School of Hair and love working with complex color techniques.\n\nAt Blissful Hair Lounge, I aim to create vibrant, lasting color results for each client.\nOutside of work, I enjoy traveling and photography.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/emma_blissfulhair"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image5": "https://lifestylebyps.com/cdn/shop/articles/Best_Short_Fade_Haircuts_For_Men_2025_1080x.jpg?v=1724222186",
+            "image9": "https://wellgroomedgentleman.com/wp-content/uploads/2023/10/1_-_High_Fade_Haircut_with_Mohawk.width-800.jpg"
+        },
+        "filters": ["Highlights", "Balayage", "Custom Color"],
+        "minimum_price": 120,
+        "maximum_price": 270,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "16": {
+        "salon": {
+            "name": "Luxe Hair Studio",
+            "location": "2707 17 Avenue Southwest Unit 100",
+            "coordinates": {"lng": -114.1139, "lat": 51.0341},
+            "contact": {
+                "phone-number": "4035553344",
+                "email": "contact@luxehair.com"
+            }
+        },
+        "name": "Chloe Spencer",
+        "photo": "imghere",
+        "biography": "With 5 years in the beauty industry, I have a passion for intricate styling and elegant updos.\nAfter training at Calgary’s Elite Beauty School, I focus on wedding and event hairstyling.\n\nAt Luxe Hair Studio, I work to create stunning styles for all occasions.\nOutside of work, I enjoy hiking and painting.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/chloe_luxe"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image3": "https://traya.health/cdn/shop/articles/Textured_Crop.webp?v=1725776549",
+            "image7": "https://content.latest-hairstyles.com/wp-content/uploads/medium-layered-haircuts.jpg"
+        },
+        "filters": ["Updo", "Wedding Hair", "Event Styling"],
+        "minimum_price": 110,
+        "maximum_price": 240,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
+    },
+    "17": {
+        "salon": {
+            "name": "Chic Hair & Co.",
+            "location": "100 5 Avenue Southwest Suite 115",
+            "coordinates": {"lng": -114.0711, "lat": 51.0494},
+            "contact": {
+                "phone-number": "4035552233",
+                "email": "chichair@salon.com"
+            }
+        },
+        "name": "Liam Grant",
+        "photo": "imghere",
+        "biography": "With 14 years in the industry, I am known for my detailed approach and personalized cuts.\nI trained at the Chicago Hair Academy and enjoy crafting both classic and trendy styles.\n\nAt Chic Hair & Co., my focus is on delivering precision and quality.\nIn my spare time, I enjoy cycling and reading.",
+        "links": {
+            "website": "https://www.google.com/maps",
+            "instagram": "https://instagram.com/liam_chichair"
+        },
+        "gallery": {
+            "Hair description": "https://content.latest-hairstyles.com/wp-content/uploads/long-top-fade-cut-for-boys.jpg",
+            "image4": "https://publish.purewow.net/wp-content/uploads/sites/2/2024/09/alpaca-haircut-trend.jpg?resize=720%2C780",
+            "image6": "https://www.judesbarbershop.com/wp-content/uploads/2022/11/Cool-Boys-Hair-Cut.jpg.webp"
+        },
+        "filters": ["Men's Haircut", "Precision Cuts", "Bang Trim"],
+        "minimum_price": 75,
+        "maximum_price": 170,
+        "reviews": [
+            {
+                "rating": 5,
+                "comment": "Amazing experience! The stylist was very attentive and skilled.",
+                "photo": "https://struthair.com.au/wp-content/uploads/2023/06/Strut-Hair-Blonde-1.jpg"
+            },
+            {
+                "rating": 1,
+                "comment": "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience."
+            },
+            {
+                "rating": 3,
+                "comment": "Okay service, but the atmosphere could be better.",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s"
+            }
+        ]
     }
 }

@@ -5,10 +5,12 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Modal, Box } from "@mui/material";
 import { HeaderText } from "../../../general/Text";
 //import tinycolor from "tinycolor2";
-import data from "../data.json"
+import hairData from "../../../data/hairdresserList.json";
 import { useState } from "react";
 
-const HairdresserGallery = () => {
+const data = hairData[1];
+
+const HairdresserGallery = ({photos}) => {
 
     const [iconColor, setIconColor] = useState("#FFF")
     const [fullscreen, setFullscreen] = useState(false)
@@ -52,7 +54,7 @@ const HairdresserGallery = () => {
             <HeaderText>Gallery</HeaderText>
             <ImageList sx={{height: "30rem"}} cols={3} rowHeight={400}>
                 {
-                    Object.entries(data.gallery).map(([key, value], index) => (
+                    Object.entries(photos).map(([key, value], index) => (
                         <ImageListItem key={index} >
                             <Pics
                                 src={`${value}`}

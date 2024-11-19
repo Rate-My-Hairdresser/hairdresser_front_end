@@ -3,31 +3,13 @@ import React, { useState } from "react";
 import { Box, Rating } from "@mui/material";
 import styled from "styled-components";
 import { colors } from "../../../general/colors";
-import img1 from "./download.jpeg";
 import ReviewModal from "./reviewModal"; // Import the review modal component
 
-const Reviews = () => {
+const Reviews = ({reviews}) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
-
-    const reviews = [
-        {
-            rating: 5,
-            comment: "Amazing experience! The stylist was very attentive and skilled.",
-            photo: img1,
-        },
-        {
-            rating: 1,
-            comment: "Great haircut, but had to wait a bit longer than expected. I HATED my service. It was TERRIBLE. Genuine traumatic experience.",
-        },
-        {
-            rating: 3,
-            comment: "Okay service, but the atmosphere could be better.",
-            photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQM80EnmnAPLVTbogIdDOXtrfuNMFELLsI-Q&s",
-        },
-    ];
 
     return (
         <Container>

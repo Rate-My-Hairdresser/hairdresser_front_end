@@ -8,8 +8,11 @@ import { colors } from "../../general/colors";
 import SearchIcon from '@mui/icons-material/Search';
 import './animation.css';
 import FilterModal from "../../components/filter_modal/FilterModal";
-import hairdresserData from "../../data/hairdresserList.json"
+//import hairdresserData from "../../data/hairdresserList.json"
 import SearchResult from "../../components/search_result/SearchResult";
+import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
+import { hairServiceFilters } from "../../data/filterChips"
+import { search } from "../../general/Search";
 
 
 
@@ -21,64 +24,24 @@ const Homepage = () => {
     const [maximumPrice, setMaximumPrice] = useState()
     const [modalVisible, setModalVisible] = useState(false)
     const [searchResults, setSearchResults] = useState([])
+    const [coordinateResults, setCoordinateResults] = useState([])
 
 
 
     // search algorithm -- currently only checks for price
 
     useEffect(() => {
-        console.log("max: ", maximumPrice)
-        let tempArr = []
+        
+        const results = search(maximumPrice, searchValue, filters)
 
-        Object.entries(hairdresserData).map(([key, value], index) => {
-            if(maximumPrice) {
-                if(value.minimum_price < maximumPrice) {
-                    //price matches
-                    tempArr.push(value)
-                }
-            }
-        })
+        // setCoordinateResults(tempCoords)
 
-        setSearchResults(tempArr)
+        setSearchResults(results)
 
     }, [searchValue, filters, maximumPrice]);
 
 
-    const hairServiceFilters = [
-        "Haircut",
-        "Hair Coloring",
-        "Highlights",
-        "Balayage",
-        "Ombre",
-        "Root Touch-Up",
-        "Gloss Treatment",
-        "Hair Styling",
-        "Blowout",
-        "Updo",
-        "Braiding",
-        "Hair Extensions",
-        "Keratin Treatment",
-        "Perm",
-        "Relaxer",
-        "Hair Smoothing",
-        "Scalp Treatment",
-        "Hair Mask",
-        "Deep Conditioning",
-        "Bang Trim",
-        "Children's Haircut",
-        "Men's Haircut",
-        "Beard Trim",
-        "Hair Consultation",
-        "Color Correction",
-        "Wedding Hair",
-        "Event Styling",
-        "Curling",
-        "Straightening",
-        "Texturizing",
-        "Dry Cut",
-        "Hair Detox",
-        "Custom Color"
-    ];
+    
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);
@@ -107,13 +70,13 @@ const Homepage = () => {
         <>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
             <MapContainer>
-                <MapComp markers={[]}/>
+                <MapComp markers={coordinateResults}/>
             </MapContainer>
             <Topbar>
                 <Title>Rate My Hairdresser</Title>
             </Topbar>
             <LoginContainer>
-                <Button variant="contained">Login</Button>
+                <HairDresserSignInBtn/>
             </LoginContainer>
             <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
                 <Stack direction="column">

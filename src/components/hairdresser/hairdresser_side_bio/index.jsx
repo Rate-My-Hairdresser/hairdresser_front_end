@@ -10,7 +10,6 @@ import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import { IconButton, Stack } from "@mui/material";
-import data from "../data.json"
 import { Link } from 'react-router-dom';
 
 
@@ -23,7 +22,7 @@ const logos = {
     "x": <XIcon/>
 }
 
-const HairDresserSideBio = () => {
+const HairDresserSideBio = ({data}) => {
 
     const [saved, setSaved] = useState(false)
 

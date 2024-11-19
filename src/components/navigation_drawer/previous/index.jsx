@@ -3,7 +3,8 @@ import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 
-export function PreviousPageButton({ navigate }) {
+export function PreviousPageButton({ }) {
+    const navigate = useNavigate();
     const handleBack = () => navigate(-1);
 
     return (

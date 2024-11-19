@@ -23,7 +23,6 @@ import {
     PersonSearch,
     Settings
 } from "@mui/icons-material";
-import {useNavigate} from "react-router-dom";
 import {PreviousPageButton} from "./previous";
 import HairDresserUserMenu from "./hairdresser_usermenu";
 import {selectUser} from "../../general/redux/selectors";
@@ -35,19 +34,17 @@ export default function TopAnchoredMenu({ getToken }) {
     const user = useSelector(selectUser);
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const navigate = useNavigate();
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
     return (
         <Stack direction="row" spacing={1} bgcolor={"text.secondary"} padding={user.signedIn? 2 : 1}>
-            <PreviousPageButton navigate={navigate} />
+            <PreviousPageButton />
             <Divider orientation="vertical" color={"secondary"} flexItem />
-            <TitleButton navigate={navigate()} />
+            <TitleButton />
             <Divider orientation="vertical" color={"secondary"} flexItem />
-            <HairDresserUserMenu navigate={navigate} handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
         </Stack>
     )
 }

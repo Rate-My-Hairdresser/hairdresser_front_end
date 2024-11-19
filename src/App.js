@@ -5,7 +5,6 @@ import LocalRouter from "./LocalRouter"
 function App() {
   return (
     <div className='app'>
-        <LoadGoogleMaps />
         <LocalRouter />
     </div>
   );

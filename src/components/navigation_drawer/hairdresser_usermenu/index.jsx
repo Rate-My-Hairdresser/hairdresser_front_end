@@ -14,15 +14,17 @@ import {
 import styled from "styled-components"
 import { colors } from "../../../general/colors"
 import {Fragment} from "react";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import { selectUser } from "../../../general/redux/selectors";
 import {Bookmarks, Logout, PersonSearch, Settings} from "@mui/icons-material";
 import {signOut} from "../../../general/redux/actions";
 
-export default function HairDresserUserMenu( { navigate, handleClick, anchorEl, setAnchorEl }) {
+export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorEl }) {
     const user = useSelector(selectUser)
     const dispatch = useDispatch();
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
 
     const handleClose = () => {
         setAnchorEl(null);

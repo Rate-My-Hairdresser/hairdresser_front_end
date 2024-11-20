@@ -1,0 +1,1 @@
+hairdresser_login is no longer in use, combined into hairdresser_usermenu.

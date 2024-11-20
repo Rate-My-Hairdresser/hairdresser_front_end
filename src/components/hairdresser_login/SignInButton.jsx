@@ -7,9 +7,7 @@ import {useNavigate} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectUser } from "../../general/redux/selectors";
 
-export default function HairDresserSignInBtn() {
-
-    const navigate = useNavigate();
+export default function HairDresserSignInBtn( { navigate }) {
 
     const user = useSelector(selectUser)
 
@@ -20,7 +18,7 @@ export default function HairDresserSignInBtn() {
     return (
         <Button
             type={"button"}
-            fullWidth
+            width={"3rem"}
             variant={"contained"}
             onClick={handleLogin}
         >

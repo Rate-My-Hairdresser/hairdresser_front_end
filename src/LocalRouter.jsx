@@ -4,6 +4,8 @@ import HairdresserPage from './pages/hairdresser_page';
 import Homepage from "./pages/home_page";import FavoritesPage from './pages/favorite_page';
 import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
+import TopAnchoredMenu from "./components/navigation_drawer";
+import style from "styled-components";
 
 
   
@@ -34,8 +36,17 @@ const RoutesTree = () => {
             <Route path="/register" element={<HairDresserSignUp/>} />
         </Fragment>
       </Routes>
+      <Topbar>
+        <TopAnchoredMenu/>
+      </Topbar>
     </div>
   )
 }
 
 export default RoutesTree;
+
+const Topbar = style.div`
+    position: absolute;
+    width: 100%;
+    height: 10%;
+`

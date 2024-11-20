@@ -1,5 +1,6 @@
 import {ArrowBack} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export function PreviousPageButton({ }) {
     const navigate = useNavigate();

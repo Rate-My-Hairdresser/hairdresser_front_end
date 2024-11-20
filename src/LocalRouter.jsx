@@ -36,18 +36,17 @@ const RoutesTree = () => {
             <Route path="/register" element={<HairDresserSignUp/>} />
         </Fragment>
       </Routes>
-      <LoginContainer>
+      <Topbar>
         <TopAnchoredMenu/>
-      </LoginContainer>
+      </Topbar>
     </div>
   )
 }
 
 export default RoutesTree;
 
-const LoginContainer = style.div`
+const Topbar = style.div`
     position: absolute;
-    right: 2rem;
-    top: 21.44px;
-    margin-top: auto;
+    width: 100%;
+    height: 10%;
 `

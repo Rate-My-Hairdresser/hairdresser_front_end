@@ -8,8 +8,6 @@ import TopAnchoredMenu from "./components/navigation_drawer";
 import style from "styled-components";
 
 
-  
-
 /*
     How to use the router:
 
@@ -23,6 +21,11 @@ import style from "styled-components";
     element is just the page itself
 */
 
+function getToken() {
+  const tokenString = sessionStorage.getItem('token');
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token
+}
 
 const RoutesTree = () => {
   return (

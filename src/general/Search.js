@@ -15,7 +15,6 @@ export const search = (maximumPrice, text, filterChips) => {
     const filterWeight = 1;
     const numberOfResults = 10;
 
-
     // Convert filterChips indices to filter text
     const filterText = filterChips
         .filter((chip) => hairServiceFilters[chip] !== undefined)

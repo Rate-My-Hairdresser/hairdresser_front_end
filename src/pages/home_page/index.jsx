@@ -75,7 +75,7 @@ const Homepage = () => {
             <Topbar>
                 <Title>Rate My Hairdresser</Title>
             </Topbar>
-            <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
+            <SearchContainer className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
                 <Stack direction="column">
                     <SearchBox>
                         <SearchInsides>

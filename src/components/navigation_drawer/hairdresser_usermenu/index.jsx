@@ -128,6 +128,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
             <Button
                 type={"button"}
                 width={"3rem"}
+                sx={{minWidth: 82}}
                 variant={"contained"}
                 onClick={handleLogin}
             >

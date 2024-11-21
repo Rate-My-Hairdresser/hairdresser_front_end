@@ -32,26 +32,9 @@ export default function TopAnchoredMenu() {
                 <Container maxWidth="1x">
                     <Toolbar disableGutters variant="dense">
                         <PreviousPageButton />
-                        <Divider orientation="vertical" color={"secondary"} flexItem />
+                        <Divider orientation="vertical" color={"secondary"} />
                         <TitleButton />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            }}
-                        >
-                            Rate My Hairdresser
-                        </Typography>
-                        <Container flexItem></Container>
+                        <Container display="flex" />
                         <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                     </Toolbar>
                 </Container>

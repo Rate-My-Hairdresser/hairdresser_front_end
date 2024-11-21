@@ -20,9 +20,8 @@ import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 
 export default function HairDresserLogin( { setToken } ) {
-    const [account, setAccount] = useState("");
-    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState("");
     const [open, setOpen] = useState(false);
@@ -34,7 +33,9 @@ export default function HairDresserLogin( { setToken } ) {
     const handleLogin = () => {
         console.log("HIT")
         //this is where error checking would be added
-        dispatch(signIn(email, userType.STANDARD)) //----work here
+        let msg = dispatch(signIn(email, userType.STANDARD)) //----work here
+        console.log(msg);
+
         nav("/");
     }
 

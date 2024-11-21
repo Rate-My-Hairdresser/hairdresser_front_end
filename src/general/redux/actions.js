@@ -1,7 +1,7 @@
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 
-export const userType = {STANDARD: "standard", STYLIST: "stylist"};
+export const userType = {STANDARD: "standard", STYLIST: "stylist", NOTFOUND: "notfound"};
 
 export const signIn = (
     email,

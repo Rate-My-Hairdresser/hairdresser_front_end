@@ -11,12 +11,12 @@ const initialUserState = {
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
     case SIGN_IN:
-      console.log(userList[action.payload.hash_id])
       
       if (userList[action.payload.hash_id] !== undefined) {
-        console.log(userList[action.payload.hash_id].password)
         if (userList[action.payload.hash_id].password === action.payload.hash_pw) {
           console.log("HIT")
+          sessionStorage.setItem("token", JSON.stringify(action.payload.hash_id));
+
           return {
             signedIn: true,
             email: action.payload.email,
@@ -31,6 +31,7 @@ const userReducer = (state = initialUserState, action) => {
           userType: "notfound"
       }
     case SIGN_OUT:
+      sessionStorage.clear();
       return {
             signedIn: false,
             email: "",

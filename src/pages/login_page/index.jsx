@@ -5,6 +5,7 @@ import {
     FormControl,
     FormControlLabel,
     FormLabel, Grid2,
+    Container,
     Stack,
     TextField,
     Typography
@@ -39,11 +40,27 @@ const cyrb53 = (str, seed = 42) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
+const ErrorCtrl = (isErrored, errorMsg) => {
+    if (isErrored === true) {
+        return (
+            <Typography color="red" margin="dense" label={errorMsg}></Typography>
+        )
+    } else {
+        return (
+            <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                margin="dense"
+                label="Remember me"
+            />
+        )
+    }
+}
+
 export default function HairDresserLogin( { } ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
-    const [loginErrorMessage, setLoginErrorMessage] = useState("");
+    const [loginErrorMessage, setLoginErrorMessage] = useState("Remember me");
     const [open, setOpen] = useState(false);
 
     let user = useSelector(selectUser);
@@ -53,6 +70,7 @@ export default function HairDresserLogin( { } ) {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const navRegister = () => nav("/register");
+    const navPrev = () => nav(-1) || nav("/");
 
     const handleLogin = () => {
         console.log("SEND");
@@ -69,35 +87,34 @@ export default function HairDresserLogin( { } ) {
         let hash_id = cyrb53(email);
         let hash_pw = cyrb53(password);
         let msg = dispatch(signIn(hash_id, hash_pw, userType.STANDARD));
-        console.log(msg);
-        console.log(user);
-        if (user.userType === "standard" || user.userType === "stylist") {
-            const data = new FormData(event.currentTarget);
-        } else {
+
+        let id = sessionStorage.getItem("token");
+        console.log(id);
+
+        if (id === null) {
+            console.log("FAIL");
             setLoginError(true);
             setLoginErrorMessage("Incorrect email or password.");
             setPassword("");
             event.preventDefault();
+            return;
+        } else {
+            const data = new FormData(event.currentTarget);
+            navPrev();
         }
-    }
-
-    const funcPrototype = () => {
-        return true;
-    }
-
-    function signState() {
-
     }
 
     return (
         <MasterBox>
-            <SignInContainer>
+            <SignInContainer margin={"dense"}>
+                <Container />
                 <Typography
                     component="h1"
                     variant="h7"
                     sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
                     paddingLeft={4}
                     paddingTop={6}
+                    paddingBottom={1}
                 >
                     Sign in
                 </Typography>
@@ -113,8 +130,8 @@ export default function HairDresserLogin( { } ) {
                     }}
                 >
                     <FormControl>
-                        <FormLabel htmlFor="email">Email</FormLabel>
                         <TextField
+                            label="email"
                             error={loginError}
                             id="email"
                             type="email"
@@ -122,7 +139,6 @@ export default function HairDresserLogin( { } ) {
                             placeholder="your@email.com"
                             autoComplete="email"
                             autoFocus
-                            required
                             fullWidth
                             variant="outlined"
                             value={email}
@@ -132,8 +148,8 @@ export default function HairDresserLogin( { } ) {
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel htmlFor="password">Password</FormLabel>
                         <TextField
+                            label="password"
                             error={loginError}
                             name="password"
                             placeholder="••••••"
@@ -141,7 +157,6 @@ export default function HairDresserLogin( { } ) {
                             id="password"
                             autoComplete="current-password"
                             autoFocus
-                            required
                             fullWidth
                             variant="outlined"
                             value={password}
@@ -160,16 +175,11 @@ export default function HairDresserLogin( { } ) {
                         </Box>
                     </FormControl>
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="primary" disabled={loginError} />}
+                        margin="dense"
                         label="Remember me"
                     />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                    >
-                        Sign in
-                    </Button>
+                    <ErrorCtrl />
                     <Button
                         type="button"
                         fullWidth

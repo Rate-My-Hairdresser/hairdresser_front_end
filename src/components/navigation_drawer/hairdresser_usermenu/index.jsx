@@ -31,7 +31,6 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
     const handleFavorite = () => navigate("/favorites");
     const handleLogin = () => navigate("/login");
     const handleLogout = () => {
-        console.log(user);
         dispatch(signOut());
     }
 

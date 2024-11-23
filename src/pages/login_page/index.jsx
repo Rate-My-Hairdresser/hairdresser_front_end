@@ -5,6 +5,7 @@ import {
     FormControl,
     FormControlLabel,
     FormLabel, Grid2,
+    Text,
     Container,
     Stack,
     TextField,
@@ -14,7 +15,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
@@ -40,22 +41,6 @@ const cyrb53 = (str, seed = 42) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
-const ErrorCtrl = (isErrored, errorMsg) => {
-    if (isErrored === true) {
-        return (
-            <Typography color="red" margin="dense" label={errorMsg}></Typography>
-        )
-    } else {
-        return (
-            <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                margin="dense"
-                label="Remember me"
-            />
-        )
-    }
-}
-
 export default function HairDresserLogin( { } ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -67,40 +52,45 @@ export default function HairDresserLogin( { } ) {
 
     //const { token, setToken } = useToken();
 
+    useEffect(() => {
+        setLoginError(false);
+        setLoginErrorMessage("Remember me");
+    }, [email, password]);
+
     const nav = useNavigate();
     const dispatch = useDispatch();
     const navRegister = () => nav("/register");
     const navPrev = () => nav(-1) || nav("/");
-
-    const handleLogin = () => {
-        console.log("SEND");
-        //this is where error checking would be added
-        let hash_id = cyrb53(email);
-        let hash_pw = cyrb53(password);
-        let msg = dispatch(signIn(hash_id, hash_pw, userType.STANDARD));
-        //----work here
-    }
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
         console.log("SEND");
         //this is where error checking would be added
-        let hash_id = cyrb53(email);
-        let hash_pw = cyrb53(password);
-        let msg = dispatch(signIn(hash_id, hash_pw, userType.STANDARD));
 
-        let id = sessionStorage.getItem("token");
-        console.log(id);
-
-        if (id === null) {
-            console.log("FAIL");
-            setLoginError(true);
-            setLoginErrorMessage("Incorrect email or password.");
-            setPassword("");
+        if (email.length == 0 || password.length == 0) {
+            setLoginErrorMessage("Either email or password is missing");
+            event.preventDefault();
+            return;
+        } else if (!re.test(email)) {
+            setLoginErrorMessage("Email need to be an email");
             event.preventDefault();
             return;
         } else {
-            const data = new FormData(event.currentTarget);
-            navPrev();
+            let hash_id = cyrb53(email);
+            let hash_pw = cyrb53(password);
+            dispatch(signIn(hash_id, hash_pw, userType.STANDARD));
+            let id = sessionStorage.getItem("token");
+
+            if (id === null) {
+                console.log("FAIL");
+                setLoginError(true);
+                setLoginErrorMessage("Incorrect account information");
+                event.preventDefault();
+                return;
+            } else {
+                const data = new FormData(event.currentTarget);
+                navPrev();
+            }
         }
     }
 
@@ -175,11 +165,19 @@ export default function HairDresserLogin( { } ) {
                         </Box>
                     </FormControl>
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" disabled={loginError} />}
+                        control={<Checkbox value="remember" color="primary" disabled={loginError}/>}
                         margin="dense"
-                        label="Remember me"
+                        label={loginErrorMessage}
                     />
-                    <ErrorCtrl />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        disabled={loginError}
+                        
+                    >
+                        Sign in
+                    </Button>
                     <Button
                         type="button"
                         fullWidth

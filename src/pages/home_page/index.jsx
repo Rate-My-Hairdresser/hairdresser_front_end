@@ -13,6 +13,7 @@ import SearchResult from "../../components/search_result/SearchResult";
 import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import { hairServiceFilters } from "../../data/filterChips"
 import { search } from "../../general/Search";
+import TopAnchoredMenu from "../../components/navigation_drawer";
 
 
 
@@ -25,7 +26,6 @@ const Homepage = () => {
     const [modalVisible, setModalVisible] = useState(false)
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
-
 
 
     // search algorithm -- currently only checks for price
@@ -119,14 +119,20 @@ const Homepage = () => {
     //     </>
     // )
     return (
-        <Grid2 container>
-            <Grid2 size={4}>
-                {/* <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}> */}
-                 <Stack direction="column">
-                     <SearchBox>
-                         <SearchInsides>
-                             <SearchIcon style={styles.largeIcon}/>
-                             <SearchText
+        <>
+            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
+            <MapContainer>
+                <MapComp markers={coordinateResults}/>
+            </MapContainer>
+            <Topbar>
+                <Title>Rate My Hairdresser</Title>
+            </Topbar>
+            <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
+                <Stack direction="column">
+                    <SearchBox>
+                        <SearchInsides>
+                            <SearchIcon style={styles.largeIcon}/>
+                            <SearchText
                                 placeholder="Search for a hairdresser…"
                                 inputProps={{ 'aria-label': 'search' }}
                                 value={searchValue}
@@ -198,12 +204,6 @@ const Topbar = style.div`
     text-align: center;
 `
 
-const LoginContainer = style.div`
-    position: absolute;
-    right: 2rem;
-    top: 21.44px;
-    margin-top: auto;
-`
 const MapContainer = style.div`
     position: absolute;
     width: 100%;

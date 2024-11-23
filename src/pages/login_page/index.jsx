@@ -20,7 +20,7 @@ import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 import userData from "../../data/userList.json"
 
-export default function HairDresserLogin() {
+export default function HairDresserLogin( { setToken } ) {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");

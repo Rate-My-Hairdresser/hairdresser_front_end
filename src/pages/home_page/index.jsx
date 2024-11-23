@@ -66,58 +66,6 @@ const Homepage = () => {
         setFilters(tempArr)
     }
 
-    // return (
-    //     <>
-    //         <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
-    //         <MapContainer>
-    //             <MapComp markers={coordinateResults}/>
-    //         </MapContainer>
-    //         <Topbar>
-    //             <Title>Rate My Hairdresser</Title>
-    //         </Topbar>
-    //         <LoginContainer>
-    //             <HairDresserSignInBtn/>
-    //         </LoginContainer>
-    //         <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
-    //             <Stack direction="column">
-    //                 <SearchBox>
-    //                     <SearchInsides>
-    //                         <SearchIcon style={styles.largeIcon}/>
-    //                         <SearchText
-    //                             placeholder="Search for a hairdresser…"
-    //                             inputProps={{ 'aria-label': 'search' }}
-    //                             value={searchValue}
-    //                             onChange={onSearchChange}
-    //                         />
-    //                         <Button variant="contained" disableElevation style={styles.filterButton} onClick={() => setModalVisible(true)}>
-    //                             Filters
-    //                         </Button>
-    //                     </SearchInsides>
-    //                     <ChipSection>
-    //                         {
-    //                             maximumPrice ?
-    //                                 (<NewChips label={"Maximum price: $" + maximumPrice} onDelete={() => setMaximumPrice(false)}/>)
-    //                             :
-    //                             (<></>)
-    //                         }
-    //                         {
-    //                             filters.map((value, index) => (
-    //                                 <NewChips label={hairServiceFilters[value]} onDelete={() => handleChipDelete(index)}/>
-    //                             ))
-    //                         }
-                            
-    //                     </ChipSection>
-    //                 </SearchBox>
-    //                 <SearchResultsBox>
-    //                     {searchResults.map((value, index) => (
-    //                         <SearchResult name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters}/>
-    //                     ))}
-    //                 </SearchResultsBox>
-    //             </Stack>
-                
-    //         </SearchContainer>
-    //     </>
-    // )
     return (
         <>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
@@ -127,6 +75,9 @@ const Homepage = () => {
             <Topbar>
                 <Title>Rate My Hairdresser</Title>
             </Topbar>
+            <LoginContainer>
+                <HairDresserSignInBtn/>
+            </LoginContainer>
             <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
                 <Stack direction="column">
                     <SearchBox>
@@ -164,9 +115,8 @@ const Homepage = () => {
                     </SearchResultsBox>
                 </Stack>
                 
-            </Grid2>
-
-        </Grid2>
+            </SearchContainer>
+        </>
     )
 }
 

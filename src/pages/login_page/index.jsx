@@ -44,7 +44,6 @@ export default function HairDresserLogin( { } ) {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState("Remember me");
-    const [open, setOpen] = useState(false);
 
     let user = useSelector(selectUser);
 
@@ -67,7 +66,7 @@ export default function HairDresserLogin( { } ) {
         //this is where error checking would be added
 
         if (email.length == 0 || password.length == 0) {
-            setLoginErrorMessage("Either email or password is missing");
+            setLoginErrorMessage("Email or password is missing");
             event.preventDefault();
             return;
         } else if (!re.test(email)) {
@@ -140,6 +139,7 @@ export default function HairDresserLogin( { } ) {
                         <TextField
                             label="password"
                             error={loginError}
+                            helperText={loginErrorMessage}
                             name="password"
                             placeholder="••••••"
                             type="password"
@@ -167,13 +167,12 @@ export default function HairDresserLogin( { } ) {
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" disabled={loginError}/>}
                         margin="dense"
-                        label={loginErrorMessage}
+                        label={"Remember Me"}
                     />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        disabled={loginError}
                     >
                         Sign in
                     </Button>

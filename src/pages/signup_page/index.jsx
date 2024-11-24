@@ -35,9 +35,10 @@ export default function HairDresserSignUp() {
     const [password, setPassword] = useState("");
     const [confirmpw, setConfirmPW] = useState("");
     const [email, setEmail] = useState("");
-    const [accountError, setaccountError] = useState(true);
+    const [accountError, setaccountError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const [accountErrorMessage, setAccountErrorMessage] = useState("");
     const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
     const [isStylist, setisStylist] = useState(false);
@@ -47,7 +48,19 @@ export default function HairDresserSignUp() {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
-        if (accountError) {
+        if (account.length === 0) {
+            setAccountErrorMessage("Account name is empty!");
+            setaccountError(true);
+        }
+        if (password.length === 0) {
+            setPasswordErrorMessage("Password is empty!");
+            setPasswordError(true);
+        }
+        if (email.length === 0) {
+            setEmailErrorMessage("Email is empty!");
+            setEmailError(true);
+        }
+        if (accountError || passwordError || emailError) {
             event.preventDefault();
             return;
         }
@@ -90,8 +103,6 @@ export default function HairDresserSignUp() {
     const checkName = (value) => {
         if (value.length > 0) {
             setaccountError(false);
-            setPasswordError(true);
-            setEmailError(true);
             setAccount(value);
         } else {
             setaccountError(true);
@@ -161,6 +172,7 @@ export default function HairDresserSignUp() {
                             <FormLabel htmlFor="username">Username</FormLabel>
                             <TextField
                                 error={accountError}
+                                helperText={accountErrorMessage}
                                 id="username"
                                 type="username"
                                 name="username"
@@ -243,7 +255,6 @@ export default function HairDresserSignUp() {
                             fullWidth
                             variant="contained"
                             onClick={navLogin}
-                            disabled={(accountError || passwordError || emailError)}
                         >
                             Register
                         </Button>

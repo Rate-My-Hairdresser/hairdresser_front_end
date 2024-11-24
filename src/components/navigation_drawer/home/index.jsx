@@ -27,6 +27,5 @@ export function TitleButton({ }) {
                 Rate My Hairdresser
             </Typography>
         </IconButton>
-        
     )
 }

@@ -28,34 +28,34 @@ export default function TopAnchoredMenu() {
     return (
         <>
             <ThemeProvider theme={theme2}>
-            <AppBar position="static" color="default">
-                <Container maxWidth="1x">
-                    <Toolbar disableGutters variant="dense">
-                        <PreviousPageButton />
-                        <Divider orientation="vertical" color={"secondary"} flexItem />
-                        <TitleButton />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            }}
-                        >
-                            Rate My Hairdresser
-                        </Typography>
-                        <Container flexItem></Container>
-                        <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
-                    </Toolbar>
-                </Container>
-            </AppBar>
+                <AppBar position="absolute" color="default">
+                    <Container maxWidth="1x">
+                        <Toolbar disableGutters variant="dense">
+                            <PreviousPageButton />
+                            <Divider orientation="vertical" color={"secondary"} flexItem />
+                            <TitleButton />
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="a"
+                                href="#app-bar-with-responsive-menu"
+                                sx={{
+                                mr: 2,
+                                display: { xs: 'none', md: 'flex' },
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                }}
+                            >
+                                Rate My Hairdresser
+                            </Typography>
+                            <Container flexItem></Container>
+                            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+                        </Toolbar>
+                    </Container>
+                </AppBar>
             </ThemeProvider>
         </>
     )

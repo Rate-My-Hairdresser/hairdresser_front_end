@@ -13,7 +13,6 @@ import SearchResult from "../../components/search_result/SearchResult";
 import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import { hairServiceFilters } from "../../data/filterChips"
 import { search } from "../../general/Search";
-import TopAnchoredMenu from "../../components/navigation_drawer";
 
 
 
@@ -23,19 +22,15 @@ const Homepage = () => {
     const [searchValue, setSearchValue] = useState("");
     const [filters, setFilters] = useState([])
     const [maximumPrice, setMaximumPrice] = useState()
+    const [maximumDistance, setMaximumDistance] = useState();
     const [modalVisible, setModalVisible] = useState(false)
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
 
-
-    // search algorithm -- currently only checks for price
-
+    // search algorithm
     useEffect(() => {
-        
         const results = search(maximumPrice, searchValue, filters)
-
         // setCoordinateResults(tempCoords)
-
         setSearchResults(results)
 
     }, [searchValue, filters, maximumPrice]);
@@ -52,11 +47,10 @@ const Homepage = () => {
     }, []);
 
     const handleApply = useCallback((filterObject) => {
-        const { selectedChips, maximumPrice } = filterObject;
+        const { selectedChips, maximumPrice, maximumDistance } = filterObject;
 
+        setMaximumDistance(maximumDistance)
         setMaximumPrice(maximumPrice)
-
-        console.log(selectedChips)
         setFilters(selectedChips)
         setModalVisible(false);
     }, []);
@@ -68,16 +62,16 @@ const Homepage = () => {
 
     return (
         <>
-            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice}/>
+            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} maxDistance={maximumDistance}/>
             <MapContainer>
                 <MapComp markers={coordinateResults}/>
             </MapContainer>
             <Topbar>
                 <Title>Rate My Hairdresser</Title>
             </Topbar>
-            <LoginContainer>
+            {/* <LoginContainer>
                 <HairDresserSignInBtn/>
-            </LoginContainer>
+            </LoginContainer> */}
             <SearchContainer div className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? 'slide-up' : 'slide-down'}`}>
                 <Stack direction="column">
                     <SearchBox>
@@ -101,8 +95,14 @@ const Homepage = () => {
                                 (<></>)
                             }
                             {
+                                maximumDistance ?
+                                    (<NewChips label={"Maximum Distance: " + maximumDistance + "km"} onDelete={() => setMaximumDistance(false)}/>)
+                                :
+                                (<></>)
+                            }
+                            {
                                 filters.map((value, index) => (
-                                    <NewChips label={hairServiceFilters[value]} onDelete={() => handleChipDelete(index)}/>
+                                    <NewChips label={value} onDelete={() => handleChipDelete(index)}/>
                                 ))
                             }
                             

@@ -5,7 +5,7 @@ import Homepage from "./pages/home_page";import FavoritesPage from './pages/favo
 import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
 import TopAnchoredMenu from "./components/navigation_drawer";
-import style from "styled-components";
+import styled from "styled-components";
 
 
   
@@ -27,26 +27,24 @@ import style from "styled-components";
 const RoutesTree = () => {
   return (
     <div>
-      <Routes>
-        <Fragment>
-            <Route path="/hair_page" element={<HairdresserPage />}/>
-            <Route path="/" element={<Homepage />}/>
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/login" element={<HairDresserLogin />} />
-            <Route path="/register" element={<HairDresserSignUp/>} />
-        </Fragment>
-      </Routes>
-      <Topbar>
-        <TopAnchoredMenu/>
-      </Topbar>
+      <TopAnchoredMenu/>
+      <Main>
+        <Routes>
+          <Fragment>
+              <Route path="/hair_page" element={<HairdresserPage />} />
+              <Route path="/" element={<Homepage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/login" element={<HairDresserLogin />} />
+              <Route path="/register" element={<HairDresserSignUp/>} />
+          </Fragment>
+        </Routes>
+      </Main>
     </div>
   )
 }
 
 export default RoutesTree;
 
-const Topbar = style.div`
-    position: absolute;
-    width: 100%;
-    height: 10%;
+const Main = styled.div`
+  margin-top: 46px;
 `

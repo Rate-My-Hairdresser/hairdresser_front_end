@@ -1,23 +1,29 @@
-import { Box, Modal, InputBase, Input, Chip, Button, IconButton } from "@mui/material"
+import { Box, Modal, InputBase, Input, Chip, Button, IconButton, Slider } from "@mui/material"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import CloseIcon from '@mui/icons-material/Close';
 import { HeaderText, MiniHeaderText } from "../../general/Text"
 
 
-const FilterModal = ({options, selected, open, onClose, onApply, maxPrice}) => {
+const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDistance}) => {
 
-    const [optionList, setOptionList] = useState([]);
     const [selectedChips, setSelectedChips] = useState([]);
-    const [maximumPrice, setMaximumPrice] = useState()
+    const [maximumPrice, setMaximumPrice] = useState(20);
+    const [maximumDistance, setMaximumDistance] = useState(0);
 
-    useEffect(() => {
-        setOptionList(options);
-    }, [options]);
+    const [oldPrice, setOldPrice] = useState(20);
+    const [oldDistance, setOldDistance] = useState(0);
 
+    //this resets the price/distance if they remove it
     useEffect(() => {
         setMaximumPrice(maxPrice);
     }, [maxPrice]);
+
+    useEffect(() => {
+        setMaximumDistance(maxDistance);
+    }, [maxDistance]);
+
+    
 
     useEffect(() => {
         if(selected) {
@@ -25,33 +31,41 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice}) => {
         }
     }, [selected]);
 
-    
-
-    const handleMaximumPrice = (event) => {
-        if(event.target.value.length <= 4) {
-            setMaximumPrice(event.target.value)
+    const maxPriceChange = (event, newValue) => {
+        if (typeof newValue === 'number') {
+            setMaximumPrice(newValue);
         }
     }
 
-    const handleChipClick = (index) => {
+    const maxDistanceChange = (event, newValue) => {
+        if (typeof newValue === 'number') {
+            setMaximumDistance(newValue);
+        }
+    }
+
+    const handleChipClick = (value) => {
         setSelectedChips((prevSelectedChips) => {
-            if (prevSelectedChips.includes(index)) {
+            if (prevSelectedChips.includes(value)) {
                 // If the chip is already selected, remove it from the array
-                return prevSelectedChips.filter((chipIndex) => chipIndex !== index);
+                return prevSelectedChips.filter((chipIndex) => chipIndex !== value);
             } else {
                 // If it's not selected, add it to the array
-                return [...prevSelectedChips, index];
+                return [...prevSelectedChips, value];
             }
         });
     };
 
     const handleClose = () => {
         setSelectedChips(selected)
-        onClose()
+        setMaximumPrice(oldPrice);
+        setMaximumDistance(oldDistance);
+        onClose();
     }
 
     const handleApply = () => {
-        onApply({selectedChips: selectedChips, maximumPrice: maximumPrice})
+        setOldDistance(maximumDistance);
+        setOldPrice(maximumPrice);
+        onApply({selectedChips: selectedChips, maximumPrice: maximumPrice, maximumDistance: maximumDistance})
     }
 
     return (
@@ -63,45 +77,68 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice}) => {
                             <CloseIcon />
                         </IconButton>
                     </CloseContainer>
-
-                    <FilterRow>
-                        <HeaderText style={localheaderStyle}>
-                            Maximum price: $
-                        </HeaderText>
-                        <Input style={inputStyle}
-                            sx={{width: "5rem"}}
-                            type="number"
-                            value={maximumPrice}
-                            onChange={handleMaximumPrice}
-                        />
-                    </FilterRow>
-                    {/* <FilterRow>
-                        <HeaderText style={localheaderStyle}>
-                            Location : 
-                        </HeaderText>
-                        <Input style={inputStyle}/>
-                    </FilterRow> */}
-                    <FilterRow>
-                        <HeaderText style={localheaderStyle}>
-                            Services: 
-                        </HeaderText>
-                    </FilterRow>
-                    <FilterContainer>
-                        {
-                            optionList.map((value, index) => (
-                                <Chip 
-                                    sx={{
-                                        ...chipStyle,
-                                        backgroundColor: selectedChips.includes(index) ? 'primary.main' : 'default',
-                                        color: selectedChips.includes(index) ? 'white' : 'inherit',
-                                    }} 
-                                    label={value} 
-                                    onClick={() => handleChipClick(index)}
+                    <HeaderText>
+                        Filters
+                    </HeaderText>
+                    <Box sx={innerContainer}>
+                        
+                        <FilterRow>
+                            <HeaderText style={localheaderStyle}>
+                                Maximum price: 
+                            </HeaderText>
+                            <Box sx={{width: 300, paddingLeft: 2, display: 'flex', alignItems: 'center'}}>
+                                <Slider 
+                                    valueLabelDisplay="on"
+                                    min={20}
+                                    max={400}
+                                    value={maximumPrice}
+                                    valueLabelFormat={(value) => {return '$' + value}}
+                                    onChange={maxPriceChange}
                                 />
-                            ))
-                            
-                        }
-                    </FilterContainer>
+                            </Box>
+                        </FilterRow>
+                        <FilterRow>
+                            <HeaderText style={localheaderStyle}>
+                                Maximum distance: 
+                            </HeaderText>
+                            <Box sx={{width: 300, paddingLeft: 2, display: 'flex', alignItems: 'center'}}>
+                                <Slider 
+                                    valueLabelDisplay="on"
+                                    min={0}
+                                    max={40}
+                                    value={maximumDistance}
+                                    valueLabelFormat={(value) => {return value + " km"}}
+                                    onChange={maxDistanceChange}
+                                />
+                            </Box>
+                        </FilterRow>
+                        <FilterRow>
+                            <HeaderText style={localheaderStyle}>
+                                Services: 
+                            </HeaderText>
+                        </FilterRow>
+                        <FilterContainer>
+                            {
+                                Object.entries(options).map(([category, services]) => (
+                                    <div>
+                                    <h3>{category}</h3>
+                                    {services.map((value, index) => (
+                                        <Chip 
+                                            sx={{
+                                                ...chipStyle,
+                                                backgroundColor: selectedChips.includes(value) ? 'primary.main' : 'default',
+                                                color: selectedChips.includes(value) ? 'white' : 'inherit',
+                                            }}
+                                            key={index}
+                                            label={value} 
+                                            onClick={() => handleChipClick(value)}
+                                        />
+                                    ))}
+                                    </div>
+                                ))
+                            }
+                        </FilterContainer>
+                    </Box>
                     <ApplyFiltersBox>
                         <Button variant="contained" onClick={handleApply}>
                             Apply filters
@@ -120,14 +157,8 @@ const chipStyle = {
     marginRight: '0.5rem'
 }
 
-const inputStyle = {
-    fontSize: '24px',
-    fontweight: 'bold',
-    padding: 0
-}
-
 const localheaderStyle = {
-    margin: 0
+    margin: 0,
 }
 
 const containerStyle = {
@@ -137,13 +168,21 @@ const containerStyle = {
     transform: 'translate(-50%, -50%)', 
     backgroundColor: '#F2F0EF', 
     borderRadius: '15px',
-    padding: '2rem'
+    padding: '3rem',
+    height: '80vh',
+    display: 'flex',
+    flexDirection: 'column'
+}
+
+const innerContainer = {
+    overflowY: 'auto',
 }
 
 const FilterRow = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-top: 30px;
 `
 
 const FilterContainer = styled.div`

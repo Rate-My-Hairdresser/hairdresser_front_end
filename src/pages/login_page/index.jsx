@@ -4,8 +4,6 @@ import {
     Checkbox, Divider,
     FormControl,
     FormControlLabel,
-    FormLabel, Grid2,
-    Text,
     Container,
     Stack,
     TextField,
@@ -16,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
@@ -60,6 +58,7 @@ export default function HairDresserLogin( { } ) {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const navRegister = () => nav("/register");
+    const navReset = () => nav("/password_reset");
     const navPrev = () => nav(-1) || nav("/");
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -159,6 +158,7 @@ export default function HairDresserLogin( { } ) {
                                 type="button"
                                 variant="body2"
                                 sx={{ alignSelf: 'baseline' }}
+                                to={"/password_reset"}
                             >
                                 Forgot your password?
                             </Link>
@@ -174,7 +174,6 @@ export default function HairDresserLogin( { } ) {
                         fullWidth
                         variant="contained"
                         disabled={loginError}
-                        
                     >
                         Sign in
                     </Button>

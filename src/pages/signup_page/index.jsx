@@ -115,8 +115,6 @@ export default function HairDresserSignUp() {
 
     const checkConfirm = (value) => {
         if (value !== password) {
-            console.log(password);
-            console.log(value);
             setPasswordErrorMessage("Confirmed password does not match");
             setPasswordError(true);
         } else {

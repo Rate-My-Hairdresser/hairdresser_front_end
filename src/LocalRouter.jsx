@@ -6,6 +6,7 @@ import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
 import TopAnchoredMenu from "./components/navigation_drawer";
 import style from "styled-components";
+import PasswordRecoveryPage from "./pages/passrecovery_page";
 
 
 /*
@@ -37,6 +38,7 @@ const RoutesTree = () => {
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/login" element={<HairDresserLogin />} />
             <Route path="/register" element={<HairDresserSignUp/>} />
+            <Route path="/password_reset" element={<PasswordRecoveryPage />} />
         </Fragment>
       </Routes>
       <Topbar>

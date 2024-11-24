@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 
-
 import useToken from "../../components/login_token";
 import { selectUser } from "../../general/redux/selectors";
 
@@ -40,9 +39,7 @@ const cyrb53 = (str, seed = 42) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
-export default function HairDresserLogin( { setToken } ) {
-    const [account, setAccount] = useState("");
-    const [password, setPassword] = useState("");
+export default function HairDresserLogin( { } ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import CloseIcon from '@mui/icons-material/Close';
 import { HeaderText, MiniHeaderText } from "../../general/Text"
+import { colors } from "../../general/colors";
 
 
 const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDistance}) => {
@@ -94,6 +95,9 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDi
                                     value={maximumPrice}
                                     valueLabelFormat={(value) => {return '$' + value}}
                                     onChange={maxPriceChange}
+                                    sx={{
+                                        color: colors.dark_background
+                                    }}
                                 />
                             </Box>
                         </FilterRow>
@@ -109,6 +113,9 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDi
                                     value={maximumDistance}
                                     valueLabelFormat={(value) => {return value + " km"}}
                                     onChange={maxDistanceChange}
+                                    sx={{
+                                        color: colors.dark_background
+                                    }}
                                 />
                             </Box>
                         </FilterRow>
@@ -121,13 +128,13 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDi
                             {
                                 Object.entries(options).map(([category, services]) => (
                                     <div>
-                                    <h3>{category}</h3>
+                                    <SubHeader>{category}</SubHeader>
                                     {services.map((value, index) => (
                                         <Chip 
                                             sx={{
                                                 ...chipStyle,
-                                                backgroundColor: selectedChips.includes(value) ? 'primary.main' : 'default',
-                                                color: selectedChips.includes(value) ? 'white' : 'inherit',
+                                                backgroundColor: selectedChips.includes(value) ? colors.dark_background : 'default',
+                                                color: colors.text.primary,
                                             }}
                                             key={index}
                                             label={value} 
@@ -140,7 +147,7 @@ const FilterModal = ({options, selected, open, onClose, onApply, maxPrice, maxDi
                         </FilterContainer>
                     </Box>
                     <ApplyFiltersBox>
-                        <Button variant="contained" onClick={handleApply}>
+                        <Button variant="contained" onClick={handleApply} sx={{backgroundColor: colors.dark_background, color: colors.text.primary}}>
                             Apply filters
                         </Button>
                     </ApplyFiltersBox>
@@ -154,7 +161,7 @@ export default FilterModal;
 
 const chipStyle = {
     marginBottom: '1rem',
-    marginRight: '0.5rem'
+    marginRight: '0.5rem',
 }
 
 const localheaderStyle = {
@@ -200,4 +207,8 @@ const CloseContainer = styled.div`
     position: absolute;
     right: 1rem;
     top: 1rem;
+`
+
+const SubHeader = styled.h2`
+    font-family: 'DarkerGrotesque';
 `

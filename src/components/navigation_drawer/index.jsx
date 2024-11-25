@@ -14,6 +14,7 @@ import HairDresserUserMenu from "./hairdresser_usermenu";
 import {selectUser} from "../../general/redux/selectors";
 import {useSelector} from "react-redux";
 import {TitleButton} from "./home";
+import { colors } from "../../general/colors";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -28,31 +29,30 @@ export default function TopAnchoredMenu() {
     return (
         <>
             <ThemeProvider theme={theme2}>
-                <AppBar position="absolute" color="default">
+                <AppBar position="fixed" color="default" sx={{backgroundColor: colors.background, width: '100%', left: 0}} >
                     <Container maxWidth="1x">
                         <Toolbar disableGutters variant="dense">
-                            <PreviousPageButton />
-                            <Divider orientation="vertical" color={"secondary"} flexItem />
+                            {/* <PreviousPageButton /> */}
+                            {/* <Divider orientation="vertical" color={"secondary"} flexItem /> */}
                             <TitleButton />
                             <Typography
-                                variant="h6"
+                                variant="h5"
                                 noWrap
                                 component="a"
-                                href="#app-bar-with-responsive-menu"
                                 sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontWeight: 100,
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                    fontSize: 40,
+                                    color: colors.text.primary,
                                 }}
                             >
                                 Rate My Hairdresser
                             </Typography>
-                            <Container flexItem></Container>
-                            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+
+                            <HairDresserUserMenu/>
                         </Toolbar>
                     </Container>
                 </AppBar>
@@ -66,8 +66,8 @@ const theme2 = createTheme({
         MuiToolbar: {
             styleOverrides: {
                 dense: {
-                    height: 46,
-                    minHeight: 46
+                    height: 100,
+                    minHeight: 46,
                 }
             }
         }

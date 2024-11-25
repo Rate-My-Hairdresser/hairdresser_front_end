@@ -2,7 +2,12 @@
   font-family: 'Rubik';
   src: local('Rubik-VariableFont_wght'), url(./fonts/Rubik/Rubik-VariableFont_wght.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'DarkerGrotesque';
+  src: local('DarkerGrotesque'), url(./fonts/DarkerGrotesque.ttf) format('truetype');
+}
 
-.app {
-  font-family: 'Rubik';
+
+.body {
+  font-family: 'DarkerGrotesque';
 }

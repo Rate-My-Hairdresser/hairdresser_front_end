@@ -16,7 +16,7 @@ const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "";
 */
 
 const MapComp = ({ markers, zoomLocation }) => {
-
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,24 +33,38 @@ const MapComp = ({ markers, zoomLocation }) => {
 
   return (
     <>
-      {!loading ? (
-        <APIProvider apiKey={API_KEY}>
-          <Map
-            defaultCenter={zoomLocation || { lat: 51.0447, lng: -114.0719 }}
-            defaultZoom={zoomLocation ? 14 : 11}
-            gestureHandling="greedy"
-            disableDefaultUI
-            mapId="DEMO_MAP_ID"
-          >
-            {markers.map((position, index) => (
-              <AdvancedMarker position={position} title="hello" key={index} mapId="DEMO_MAP_ID" />
-            ))}
-          </Map>
-        </APIProvider>
-      ) : (
-        <Skeleton sx={{ bgcolor: 'lightgray' }} variant="rounded" width="100%" height="100%" />
-      )}
-    </>
+  {!loading ? (
+    <div style={{ width: '100%', height: '100%', zIndex: -5 }}>
+      <APIProvider apiKey={API_KEY}>
+        <Map
+          defaultCenter={zoomLocation || { lat: 51.015, lng: -114.0729 }}
+          defaultZoom={zoomLocation ? 14 : 11}
+          gestureHandling="greedy"
+          disableDefaultUI
+          mapId="DEMO_MAP_ID"
+          style={{ width: '100%', height: '100%' }} // Ensures the Map fills the container
+        >
+          {markers.map((position, index) => (
+            <AdvancedMarker
+              position={position}
+              title="hello"
+              key={index}
+              mapId="DEMO_MAP_ID"
+            />
+          ))}
+        </Map>
+      </APIProvider>
+    </div>
+  ) : (
+    <Skeleton
+      sx={{ bgcolor: 'lightgray' }}
+      variant="rounded"
+      width="100%"
+      height="100%"
+    />
+  )}
+</>
+
   );
 };
 

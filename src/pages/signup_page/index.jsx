@@ -65,6 +65,7 @@ export default function HairDresserSignUp() {
             return;
         }
         const data = new FormData(event.currentTarget);
+        navLogin();
     }
 
     const handleCheckbox = (event) => {
@@ -254,7 +255,6 @@ export default function HairDresserSignUp() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={navLogin}
                         >
                             Register
                         </Button>

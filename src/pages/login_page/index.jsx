@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 
-import useToken from "../../components/login_token";
 import { selectUser } from "../../general/redux/selectors";
 
 // Originated from: https://github.com/bryc/code
@@ -57,8 +56,7 @@ export default function HairDresserLogin( { } ) {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const navRegister = () => nav("/register");
-    const navReset = () => nav("/password_reset");
-    const navPrev = () => nav(-1) || nav("/");
+    const navPrev = () => nav("/");
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {

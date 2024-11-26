@@ -18,7 +18,7 @@ import { useWindowDimensions } from  "../../general/helpers"
 
 const Homepage = () => {
     const { height, width } = useWindowDimensions();
-
+    
     const [searchValue, setSearchValue] = useState("");
     const [filters, setFilters] = useState([])
     const [maximumPrice, setMaximumPrice] = useState()
@@ -27,16 +27,28 @@ const Homepage = () => {
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
     const [searchFocused, setSearchFocused] = useState(false)
+    const [currentHover, setCurrentHover] = useState();
+    const [hoveredMarker, setHoveredMarker] = useState()
 
     // search algorithm
     useEffect(() => {
         const results = search(maximumPrice, searchValue, filters)
-        // setCoordinateResults(tempCoords)
-        setSearchResults(results)
+        console.log(results)
+        setCoordinateResults(results[1])
+        setSearchResults(results[0])
 
     }, [searchValue, filters, maximumPrice]);
 
 
+    useEffect(() => {
+        if(searchResults[currentHover]) {
+            setHoveredMarker(searchResults[currentHover].salon.coordinates)
+        } else {
+            setHoveredMarker()
+        }
+        console.log(hoveredMarker)
+        // setHoveredMarker(searchResults[currentHover].salon.coordinates)
+    }, [currentHover])
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);
@@ -115,10 +127,10 @@ const Homepage = () => {
                                         
                                     </ChipSection>
                                 </SearchBox>
-                                <SearchResultsBox style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}}>
+                                <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
-                                            <SearchResult name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews}/>
+                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }
@@ -134,7 +146,7 @@ const Homepage = () => {
 
                 <RightContainer style={{width: sideWidth, height: height-164}}>
                     <MapContainer style={{width: sideWidth, height: height-164}}>
-                        <MapComp markers={[]} /> 
+                        <MapComp mainMarker={hoveredMarker} markers={coordinateResults} /> 
                     </MapContainer>
                 </RightContainer>
             </MainContainer>
@@ -147,9 +159,6 @@ const Homepage = () => {
 
 export default Homepage;
 
-
-
-
 const styles = {
     largeIcon: {
         fontSize: '30px',
@@ -161,7 +170,7 @@ const styles = {
         borderRadius: '15px',
         backgroundColor: colors.dark_background,
         color: colors.text.primary
-    }
+    },
 }
 const BigHeader = styled('h1')`
     font-weight: 400;
@@ -248,4 +257,6 @@ const SearchResultsBox = styled('div')`
     width: 42rem;
     background-color: ${colors.offwhite};
     border-radius: 15px;
+    max-height: 689.306px;
+    overflow-y: scroll;
 `

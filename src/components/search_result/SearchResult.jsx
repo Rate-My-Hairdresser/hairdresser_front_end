@@ -2,13 +2,14 @@ import { Avatar, Chip, Stack, Button, Rating } from "@mui/material"
 import styled from "styled-components"
 import { colors } from "../../general/colors"
 import { MiniHeaderText, SubText } from "../../general/Text"
+import { Navigate, useNavigate } from "react-router"
 
 
-const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings}) => {
-
-    console.log(Object.keys(images))
+const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
 
     let ratingTotal = 0;
+
+    const navigate = useNavigate();
 
     for(let i = 0; i < ratings.length; i++) {
         ratingTotal += ratings[i].rating
@@ -16,7 +17,7 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings}) => {
     const averageRating = ratingTotal / ratings.length
 
     return (
-        <ResultBox>
+        <ResultBox onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={hover? {  boxShadow: `0.3em 0.3em 1em ${colors.secondary}`} : {}}>
             <Stack sx={stackStyle} direction="row" spacing={3}>
                 {
                     Object.keys(images).length > 0 ? <ImageBox src={Object.values(images)[0]}/> : ""
@@ -61,6 +62,7 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings}) => {
                             backgroundColor: colors.dark_background,
                             color: colors.text.primary,
                         }}
+                        onClick={() => navigate("/hair_page")}
                     >
                         VISIT PAGE
                     </Button>
@@ -77,7 +79,9 @@ const stackStyle = {
 }
 
 const ResultBox = styled.div`
-    margin: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
 `
 
 const ImageBox = styled.img`

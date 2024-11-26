@@ -41,7 +41,6 @@ export default function HairDresserLogin( { setToken } ) {
         const result = getUser(email, password);
 
         if(result.accept === true) {
-            console.log("YYYYYYYYYYYYYYYYYYYYYYAAAAAAAAAAAAAAAAAAAAAAA")
             dispatch(signIn(email, result.userId, result.userType)) //sign-in user
             if(result.userType === userType.STANDARD) { //regular users go to homepage
                 nav("/");
@@ -50,7 +49,7 @@ export default function HairDresserLogin( { setToken } ) {
             }
             
         } else {
-            console.log("that user does not exist")
+            console.error("that user does not exist")
         }
     }
 

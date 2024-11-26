@@ -27,7 +27,6 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
 
     const handleUpload = (event) => {
         const files = event.target.files
-        console.log(files);
         setPhoto(URL.createObjectURL(files[0]))
     }
 

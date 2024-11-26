@@ -11,3 +11,31 @@
 .body {
   font-family: 'DarkerGrotesque';
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  padding-right: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 15px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f376a9;
+  border-radius: 15px;
+}
+
+.wrapper::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 10px; 
+}
+
+.wrapper::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 10px;
+}

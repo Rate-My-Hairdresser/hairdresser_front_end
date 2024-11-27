@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { colors } from "./colors"
 
 
-export const HeaderText = styled.h2`
+export const HeaderText = styled.h1`
     margin: 0 0 1rem 0;
-    color: ${colors.primary};
+    color: ${colors.text.primary};
     text-align: center;
+    font-family: 'DarkerGrotesque';
 `
 export const SubText = styled.p`
     overflow-wrap: break-word;

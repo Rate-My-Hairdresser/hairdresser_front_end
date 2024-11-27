@@ -29,7 +29,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
 
     const handleReturn = () => navigate("/");
     const handleFavorite = () => navigate("/favorites");
-    const handleLogin = () => navigate("/login");
+    const handleLogin = () => navigate("/auth/login");
     const handleLogout = () => {
         console.log(user);
         dispatch(signOut());
@@ -121,18 +121,20 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                 </Menu>
             </Fragment>
         )
-    } else if (window.location.pathname === "/login" || window.location.pathname === "/register") {
-        return null;
     } else {
         return (
+            <div style={{marginLeft: 'auto'}}>
             <Button
+                position={"absolute"}
                 type={"button"}
                 width={"3rem"}
                 variant={"contained"}
                 onClick={handleLogin}
+                style={{backgroundColor: colors.dark_background, color: colors.text.primary, marginLeft: 'auto', right: 0}}
             >
                 Log In
             </Button>
+            </div>
         )
     }
 }

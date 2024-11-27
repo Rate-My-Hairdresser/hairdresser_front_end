@@ -18,6 +18,7 @@ import {Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
+import userData from "../../data/userList.json"
 
 export default function HairDresserLogin( { setToken } ) {
     const [account, setAccount] = useState("");
@@ -32,10 +33,40 @@ export default function HairDresserLogin( { setToken } ) {
     const navRegister = () => nav("/register");
 
     const handleLogin = () => {
-        console.log("HIT")
+        
+        
         //this is where error checking would be added
-        dispatch(signIn(email, userType.STANDARD)) //----work here
-        nav("/");
+
+        //check if user exists
+        const result = getUser(email, password);
+
+        if(result.accept === true) {
+            dispatch(signIn(email, result.userId, result.userType)) //sign-in user
+            if(result.userType === userType.STANDARD) { //regular users go to homepage
+                nav("/");
+            } else if(result.userType === userType.STYLIST) {
+                //go to the stylists page
+            }
+            
+        } else {
+            console.error("that user does not exist")
+        }
+    }
+
+    const getUser = (email, password) => {
+        for(let [key, value] of Object.entries(userData)) {
+            if(value.email === email) {
+                if(value.password === password) {
+                    return {
+                        accept: true,
+                        email: email,
+                        userId: value.userId,
+                        userType: value.userType
+                    }
+                }
+            }
+        }
+        return {accept: false}
     }
 
     const handleSubmit = (event) => {
@@ -139,7 +170,7 @@ export default function HairDresserLogin( { setToken } ) {
                         fullWidth
                         color={"secondary"}
                         variant="contained"
-                        onClick={navRegister}
+                        onClick={handleLogin}//navRegister
                     >
                         Register for new account
                     </Button>

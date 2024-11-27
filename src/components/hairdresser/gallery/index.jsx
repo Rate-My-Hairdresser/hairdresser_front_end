@@ -68,8 +68,9 @@ const HairdresserGallery = ({photos}) => {
                                     <IconButton
                                       sx={{ color: 'white' }}
                                       aria-label={`Fullscreen ${key}`}
+                                      onClick={() => fullscreenPressed(value)}
                                     >
-                                      <FullscreenIcon onClick={() => fullscreenPressed(value)}/>
+                                      <FullscreenIcon />
                                     </IconButton>
                                   }
                             />

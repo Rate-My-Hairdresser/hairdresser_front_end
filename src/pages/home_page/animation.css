@@ -3,11 +3,21 @@
     /* Adjust the initial position */
     transform: translateY(0);
   }
+
+.searchResults {
   
-  .slide-up {
-    transform: translateY(-150px); /* Adjust the amount of slide as needed */
-  }
-  
-  .slide-down {
-    transform: translateY(0);
-  }
+}
+
+.searchResults::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 10px; 
+}
+
+.searchResults::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 10px;
+}
+
+.searchResults::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -5,10 +5,11 @@ export const userType = {STANDARD: "standard", STYLIST: "stylist"};
 
 export const signIn = (
     email,
+    userId,
     userType
 ) => ({
   type: SIGN_IN,
-  payload: {email, userType},
+  payload: {email, userId, userType},
 });
 
 export const signOut = () => ({

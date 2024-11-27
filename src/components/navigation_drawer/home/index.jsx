@@ -1,6 +1,7 @@
 import {Home} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import { colors } from "../../../general/colors";
 
 
 export function TitleButton({ }) {
@@ -8,8 +9,16 @@ export function TitleButton({ }) {
     const handleTitle = () => navigate("/");
 
     return (
-        <IconButton aria-label="backtrace" color="primary" onClick={handleTitle}>
-            <Home fontSize={"large"} />
+        <IconButton aria-label="backtrace" onClick={handleTitle} >
+            <Home fontSize={'inherit'} style={styles.largeIcon}/>
         </IconButton>
     )
+}
+
+const styles = {
+    largeIcon: {
+        width: 50,
+        height: 50,
+        color: colors.dark_background,
+    }
 }

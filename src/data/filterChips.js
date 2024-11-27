@@ -1,35 +1,48 @@
-export const hairServiceFilters = [
-    "Haircut",
-    "Hair Coloring",
-    "Highlights",
-    "Balayage",
-    "Ombre",
-    "Root Touch-Up",
-    "Gloss Treatment",
-    "Hair Styling",
-    "Blowout",
-    "Updo",
-    "Braiding",
-    "Hair Extensions",
-    "Keratin Treatment",
-    "Perm",
-    "Relaxer",
-    "Hair Smoothing",
-    "Scalp Treatment",
-    "Hair Mask",
-    "Deep Conditioning",
-    "Bang Trim",
-    "Children's Haircut",
-    "Men's Haircut",
-    "Beard Trim",
-    "Hair Consultation",
-    "Color Correction",
-    "Wedding Hair",
-    "Event Styling",
-    "Curling",
-    "Straightening",
-    "Texturizing",
-    "Dry Cut",
-    "Hair Detox",
-    "Custom Color"
-];
+export const hairServiceFilters = {
+    "Cuts & Trims": [
+      "Haircut",
+      "Bang Trim",
+      "Children's Haircut",
+      "Men's Haircut",
+      "Dry Cut"
+    ],
+    "Color Services": [
+      "Hair Coloring",
+      "Highlights",
+      "Balayage",
+      "Ombre",
+      "Root Touch-Up",
+      "Gloss Treatment",
+      "Custom Color",
+      "Color Correction"
+    ],
+    "Styling": [
+      "Hair Styling",
+      "Blowout",
+      "Updo",
+      "Braiding",
+      "Wedding Hair",
+      "Event Styling",
+      "Curling",
+      "Straightening",
+      "Texturizing"
+    ],
+    "Treatments": [
+      "Keratin Treatment",
+      "Perm",
+      "Relaxer",
+      "Hair Smoothing",
+      "Scalp Treatment",
+      "Hair Mask",
+      "Deep Conditioning",
+      "Hair Detox"
+    ],
+    "Extensions & Add-ons": [
+      "Hair Extensions",
+      "Beard Trim"
+    ],
+    "Consultation": [
+      "Hair Consultation"
+    ]
+  };
+  

@@ -1,7 +1,7 @@
 
 
 import { useCallback, useEffect, useState } from "react";
-import { Button, IconButton, Stack, InputBase, Chip } from "@mui/material";
+import { Button, IconButton, Stack, InputBase, Chip, Grid2, Divider } from "@mui/material";
 import { Title } from "../../general/Text";
 import { styled } from '@mui/material/styles'; // This is for MUI's styled function
 import MapComp from "../../components/map/MapComp";
@@ -14,21 +14,41 @@ import SearchResult from "../../components/search_result/SearchResult";
 import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import { hairServiceFilters } from "../../data/filterChips"
 import { search } from "../../general/Search";
+import { useWindowDimensions } from  "../../general/helpers"
 
 const Homepage = () => {
+    const { height, width } = useWindowDimensions();
+    
     const [searchValue, setSearchValue] = useState("");
-    const [filters, setFilters] = useState([]);
-    const [maximumPrice, setMaximumPrice] = useState();
-    const [modalVisible, setModalVisible] = useState(false);
-    const [searchResults, setSearchResults] = useState([]);
+    const [filters, setFilters] = useState([])
+    const [maximumPrice, setMaximumPrice] = useState()
+    const [maximumDistance, setMaximumDistance] = useState();
+    const [modalVisible, setModalVisible] = useState(false)
+    const [searchResults, setSearchResults] = useState([])
+    const [coordinateResults, setCoordinateResults] = useState([])
+    const [searchFocused, setSearchFocused] = useState(false)
+    const [currentHover, setCurrentHover] = useState();
+    const [hoveredMarker, setHoveredMarker] = useState()
 
-
-    // search algorithm -- currently only checks for price
+    // search algorithm
     useEffect(() => {
-        const results = search(maximumPrice, searchValue, filters);
-        setSearchResults(results);
+        const results = search(maximumPrice, searchValue, filters)
+        console.log(results)
+        setCoordinateResults(results[1])
+        setSearchResults(results[0])
+
     }, [searchValue, filters, maximumPrice]);
 
+
+    useEffect(() => {
+        if(searchResults[currentHover]) {
+            setHoveredMarker(searchResults[currentHover].salon.coordinates)
+        } else {
+            setHoveredMarker()
+        }
+        console.log(hoveredMarker)
+        // setHoveredMarker(searchResults[currentHover].salon.coordinates)
+    }, [currentHover])
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);
@@ -41,9 +61,11 @@ const Homepage = () => {
 
 
     const handleApply = useCallback((filterObject) => {
-        const { selectedChips, maximumPrice } = filterObject;
-        setMaximumPrice(maximumPrice);
-        setFilters(selectedChips);
+        const { selectedChips, maximumPrice, maximumDistance } = filterObject;
+
+        setMaximumDistance(maximumDistance)
+        setMaximumPrice(maximumPrice)
+        setFilters(selectedChips)
         setModalVisible(false);
     }, []);
 
@@ -55,104 +77,77 @@ const Homepage = () => {
 
 
     // Determine if any filter or search value is applied
-    const isSearchOrFilterApplied = searchValue || filters.length > 0 || maximumPrice;
 
+    const sideWidth = width/2 -48
+    const slideAmount = Math.abs((height/2-280) - 100 +293.4)
 
     return (
-       <HomepageContainer>
-            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} />
-            <StyledHeader>
-    {/* Header content */}
-</StyledHeader>
-<Logo
-style={{
-                color: 'white',
-                top:5,
-                fontSize: '20px',
-                font: 'baloo',
-               
-            }}>
-    ✄RateMyHairdresser
-</Logo>
-<LoginContainer>
-    <HairDresserSignInBtn color="secondary" />
-</LoginContainer>
-
+       <HomepageContainer style={{height: height-100}}>
+            <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} maxDistance={maximumDistance} />
             <MainContainer>
-                <LeftContainer>
-                <Topbar>
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-    <StyledHeader /> {/* Render the black header bar */}
-    <Title
-            style={{
-                fontWeight: 'bold',
-                whiteSpace: 'pre-line',
-                textAlign: 'left',
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                zIndex: 1,
-                WebkitTextStroke: '4px #ff6698', // Thicker black outline
-            }}
-        >
-            Search{"\n"}For a{"\n"}Hairdresser
-        </Title>
-
-
-        {/* White text */}
-        <Title
-            style={{
-                color: 'white',
-                whiteSpace: 'pre-line',
-                textAlign: 'left',
-                position: 'relative',
-                zIndex: 2,
-                font: 'modak',
-            }}
-        >
-            Search{"\n"}For a{"\n"}Hairdresser
-            </Title>
-    </div>
-</Topbar>
-
-
-                    <SearchBoxContainer>
-                        <SearchBox>
-                            <SearchInsides>
-                                <SearchIcon style={styles.largeIcon} />
-                                <SearchText
-                                    placeholder="Hairdresser name..."
-                                    inputProps={{ 'aria-label': 'search' }}
-                                    value={searchValue}
-                                    onChange={onSearchChange}
-                                />
-                                <Button variant="contained" disableElevation style={styles.filterButton} onClick={() => setModalVisible(true)}>
-                                    Filters
-                                </Button>
-                            </SearchInsides>
-                            <ChipSection>
-                                {maximumPrice && (<NewChips label={"Maximum price: $" + maximumPrice} onDelete={() => setMaximumPrice(false)} />)}
-                                {filters.map((value, index) => (
-                                    <NewChips label={hairServiceFilters[value]} onDelete={() => handleChipDelete(index)} />
-                                ))}
-                            </ChipSection>
-                        </SearchBox>
-
-
-                        <SearchResultsBox style={{ backgroundColor: isSearchOrFilterApplied ? colors.offwhite : '#ff88af' }}>
-                            {searchResults.map((value, index) => (
-                                <SearchResult key={index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} />
-                            ))}
-                        </SearchResultsBox>
-                    </SearchBoxContainer>
-
-
-                   
+                <LeftContainer style={{width: sideWidth}}>
+                    <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: height/2 -280, transform: `translateY(${-slideAmount}px)`} : {marginTop: height/2 -280, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
+                        <BigHeader >FIND</BigHeader>
+                        <BigHeader >YOUR</BigHeader>
+                        <BigHeader style={{color: colors.dark_background}}>NEW STYLIST</BigHeader>
+                        
+                        <SearchContainer div>
+                            <Stack direction="column">
+                                <SearchBox>
+                                    <SearchInsides>
+                                        <SearchIcon style={styles.largeIcon}/>
+                                        <SearchText
+                                            placeholder="Search for a hairdresser…"
+                                            inputProps={{ 'aria-label': 'search' }}
+                                            value={searchValue}
+                                            onChange={onSearchChange}
+                                        />
+                                        <Button variant="contained" disableElevation style={styles.filterButton} onClick={() => setModalVisible(true)}>
+                                            Filters
+                                        </Button>
+                                    </SearchInsides>
+                                    <ChipSection>
+                                        {
+                                            maximumPrice ?
+                                                (<NewChips label={"Maximum price: $" + maximumPrice} onDelete={() => setMaximumPrice(false)}/>)
+                                            :
+                                            (<></>)
+                                        }
+                                        {
+                                            maximumDistance ?
+                                                (<NewChips label={"Maximum Distance: " + maximumDistance + 'km'} onDelete={() => setMaximumDistance(false)}/>)
+                                            :
+                                            (<></>)
+                                        }
+                                        {
+                                            filters.map((value, index) => (
+                                                <NewChips label={value} onDelete={() => handleChipDelete(index)}/>
+                                            ))
+                                        }
+                                        
+                                    </ChipSection>
+                                </SearchBox>
+                                <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
+                                    {searchResults.map((value, index) => (
+                                        <>
+                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
+                                            {
+                                                value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
+                                            }
+                                            
+                                        </>
+                                    ))}
+                                </SearchResultsBox>
+                            </Stack>
+                        </SearchContainer>
+                    </LeftBox>
                 </LeftContainer>
 
 
-                <RightContainer>
-                    <MapComp markers={[]} /> {/* Use your coordinate data here */}
+                <RightContainer style={{width: sideWidth, height: height-164}}>
+                    <MapContainer style={{width: sideWidth, height: height-164}}>
+                        <MapComp mainMarker={hoveredMarker} markers={coordinateResults} /> 
+                    </MapContainer>
                 </RightContainer>
             </MainContainer>
         </HomepageContainer>
@@ -164,82 +159,78 @@ style={{
 
 export default Homepage;
 
-
-
-
 const styles = {
     largeIcon: {
-        fontSize: '50px',
-        color: '#333333'
+        fontSize: '30px',
+        color: colors.dark_background
     },
     filterButton: {
         marginRight: '1rem',
         marginLeft: '1rem',
         borderRadius: '15px',
-        backgroundColor: '#ff6698'
-    }
+        backgroundColor: colors.dark_background,
+        color: colors.text.primary
+    },
 }
+const BigHeader = styled('h1')`
+    font-weight: 400;
+    font-size: 72px;
+    color: ${colors.text.primary};
+    font-family: 'DarkerGrotesque';
+    margin: 0px;
+`
 
-
+//background-color: ${colors.background};
 const HomepageContainer =  styled('div')`
-    background-color: ${colors.background};
-    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2rem;
+    height: 100px;
 `;
 
 const MainContainer = styled('div')`
     display: flex;
+    gap: 32px;
     width: 100%;
-    height: 100vh; 
-    align-items: stretch; 
+    background-color: ${colors.background};
 `;
+
+const LeftBox = styled('div')`
+`
 
 const LeftContainer = styled('div')`
-    width: 500%;
-    padding-top: 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    min-height: 8vh; 
-    height: 80vh; 
+    align-items: center;
+    margin-top:-100px;
 `;
-
 
 const RightContainer = styled('div')`
-    position: fixed;
-    height: 100vh; 
-    position: relative; 
-    width: 500%;   
 `;
 
+const MapContainer = styled('div')`
+    position: fixed;
+`
 
-
-
-const SearchBoxContainer = styled('div')`
-    margin-top: 2rem;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    `;
+const SearchContainer = styled('div')`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+`
 
 
 const SearchBox =  styled('div')`
-    width: 90%;
+    width: 41rem;
     background-color: ${colors.offwhite};
     border-radius: 15px;
     padding-left: 1rem;
     border: 3px solid ${colors.dark_background};
 `;
 
-
 const SearchInsides =  styled('div')`
     height: 5rem;
     display: flex;
     align-items: center;
 `;
-
 
 const SearchText = styled(InputBase)(() => ({
     color: '#333333',
@@ -248,64 +239,24 @@ const SearchText = styled(InputBase)(() => ({
     fontSize: '30px'
 }));
 
-
 const NewChips = styled(Chip)(() => ({
     marginBottom: '1rem',
-    marginRight: '0.5rem'
+    marginRight: '0.5rem',
+    backgroundColor: colors.secondaryBackground,
+    color: colors.text.primary,
 }));
-
 
 const ChipSection =  styled('div')`
     display: flex;
     flex-wrap: wrap;
 `;
+
+
 const SearchResultsBox = styled('div')`
     margin-top: 1rem;
-    width: 100%;
+    width: 42rem;
     background-color: ${colors.offwhite};
     border-radius: 15px;
-    padding: 1rem;
-    box-sizing: border-box;
-    min-height: 150px;
-    max-height: 300px; 
-    overflow-y: auto;
-`;
-
-
-const Topbar = styled('div')`
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 5rem; 
-
-`;
-
-
-const StyledHeader = styled('div')`
-    position: fixed; 
-    background-color: ${colors.dark_background};
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 50px;
-    z-index: 1; 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-`;
-
-const LoginContainer = styled('div')`
-    position: fixed; 
-    top: 0;
-    right: 1rem; 
-    z-index: 2; 
-    color: pink;
-`;
-const Logo = styled('div')`
-    color: #faa7d5;
-    position: fixed;
-    padding-top: 0.5rem;
-    top: 0;
-    left: 1rem; 
-    z-index: 2; 
-    color: pink;
-    `;
+    max-height: 689.306px;
+    overflow-y: scroll;
+`

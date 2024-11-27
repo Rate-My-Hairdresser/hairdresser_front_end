@@ -17,6 +17,11 @@ const userReducer = (state = initialUserState, action) => {
         if (userList[action.payload.hash_id].password === action.payload.hash_pw) {
           console.log("HIT")
           sessionStorage.setItem("token", JSON.stringify(action.payload.hash_id));
+          if (userList[action.payload.hash_id].userType === "stylist") {
+            sessionStorage.setItem("isStylist", true);
+          } else {
+            sessionStorage.setItem("isStylist", false);
+          }
 
           return {
             signedIn: true,

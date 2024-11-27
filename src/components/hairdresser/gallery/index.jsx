@@ -96,7 +96,7 @@ const HairdresserGallery = ({photos}) => {
 export default HairdresserGallery;
 
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
     display: flex;

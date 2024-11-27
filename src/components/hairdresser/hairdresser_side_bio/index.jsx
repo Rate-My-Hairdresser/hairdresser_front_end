@@ -35,10 +35,11 @@ const HairDresserSideBio = ({data}) => {
             <FavoriteBox>
                 <IconButton  onClick={() => setSaved(!saved)}>
                     {
-                        saved ?
-                        (<BookmarkIcon style={styles.largeIcon}/>)
-                        :
-                        (<BookmarkBorderIcon style={styles.largeIcon}/>)
+                                saved ? (
+                                    <BookmarkIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                                ) : (
+                                    <BookmarkBorderIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                                )
                     }
                     
                 </IconButton>
@@ -80,7 +81,7 @@ const styles = {
 
 const FavoriteBox = styled.div`
     text-align: center;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
     padding-bottom: 1rem;
 `
 
@@ -89,11 +90,11 @@ const TextBox = styled.div`
     flex-direction: column;
     width: 100%;
     overflow-wrap: break-word;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
 `
 
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
     display: flex;

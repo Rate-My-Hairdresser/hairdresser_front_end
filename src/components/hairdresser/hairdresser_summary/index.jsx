@@ -73,7 +73,7 @@ const NewChips = styled(Chip)(({}) => ({
 }))
 
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
 `
@@ -81,7 +81,7 @@ const Container = styled.div`
 const TopSection = styled.div`
     width: 100%;
     height: 4rem;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
     display: flex;
     justify-content: space-between;
 `

@@ -36,7 +36,7 @@ export default Reviews;
 
 // Styled components
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
     margin-top: 1rem;
@@ -54,7 +54,7 @@ const ReviewBox = styled(Box)`
     justify-content: space-between;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    border: 1px solid ${colors.secondary};
+    border: 1px solid ${colors.dark_background};
     border-radius: 10px;
 `;
 
@@ -78,7 +78,7 @@ const LeaveReviewButton = styled.button`
     position: absolute;
     top: 10px; 
     right: 10px; 
-    background-color: ${colors.star_color};
+    background-color: ${colors.dark_background};
     color: black; 
     border: none;
     border-radius: 5px;
@@ -87,9 +87,9 @@ const LeaveReviewButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: ${colors.dark_star}; 
+        opacity: 0.8;
     }
-    &:click {
+    &:active {
         opacity: 0.4;
 }
 `;

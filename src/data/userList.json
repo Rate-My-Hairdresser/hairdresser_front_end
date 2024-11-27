@@ -1,10 +1,14 @@
 {
     "276741892685677": {
         "email": "user@test.com",
-        "password": 30239160435842
+        "password": 30239160435842,
+        "userId": 102,
+        "userType": "standard"
     },
     "2575749558319096": {
         "email": "stylist@test.com",
-        "password": 30239160435842
+        "password": 30239160435842,
+        "userId": 101,
+        "userType": "stylist"
     }
 }

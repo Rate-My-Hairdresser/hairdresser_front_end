@@ -3,9 +3,10 @@ import { SIGN_IN, SIGN_OUT } from './actions';
 import userList from "../../data/userList.json";
 
 const initialUserState = {
-        signedIn: false,
-        email: "",
-        userType: ""
+  signedIn: false,
+  email: "",
+  userId: 0,
+  userType: ""
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -33,9 +34,10 @@ const userReducer = (state = initialUserState, action) => {
     case SIGN_OUT:
       sessionStorage.clear();
       return {
-            signedIn: false,
-            email: "",
-            userType: ""
+        signedIn: false,
+        email: "",
+        userId: 0,
+        userType: ""
       };
     default:
       return state;
@@ -43,7 +45,7 @@ const userReducer = (state = initialUserState, action) => {
 };
 
 const rootReducer = combineReducers({
-    user: userReducer
+  user: userReducer
 });
 
 export default rootReducer;

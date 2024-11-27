@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { colors } from "../../../general/colors";
 import ReviewModal from "./reviewModal"; // Import the review modal component
 
-const Reviews = ({reviews}) => {
+const Reviews = ({reviews, onSubmit}) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleOpen = () => setOpenModal(true);
@@ -15,16 +15,19 @@ const Reviews = ({reviews}) => {
         <Container>
             <Title>Reviews</Title>
             <LeaveReviewButton onClick={handleOpen}>Leave a Review</LeaveReviewButton>
-            {reviews.map((review, index) => (
-                <ReviewBox key={index}>
-                    <ReviewContent>
-                        <Rating name={`review-rating-${index}`} value={review.rating} readOnly />
-                        <Comment>{review.comment}</Comment>
-                    </ReviewContent>
-                    {review.photo && <ReviewPhoto src={review.photo} alt={`Review ${index + 1}`} />}
-                </ReviewBox>
-            ))}
-            <ReviewModal open={openModal} handleClose={handleClose} />
+            {
+                (reviews?.map((review, index) => (
+                    <ReviewBox key={index}>
+                        <ReviewContent>
+                            <Rating name={`review-rating-${index}`} value={review.rating} readOnly />
+                            <Comment>{review.comment}</Comment>
+                        </ReviewContent>
+                        {review.photo && <ReviewPhoto src={review.photo} alt={`Review ${index + 1}`} />}
+                    </ReviewBox>
+                )) || "")
+                
+            }
+            <ReviewModal open={openModal} handleClose={handleClose} onSubmit={onSubmit}/>
         </Container>
     );
 };

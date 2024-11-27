@@ -55,7 +55,7 @@ export default function HairDresserLogin( { } ) {
 
     const nav = useNavigate();
     const dispatch = useDispatch();
-    const navRegister = () => nav("/register");
+    const navRegister = () => nav("/auth/register");
     const navPrev = () => nav("/");
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -156,7 +156,7 @@ export default function HairDresserLogin( { } ) {
                                 type="button"
                                 variant="body2"
                                 sx={{ alignSelf: 'baseline' }}
-                                to={"/password_reset"}
+                                to={"/auth/password_reset"}
                             >
                                 Forgot your password?
                             </Link>

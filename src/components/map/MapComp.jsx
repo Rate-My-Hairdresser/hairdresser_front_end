@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { AdvancedMarker, APIProvider, Map } from '@vis.gl/react-google-maps';
+import { AdvancedMarker, APIProvider, Map, Pin } from '@vis.gl/react-google-maps';
 import Skeleton from '@mui/material/Skeleton';
+import { colors } from '../../general/colors';
+import mapStyle from "./mapStyle.json"
 
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "";
 
@@ -15,8 +17,8 @@ const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "";
     Note: I will be adding tooltips to this later
 */
 
-const MapComp = ({ markers, zoomLocation }) => {
-
+const MapComp = ({ markers, mainMarker, zoomLocation }) => {
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,24 +35,52 @@ const MapComp = ({ markers, zoomLocation }) => {
 
   return (
     <>
-      {!loading ? (
-        <APIProvider apiKey={API_KEY}>
-          <Map
-            defaultCenter={zoomLocation || { lat: 51.0447, lng: -114.0719 }}
-            defaultZoom={zoomLocation ? 14 : 11}
-            gestureHandling="greedy"
-            disableDefaultUI
-            mapId="DEMO_MAP_ID"
-          >
-            {markers.map((position, index) => (
-              <AdvancedMarker position={position} title="hello" key={index} mapId="DEMO_MAP_ID" />
-            ))}
-          </Map>
-        </APIProvider>
-      ) : (
-        <Skeleton sx={{ bgcolor: 'lightgray' }} variant="rounded" width="100%" height="100%" />
-      )}
-    </>
+  {!loading ? (
+    <div style={{ width: '100%', height: '100%', zIndex: -5 }}>
+      <APIProvider apiKey={API_KEY}>
+        <Map
+          defaultCenter={zoomLocation || { lat: 51.015, lng: -114.0729 }}
+          defaultZoom={zoomLocation ? 14 : 11}
+          gestureHandling="greedy"
+          disableDefaultUI
+          mapId="736dc951678c83c7"
+          styles={mapStyle}
+        >
+          {markers.map((position, index) => (
+            <AdvancedMarker
+              position={position}
+              title="hello"
+              key={index}
+              mapId="736dc951678c83c7"
+            >
+              <Pin background={colors.dark_background} borderColor={colors.darker_back} glyphColor={colors.darker_back}/>
+            </AdvancedMarker>
+          ))}
+          {mainMarker ? 
+            <AdvancedMarker
+              position={mainMarker}
+              title="hello"
+              key={"main"}
+              mapId="736dc951678c83c7"
+            >
+              <Pin background={colors.darker_back} borderColor={colors.dark_background} glyphColor={colors.dark_background} scale={1.5}/>
+            </AdvancedMarker>
+          :
+            ""
+          }
+        </Map>
+      </APIProvider>
+    </div>
+  ) : (
+    <Skeleton
+      sx={{ bgcolor: 'lightgray' }}
+      variant="rounded"
+      width="100%"
+      height="100%"
+    />
+  )}
+</>
+
   );
 };
 

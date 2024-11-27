@@ -42,7 +42,7 @@ export default function HairDresserLogin( { } ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
-    const [loginErrorMessage, setLoginErrorMessage] = useState("Remember me");
+    const [loginErrorMessage, setLoginErrorMessage] = useState("");
 
     let user = useSelector(selectUser);
 
@@ -50,7 +50,7 @@ export default function HairDresserLogin( { } ) {
 
     useEffect(() => {
         setLoginError(false);
-        setLoginErrorMessage("Remember me");
+        setLoginErrorMessage("");
     }, [email, password]);
 
     const nav = useNavigate();
@@ -65,10 +65,12 @@ export default function HairDresserLogin( { } ) {
 
         if (email.length == 0 || password.length == 0) {
             setLoginErrorMessage("Email or password is missing");
+            setLoginError(true);
             event.preventDefault();
             return;
         } else if (!re.test(email)) {
             setLoginErrorMessage("Email need to be an email");
+            setLoginError(true);
             event.preventDefault();
             return;
         } else {

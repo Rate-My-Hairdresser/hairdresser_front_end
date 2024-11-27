@@ -35,6 +35,7 @@ export default function HairDresserSignUp() {
     const [password, setPassword] = useState("");
     const [confirmpw, setConfirmPW] = useState("");
     const [email, setEmail] = useState("");
+    const [unchanged, setUnchanged] = useState(true);
     const [accountError, setaccountError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
@@ -60,12 +61,12 @@ export default function HairDresserSignUp() {
             setEmailErrorMessage("Email is empty!");
             setEmailError(true);
         }
-        if (accountError || passwordError || emailError) {
-            event.preventDefault();
-            return;
-        } else {
+        if (!accountError && !passwordError && !emailError && !unchanged) {
             const data = new FormData(event.currentTarget);
             navLogin();
+        } else {
+            event.preventDefault();
+            return;
         }
     }
 
@@ -105,6 +106,7 @@ export default function HairDresserSignUp() {
     const checkName = (value) => {
         if (value.length > 0) {
             setaccountError(false);
+            setUnchanged(false);
             setAccount(value);
         } else {
             setaccountError(true);

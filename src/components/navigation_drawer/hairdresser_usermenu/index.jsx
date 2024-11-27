@@ -38,6 +38,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
 
     if (user.signedIn) {
         return (
+            <div style={{marginLeft: 'auto'}}>
             <Fragment>
                 <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                     <Tooltip title="Account settings">
@@ -121,6 +122,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                     </MenuItem>
                 </Menu>
             </Fragment>
+            </div>
         )
     } else {
         if (isAuthPath) {

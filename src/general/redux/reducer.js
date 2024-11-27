@@ -36,7 +36,6 @@ const userReducer = (state = initialUserState, action) => {
       return {
         signedIn: false,
         email: "",
-        userId: 0,
         userType: ""
       };
     default:

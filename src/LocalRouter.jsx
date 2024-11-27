@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import HairdresserPage from './pages/hairdresser_page';
 import Homepage from "./pages/home_page";import FavoritesPage from './pages/favorite_page';
 import HairDresserLogin from "./pages/login_page/index";
@@ -9,11 +9,11 @@ import styled from "styled-components";
 import { colors } from "./general/colors";
 
 import HairDresserUserMenu from "./components/navigation_drawer/hairdresser_usermenu";
+import PasswordRecoveryPage from "./pages/passrecovery_page";
 
 
 
 function App() {
-  const location = useLocation();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -22,11 +22,10 @@ function App() {
     };
   
   // Check if the current path starts with '/auth'
-  const isAuthPath = location.pathname.startsWith('/auth');
   return (
     <div>
       <Main>
-        {!isAuthPath && <TopAnchoredMenu />}
+        <TopAnchoredMenu />
         <Routes>
           <Fragment>
             <Route path="auth">

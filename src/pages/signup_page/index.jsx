@@ -44,7 +44,7 @@ export default function HairDresserSignUp() {
     const [isStylist, setisStylist] = useState(false);
 
     const nav = useNavigate();
-    const navLogin = () => nav("/login");
+    const navLogin = () => nav("/auth/login");
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
@@ -63,9 +63,10 @@ export default function HairDresserSignUp() {
         if (accountError || passwordError || emailError) {
             event.preventDefault();
             return;
+        } else {
+            const data = new FormData(event.currentTarget);
+            navLogin();
         }
-        const data = new FormData(event.currentTarget);
-        navLogin();
     }
 
     const handleCheckbox = (event) => {
@@ -266,7 +267,7 @@ export default function HairDresserSignUp() {
 
 const MasterBox = style.div`
     position: fixed;
-    top: 0;
+    top: 5vh;
     left: 0;
     width: 100vw;
     height: 100vh;

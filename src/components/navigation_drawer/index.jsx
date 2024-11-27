@@ -52,7 +52,7 @@ export default function TopAnchoredMenu() {
                                 Rate My Hairdresser
                             </Typography>
 
-                            <HairDresserUserMenu/>
+                            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                         </Toolbar>
                     </Container>
                 </AppBar>
@@ -66,8 +66,8 @@ const theme2 = createTheme({
         MuiToolbar: {
             styleOverrides: {
                 dense: {
-                    height: 100,
-                    minHeight: 46,
+                    height: 75,
+                    minHeight: 50,
                 }
             }
         }

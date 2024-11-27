@@ -11,7 +11,7 @@ import {
 import styled from "styled-components"
 import { colors } from "../../../general/colors"
 import {Fragment} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import { selectUser } from "../../../general/redux/selectors";
 import {Bookmarks, Logout, PersonSearch, Settings} from "@mui/icons-material";
@@ -22,6 +22,8 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
     const dispatch = useDispatch();
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
+    const location = useLocation();
+    const isAuthPath = location.pathname.startsWith('/auth');
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -121,20 +123,24 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
             </Fragment>
         )
     } else {
-        return (
-            <div style={{marginLeft: 'auto'}}>
-            <Button
-                position={"absolute"}
-                type={"button"}
-                width={"3rem"}
-                sx={{minWidth: 82}}
-                variant={"contained"}
-                onClick={handleLogin}
-                style={{backgroundColor: colors.dark_background, color: colors.text.primary, marginLeft: 'auto', right: 0}}
-            >
-                Log In
-            </Button>
-            </div>
-        )
+        if (isAuthPath) {
+            return null;
+        } else {
+            return (
+                <div style={{marginLeft: 'auto'}}>
+                <Button
+                    position={"absolute"}
+                    type={"button"}
+                    width={"3rem"}
+                    sx={{minWidth: 82}}
+                    variant={"contained"}
+                    onClick={handleLogin}
+                    style={{backgroundColor: colors.dark_background, color: colors.text.primary, marginLeft: 'auto', right: 0}}
+                >
+                    Log In
+                </Button>
+                </div>
+            )
+        }        
     }
 }

@@ -157,7 +157,6 @@ export default function HairDresserSignUp() {
     return (
         <MasterBox>
                 <SignUpContainer direction="column" justifyContent="space-between">
-                    <PreviousPageButton />
                     <Typography
                         component="h1"
                         variant="h7"
@@ -267,6 +266,7 @@ export default function HairDresserSignUp() {
                             Register
                         </Button>
                     </Box>
+                    <PreviousPageButton />
                 </SignUpContainer>
         </MasterBox>
     )

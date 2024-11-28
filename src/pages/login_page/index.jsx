@@ -97,7 +97,6 @@ export default function HairDresserLogin( { } ) {
         <MasterBox>
             <SignInContainer margin={"dense"}>
                 <Container />
-                <PreviousPageButton />
                 <Typography
                     inline
                     component="h1"
@@ -189,6 +188,7 @@ export default function HairDresserLogin( { } ) {
                         Register for new account
                     </Button>
                 </Box>
+                <PreviousPageButton />
             </SignInContainer>
         </MasterBox>
     )

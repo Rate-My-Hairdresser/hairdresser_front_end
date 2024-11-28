@@ -44,7 +44,6 @@ const PasswordRecoveryPage = () => {
         <MasterBox >
             <SignInContainer>
                 <Container />
-                <PreviousPageButton />
                 <Card styled={styles.cardImage} elevation={6}>
                     <CardContent>
                         <Typography
@@ -93,6 +92,7 @@ const PasswordRecoveryPage = () => {
                         </FormControl>
                     </CardContent>
                 </Card>
+                <PreviousPageButton />
                 <Container />
             </SignInContainer>
         </MasterBox>

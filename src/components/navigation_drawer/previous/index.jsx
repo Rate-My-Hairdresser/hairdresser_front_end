@@ -8,8 +8,8 @@ export function PreviousPageButton({ }) {
 
     return (
         <IconButton aria-label="backtrace" color="primary" onClick={handleBack} paddingLeft={0} sx={{justifyContent:"left"}}>
-            <ArrowBack fontSize={"large"} />
-            <Typography>Not interested?</Typography>
+            {/*<ArrowBack fontSize={"large"} />*/}
+            <Typography sx={{textDecoration: "underline"}}>Not interested? Click here to return.</Typography>
         </IconButton>
     )
 }

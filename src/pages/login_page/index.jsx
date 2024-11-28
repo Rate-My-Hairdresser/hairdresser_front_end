@@ -154,7 +154,7 @@ export default function HairDresserLogin( { } ) {
                             onChange={(e) => setPassword(e.target.value)}
                             color={loginError ? 'error' : 'primary'}
                         />
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Link
                                 component="button"
                                 type="button"

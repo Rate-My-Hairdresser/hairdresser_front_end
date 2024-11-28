@@ -67,6 +67,7 @@ const HairdresserSummary = ({data, reviewNumber}) => {
 
 export default HairdresserSummary;
 
+// eslint-disable-next-line no-empty-pattern
 const NewChips = styled(Chip)(({}) => ({
     marginBottom: '1rem',
     marginRight: '0.5rem'

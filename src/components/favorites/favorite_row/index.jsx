@@ -1,6 +1,5 @@
 import { Avatar, Chip, Stack, Button, Rating } from "@mui/material"
 import styled from "styled-components"
-//import { colors } from "../../general/colors"
 import { colors } from "../../../general/colors"
 import { MiniHeaderText, SubText } from "../../../general/Text"
 import { useNavigate } from "react-router"
@@ -20,7 +19,11 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
 
     return (
         <ResultBox onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={hover? {  boxShadow: `0.3em 0.3em 1em ${colors.secondary}`} : {}}>
+            
             <Stack sx={stackStyle} direction="row" spacing={3}>
+            <div>
+                <RemoveIconbutton   />
+            </div>
                 {
                     Object.keys(images).length > 0 ? <ImageBox src={Object.values(images)[0]}/> : ""
                 }
@@ -57,7 +60,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
                 }
                 </Stack>
                 
-                <div style={{marginLeft: 'auto',  marginLeft: '16px'}}>
+                <div style={{marginLeft: 'auto'}}>
                     <Button
                         variant="contained"
                         sx={{
@@ -69,9 +72,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
                         VISIT PAGE
                     </Button>
                 </div>
-                <div>
-                <RemoveIconbutton />
-                </div>
+                
                     
             </Stack>
         </ResultBox>

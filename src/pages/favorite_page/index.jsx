@@ -5,12 +5,10 @@ import { Button, Stack, InputBase, Chip, Divider } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import MapComp from "../../components/map/MapComp";
 import { colors } from "../../general/colors";
-import SearchIcon from '@mui/icons-material/Search';
 import './animation.css';
 import FilterModal from "../../components/filter_modal/FilterModal";
 import SearchResult from "../../components/favorites/favorite_row/index";
 import { hairServiceFilters } from "../../data/filterChips"
-import { search } from "../../general/Search";
 import { useWindowDimensions } from  "../../general/helpers"
 import { searchByIds } from "../../general/searchByIds";
 

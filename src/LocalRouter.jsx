@@ -21,12 +21,12 @@ function App() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-  
+
   // Check if the current path starts with '/auth'
   const isAuthPath = location.pathname.startsWith('/auth');
   return (
     <div>
-      <Main>
+      <div style={ !isAuthPath ? {paddingTop: '100px'} : {}}>
         {!isAuthPath && <TopAnchoredMenu />}
         <Routes>
           <Fragment>
@@ -40,14 +40,9 @@ function App() {
             <Route path="favorites" element={<FavoritesPage />} />
           </Fragment>
         </Routes>
-      </Main>
+      </div>
     </div>
   );
 }
-
-const Main = styled.div`
-  padding-top: 100px;
-
-`
 
 export default App;

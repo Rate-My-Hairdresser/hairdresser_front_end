@@ -15,7 +15,7 @@ import { useWindowDimensions } from  "../../general/helpers"
 import { searchByIds } from "../../general/searchByIds";
 
 
-const Homepage = () => {
+const Favoritepage = () => {
     const { height, width } = useWindowDimensions();
     
     const [searchValue, setSearchValue] = useState("");
@@ -49,9 +49,7 @@ const Homepage = () => {
         // setHoveredMarker(searchResults[currentHover].salon.coordinates)
     }, [currentHover, hoveredMarker, searchResults])
 
-    const onSearchChange = (event) => {
-        setSearchValue(event.target.value);
-    };
+    
 
 
     const handleClose = useCallback(() => {
@@ -122,7 +120,7 @@ const Homepage = () => {
 
 
 
-export default Homepage;
+export default Favoritepage;
 
 const styles = {
     largeIcon: {

@@ -66,7 +66,7 @@ const theme2 = createTheme({
         MuiToolbar: {
             styleOverrides: {
                 dense: {
-                    height: 75,
+                    height: 100,
                     minHeight: 50,
                 }
             }

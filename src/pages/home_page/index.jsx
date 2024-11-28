@@ -1,17 +1,14 @@
 
 
 import { useCallback, useEffect, useState } from "react";
-import { Button, IconButton, Stack, InputBase, Chip, Grid2, Divider } from "@mui/material";
-import { Title } from "../../general/Text";
-import { styled } from '@mui/material/styles'; // This is for MUI's styled function
+import { Button, Stack, InputBase, Chip, Divider } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import MapComp from "../../components/map/MapComp";
 import { colors } from "../../general/colors";
 import SearchIcon from '@mui/icons-material/Search';
 import './animation.css';
 import FilterModal from "../../components/filter_modal/FilterModal";
-//import hairdresserData from "../../data/hairdresserList.json"
 import SearchResult from "../../components/search_result/SearchResult";
-import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import { hairServiceFilters } from "../../data/filterChips"
 import { search } from "../../general/Search";
 import { useWindowDimensions } from  "../../general/helpers"
@@ -26,7 +23,6 @@ const Homepage = () => {
     const [modalVisible, setModalVisible] = useState(false)
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
-    const [searchFocused, setSearchFocused] = useState(false)
     const [currentHover, setCurrentHover] = useState();
     const [hoveredMarker, setHoveredMarker] = useState()
 
@@ -48,7 +44,7 @@ const Homepage = () => {
         }
         console.log(hoveredMarker)
         // setHoveredMarker(searchResults[currentHover].salon.coordinates)
-    }, [currentHover])
+    }, [currentHover, hoveredMarker, searchResults])
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);

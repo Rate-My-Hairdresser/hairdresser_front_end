@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectUser } from "../../general/redux/selectors";
-import { styled } from '@mui/material/styles';
 
 export default function HairDresserSignInBtn() {
 

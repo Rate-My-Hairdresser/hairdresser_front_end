@@ -8,7 +8,6 @@ import {
     Tooltip,
 } from "@mui/material";
 
-import styled from "styled-components"
 import { colors } from "../../../general/colors"
 import {Fragment} from "react";
 import {useNavigate} from "react-router-dom";

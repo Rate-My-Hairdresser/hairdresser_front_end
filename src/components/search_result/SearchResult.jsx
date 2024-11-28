@@ -2,7 +2,7 @@ import { Avatar, Chip, Stack, Button, Rating } from "@mui/material"
 import styled from "styled-components"
 import { colors } from "../../general/colors"
 import { MiniHeaderText, SubText } from "../../general/Text"
-import { Navigate, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 
 const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {

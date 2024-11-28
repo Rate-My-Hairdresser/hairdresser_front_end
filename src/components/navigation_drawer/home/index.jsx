@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import { colors } from "../../../general/colors";
 
 
-export function TitleButton({ }) {
+export function TitleButton() {
     const navigate = useNavigate();
     const handleTitle = () => navigate("/");
 

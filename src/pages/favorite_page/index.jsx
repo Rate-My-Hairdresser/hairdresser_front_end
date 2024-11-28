@@ -5,8 +5,9 @@ import data from '../../components/favorites/data.json';
 import Footer from '../../components/favorites/favorite_footer';
 
 const FavoritesPage = () => {
-    const [favorites, setFavorites] = useState(data);
 
+    //const [favorites, setFavorites] = useState(data);
+    const favorites = data
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             {/* Header Section */}

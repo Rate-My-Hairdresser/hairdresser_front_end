@@ -7,7 +7,7 @@ export function PreviousPageButton({ }) {
     const handleBack = () => navigate(-1);
 
     return (
-        <IconButton aria-label="backtrace" color="primary" onClick={handleBack} paddingLeft={0} sx={{justifyContent:"left"}}>
+        <IconButton aria-label="backtrace" color="primary" onClick={handleBack} paddingLeft={0} sx={{justifyContent:"center"}}>
             {/*<ArrowBack fontSize={"large"} />*/}
             <Typography sx={{textDecoration: "underline"}}>Not interested? Click here to return.</Typography>
         </IconButton>

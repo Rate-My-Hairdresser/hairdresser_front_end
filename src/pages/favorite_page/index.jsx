@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FavoriteRow from '../../components/favorites/favorite_row/index';
 import HomeIcon from '../../components/favorites/homeicon/index';
 import data from '../../components/favorites/data.json';

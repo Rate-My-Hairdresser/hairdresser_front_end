@@ -82,7 +82,7 @@ const Favoritepage = () => {
             <MainContainer>
                 <LeftContainer style={{width: sideWidth}}>
                     <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: height/2 -280, transform: `translateY(${-slideAmount}px)`} : {marginTop: height/2 -280, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
-                        <BigHeader style={{color: colors.dark_background}}>Bookmark</BigHeader>
+                        <BigHeader style={{color: colors.dark_background}}>Favorites</BigHeader>
                         
                         <SearchContainer div>
                             <Stack direction="column">

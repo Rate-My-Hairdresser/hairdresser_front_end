@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@vis.gl/react-google-maps": "^1.4.0",
     "firebase": "^11.0.2",
+    "firebase-tools": "^13.27.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",

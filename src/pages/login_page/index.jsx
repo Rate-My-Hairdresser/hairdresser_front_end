@@ -20,6 +20,7 @@ import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 
 import { selectUser } from "../../general/redux/selectors";
+import { PreviousPageButton } from "../../components/navigation_drawer/previous/index.jsx";
 
 // Originated from: https://github.com/bryc/code
 // It is public domain. We will force seed to be 42.
@@ -96,13 +97,15 @@ export default function HairDresserLogin( { } ) {
         <MasterBox>
             <SignInContainer margin={"dense"}>
                 <Container />
+                <PreviousPageButton />
                 <Typography
+                    inline
                     component="h1"
                     variant="h7"
                     sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
                     paddingLeft={4}
-                    paddingTop={6}
-                    paddingBottom={1}
+                    paddingTop={0}
+                    paddingBottom={6}
                 >
                     Sign in
                 </Typography>
@@ -208,8 +211,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",
-    alignItems: "space-between",
-    justifyContent: "space-between",
+    justifyContent: "top",
     padding: theme.spacing(3),
     backgroundColor: theme.palette.background.paper,
     borderRadius: theme.shape.borderRadius,

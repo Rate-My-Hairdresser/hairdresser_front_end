@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
+import { PreviousPageButton } from "../../components/navigation_drawer/previous";
 
 const cyrb53 = (str, seed = 42) => {
     let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
@@ -116,7 +117,7 @@ export default function HairDresserSignUp() {
 
     const checkPassword = (value) => {
         if (value.length < 8) {
-            setPasswordErrorMessage("Password must be longer than 8 characters");
+            setPasswordErrorMessage("Password must be at least 8 characters");
             setPasswordError(true);
         } else if (value !== confirmpw) {
             setPasswordErrorMessage("Confirmed password does not match");
@@ -129,7 +130,10 @@ export default function HairDresserSignUp() {
     }
 
     const checkConfirm = (value) => {
-        if (value !== password) {
+        if (password.length < 8) {
+            setPasswordErrorMessage("Password must be at least 8 characters");
+            setPasswordError(true);
+        } else if (value !== password) {
             setPasswordErrorMessage("Confirmed password does not match");
             setPasswordError(true);
         } else {
@@ -153,10 +157,11 @@ export default function HairDresserSignUp() {
     return (
         <MasterBox>
                 <SignUpContainer direction="column" justifyContent="space-between">
+                    <PreviousPageButton />
                     <Typography
                         component="h1"
                         variant="h7"
-                        marginTop="3rem"
+                        marginBottom="3rem"
                         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
                         Register New Account

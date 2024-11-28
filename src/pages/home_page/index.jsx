@@ -11,7 +11,6 @@ import './animation.css';
 import FilterModal from "../../components/filter_modal/FilterModal";
 //import hairdresserData from "../../data/hairdresserList.json"
 import SearchResult from "../../components/search_result/SearchResult";
-import HairDresserSignInBtn from "../../components/hairdresser_login/SignInButton";
 import { hairServiceFilters } from "../../data/filterChips"
 import { search } from "../../general/Search";
 import { useWindowDimensions } from  "../../general/helpers"

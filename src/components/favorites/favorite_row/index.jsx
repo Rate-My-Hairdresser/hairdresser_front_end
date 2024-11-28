@@ -1,92 +1,102 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import RemoveIconButton from '../removeicon/index';
+import { Avatar, Chip, Stack, Button, Rating } from "@mui/material"
+import styled from "styled-components"
+//import { colors } from "../../general/colors"
+import { colors } from "../../../general/colors"
+import { MiniHeaderText, SubText } from "../../../general/Text"
+import { useNavigate } from "react-router"
+import RemoveIconbutton from "../removeicon"
 
-const FavoriteRow = ({ profilePic, galleryPics, name, bio, onRemove }) => {
-  return (
-    <div style={{ 
-      padding: '15px', 
-      position: 'relative', // Relative positioning to properly place the divider
-    }}>
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        paddingBottom: '15px', // Keep padding for the bottom of the row
-      }}>
-        {/* Section 1: Profile Picture */}
-        <div style={{ flex: 1, marginRight: '10px', display: 'flex', justifyContent: 'center' }}>
-          <img 
-            src={profilePic} 
-            alt={`${name}'s profile`} 
-            style={{ 
-              width: '12vw', // Dynamic size for circular profile picture (12% of viewport width)
-              height: '12vw', // Dynamic height
-              maxWidth: '80px', // Max size for larger screens
-              maxHeight: '80px', // Max height for larger screens
-              borderRadius: '50%', 
-              objectFit: 'cover' 
-            }} 
-          />
-        </div>
-        
-        {/* Section 2: Gallery Pictures */}
-        <div style={{ 
-          flex: 2, 
-          width: '120px', // Fixed width for the square
-          height: '200px', // Fixed height for the square
-          position: 'relative',
-          overflow: 'hidden', // Prevents overflow of images
-        }}>
-          <div style={{
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(2, 1fr)', 
-            gridTemplateRows: 'repeat(2, 1fr)', 
-            gap: '0px', // No gap to avoid overflow
-            width: '100%', 
-            height: '100%', 
-          }}>
-            {galleryPics.slice(0, 4).map((pic, index) => (
-              <img 
-                key={index} 
-                src={pic} 
-                alt={`Gallery ${index + 1}`} 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  borderRadius: '5px', 
-                  objectFit: 'cover', // Ensures image fills the square
-                  overflow: 'hidden', // Added overflow hidden for each image
-                }} 
-              />
-            ))}
-            {/* Fill remaining slots with blank divs if less than 4 images */}
-            {[...Array(4 - galleryPics.length)].map((_, index) => (
-              <div key={index} style={{ backgroundColor: '#f0f0f0', borderRadius: '5px' }} />
-            ))}
-          </div>
-        </div>
-        
-        {/* Section 3: Name and Bio */}
-        <div style={{ flex: 3, padding: '0 10px' }}>
-          <h3 style={{ margin: '0' }}>{name}</h3>
-          <p style={{ margin: '0' }}>{bio}</p>
-        </div>
-        
-        {/* Section 4: Remove Button */}
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            <Fab color="secondary" aria-label="remove" onClick={onRemove}>
-              <RemoveIconButton />
-            </Fab>
-          </Box>
-        </div>
-      </div>
 
-      {/* Divider Line Between Rows */}
-      <hr style={{ margin: '0', border: '1px solid #ddd', width: '100%' }} />
-    </div>
-  );
-};
+const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
 
-export default FavoriteRow;
+    let ratingTotal = 0;
+
+    const navigate = useNavigate();
+
+    for(let i = 0; i < ratings.length; i++) {
+        ratingTotal += ratings[i].rating
+    }
+    const averageRating = ratingTotal / ratings.length
+
+    return (
+        <ResultBox onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={hover? {  boxShadow: `0.3em 0.3em 1em ${colors.secondary}`} : {}}>
+            <Stack sx={stackStyle} direction="row" spacing={3}>
+                {
+                    Object.keys(images).length > 0 ? <ImageBox src={Object.values(images)[0]}/> : ""
+                }
+                {
+                    Object.keys(images).length > 1 ? <ImageBox src={Object.values(images)[1]}/> : ""
+                }
+                
+                <Stack direction="column" gap={1} sx={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Stack direction="row" gap={1} sx={{alignItems: 'center'}}>
+                        <Avatar sx={{width: 50, height: 50, backgroundColor: colors.secondaryBackground}}/>
+                        <Stack direction="column">
+                            <MiniHeaderText>{name}</MiniHeaderText>
+                            <Stack sx={stackStyle} spacing={0.6} direction="row">
+                                <MiniHeaderText style={{fontSize: "14px"}}>
+                                    Price:
+                                </MiniHeaderText>
+                                <SubText>
+                                    ${priceLow}-${priceHigh}
+                                </SubText>
+                            </Stack>
+                        </Stack>
+                    </Stack>
+                    <Stack direction="row">
+                        <Rating value={averageRating} readOnly/>
+                        ({ratings.length})
+                    </Stack>
+                </Stack>
+                <Stack direction="column" gap={1}>
+                {
+                    labels.length > 0 ? <Chip label={labels[0]} sx={{backgroundColor: colors.secondaryBackground}}/> : ""
+                }
+                {
+                    labels.length > 1 ? <Chip label={labels[1]} sx={{backgroundColor: colors.secondaryBackground}}/> : ""
+                }
+                </Stack>
+                
+                <div style={{marginLeft: 'auto',  marginLeft: '16px'}}>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            backgroundColor: colors.dark_background,
+                            color: colors.text.primary,
+                        }}
+                        onClick={() => navigate("/hair_page")}
+                    >
+                        VISIT PAGE
+                    </Button>
+                </div>
+                <div>
+                <RemoveIconbutton />
+                </div>
+                    
+            </Stack>
+        </ResultBox>
+    )
+
+}
+
+const stackStyle = {
+    display: "flex",
+    alignItems: "center"
+}
+
+const ResultBox = styled.div`
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    
+    
+`
+
+const ImageBox = styled.img`
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+`
+
+export default SearchResultFavorites

@@ -9,6 +9,7 @@
         "email": "stylist@test.com",
         "password": 30239160435842,
         "userId": 101,
-        "userType": "stylist"
+        "userType": "stylist",
+        "favorites": [1,2]
     }
 }

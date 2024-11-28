@@ -1,5 +1,5 @@
 import {ArrowBack} from "@mui/icons-material";
-import {IconButton} from "@mui/material";
+import {IconButton, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 export function PreviousPageButton() {
@@ -7,8 +7,9 @@ export function PreviousPageButton() {
     const handleBack = () => navigate(-1);
 
     return (
-        <IconButton aria-label="backtrace" color="primary" onClick={handleBack}>
-            <ArrowBack fontSize={"large"} />
+        <IconButton aria-label="backtrace" color="primary" onClick={handleBack} sx={{justifyContent:"center"}}>
+            {/*<ArrowBack fontSize={"large"} />*/}
+            <Typography sx={{textDecoration: "underline"}}>Not interested? Click here to return.</Typography>
         </IconButton>
     )
 }

@@ -6,7 +6,8 @@ import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
 import TopAnchoredMenu from "./components/navigation_drawer";
 import styled from "styled-components";
-
+import { colors } from "./general/colors";
+import PasswordRecoveryPage from "./pages/passrecovery_page";
 
 
 function App() {
@@ -16,27 +17,23 @@ function App() {
   const isAuthPath = location.pathname.startsWith('/auth');
   return (
     <div>
-      <Main>
+      <div style={ !isAuthPath ? {paddingTop: '100px'} : {}}>
         {!isAuthPath && <TopAnchoredMenu />}
         <Routes>
           <Fragment>
             <Route path="auth">
               <Route path="login" element={<HairDresserLogin />} />
               <Route path="register" element={<HairDresserSignUp />} />
+              <Route path="password_reset" element={<PasswordRecoveryPage />} />
             </Route>
             <Route path="hair_page" element={<HairdresserPage />} />
             <Route path="" element={<Homepage />} />
             <Route path="favorites" element={<FavoritesPage />} />
           </Fragment>
         </Routes>
-      </Main>
+      </div>
     </div>
   );
 }
-
-const Main = styled.div`
-  padding-top: 100px;
-
-`
 
 export default App;

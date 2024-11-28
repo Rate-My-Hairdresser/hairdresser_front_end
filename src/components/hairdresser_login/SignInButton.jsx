@@ -15,7 +15,7 @@ export default function HairDresserSignInBtn() {
     return (
         <Button
             type={"button"}
-            width={"3rem"}
+            width={"4rem"}
             variant={"contained"}
             onClick={handleLogin}
             sx={{

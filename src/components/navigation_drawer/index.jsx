@@ -9,8 +9,14 @@ import {TitleButton} from "./home";
 import { colors } from "../../general/colors";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from "react";
 
 export default function TopAnchoredMenu() {
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
     return (
         <>
@@ -37,7 +43,7 @@ export default function TopAnchoredMenu() {
                                 Rate My Hairdresser
                             </Typography>
 
-                            <HairDresserUserMenu/>
+                            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                         </Toolbar>
                     </Container>
                 </AppBar>
@@ -52,7 +58,7 @@ const theme2 = createTheme({
             styleOverrides: {
                 dense: {
                     height: 100,
-                    minHeight: 46,
+                    minHeight: 50,
                 }
             }
         }

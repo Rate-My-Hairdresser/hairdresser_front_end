@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { SIGN_IN, SIGN_OUT } from './actions';
+import userList from "../../data/userList.json";
 
 const initialUserState = {
   signedIn: false,
@@ -11,17 +12,35 @@ const initialUserState = {
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
     case SIGN_IN:
+      
+      if (userList[action.payload.hash_id] !== undefined) {
+        if (userList[action.payload.hash_id].password === action.payload.hash_pw) {
+          console.log("HIT")
+          sessionStorage.setItem("token", JSON.stringify(action.payload.hash_id));
+          if (userList[action.payload.hash_id].userType === "stylist") {
+            sessionStorage.setItem("isStylist", true);
+          } else {
+            sessionStorage.setItem("isStylist", false);
+          }
+
+          return {
+            signedIn: true,
+            email: action.payload.email,
+            userType: action.payload.userType
+          };
+        }
+      }
+
       return {
-        signedIn: true,
-        email: action.payload.email,
-        userId: action.payload.userId,
-        userType: action.payload.userType
-      };
+          signedIn: false,
+          email: "",
+          userType: "notfound"
+      }
     case SIGN_OUT:
+      sessionStorage.clear();
       return {
         signedIn: false,
         email: "",
-        userId: 0,
         userType: ""
       };
     default:

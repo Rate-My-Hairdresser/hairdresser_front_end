@@ -4,7 +4,7 @@ import {
     Checkbox, Divider,
     FormControl,
     FormControlLabel,
-    FormLabel, Grid2,
+    Container,
     Stack,
     TextField,
     Typography
@@ -13,89 +13,103 @@ import {
 import { useNavigate } from "react-router-dom";
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
-import {useState} from "react";
-import {Link} from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
-import userData from "../../data/userList.json"
 
-export default function HairDresserLogin( { setToken } ) {
-    const [account, setAccount] = useState("");
-    const [password, setPassword] = useState("");
+import { selectUser } from "../../general/redux/selectors";
+import { PreviousPageButton } from "../../components/navigation_drawer/previous/index.jsx";
+
+// Originated from: https://github.com/bryc/code
+// It is public domain. We will force seed to be 42.
+const cyrb53 = (str, seed = 42) => {
+    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+    for(let i = 0, ch; i < str.length; i++) {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1  = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2  = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+};
+
+export default function HairDresserLogin( { } ) {
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState("");
-    const [open, setOpen] = useState(false);
+
+    let user = useSelector(selectUser);
+
+    //const { token, setToken } = useToken();
+
+    useEffect(() => {
+        setLoginError(false);
+        setLoginErrorMessage("");
+    }, [email, password]);
 
     const nav = useNavigate();
     const dispatch = useDispatch();
-    const navRegister = () => nav("/register");
-
-    const handleLogin = () => {
-        
-        
-        //this is where error checking would be added
-
-        //check if user exists
-        const result = getUser(email, password);
-
-        if(result.accept === true) {
-            dispatch(signIn(email, result.userId, result.userType)) //sign-in user
-            if(result.userType === userType.STANDARD) { //regular users go to homepage
-                nav("/");
-            } else if(result.userType === userType.STYLIST) {
-                //go to the stylists page
-            }
-            
-        } else {
-            console.error("that user does not exist")
-        }
-    }
-
-    const getUser = (email, password) => {
-        for(let [key, value] of Object.entries(userData)) {
-            if(value.email === email) {
-                if(value.password === password) {
-                    return {
-                        accept: true,
-                        email: email,
-                        userId: value.userId,
-                        userType: value.userType
-                    }
-                }
-            }
-        }
-        return {accept: false}
-    }
+    const navRegister = () => nav("/auth/register");
+    const navPrev = () => nav("/");
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
-        if (loginError) {
+        console.log("SEND");
+        //this is where error checking would be added
+
+        if (email.length === 0 || password.length === 0) {
+            setLoginErrorMessage("Email or password is missing");
+            setLoginError(true);
             event.preventDefault();
             return;
-        }
-        const data = new FormData(event.currentTarget);
-    }
+        } else if (!re.test(email)) {
+            setLoginErrorMessage("Email need to be an email");
+            setLoginError(true);
+            event.preventDefault();
+            return;
+        } else {
+            let hash_id = cyrb53(email);
+            let hash_pw = cyrb53(password);
+            dispatch(signIn(hash_id, hash_pw, userType.STANDARD));
+            let id = sessionStorage.getItem("token");
 
-    const funcPrototype = () => {
-        return true;
+            if (id === null) {
+                console.log("FAIL");
+                setLoginError(true);
+                setLoginErrorMessage("Incorrect account information");
+                event.preventDefault();
+                return;
+            } else {
+                const data = new FormData(event.currentTarget);
+                navPrev();
+            }
+        }
     }
 
     return (
         <MasterBox>
-            <SignInContainer>
+            <SignInContainer margin={"dense"}>
+                <Container />
                 <Typography
                     component="h1"
                     variant="h7"
                     sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
                     paddingLeft={4}
-                    paddingTop={6}
+                    paddingTop={0}
+                    paddingBottom={6}
                 >
                     Sign in
                 </Typography>
                 <Box
                     component="form"
-                    // onSubmit={handleSubmit}
+                    onSubmit={handleSubmit}
                     noValidate
                     sx={{
                         display: 'flex',
@@ -105,17 +119,15 @@ export default function HairDresserLogin( { setToken } ) {
                     }}
                 >
                     <FormControl>
-                        <FormLabel htmlFor="email">Email</FormLabel>
                         <TextField
+                            label="email"
                             error={loginError}
-                            helperText={loginErrorMessage}
                             id="email"
                             type="email"
                             name="email"
                             placeholder="your@email.com"
                             autoComplete="email"
                             autoFocus
-                            required
                             fullWidth
                             variant="outlined"
                             value={email}
@@ -125,8 +137,8 @@ export default function HairDresserLogin( { setToken } ) {
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel htmlFor="password">Password</FormLabel>
                         <TextField
+                            label="password"
                             error={loginError}
                             helperText={loginErrorMessage}
                             name="password"
@@ -135,33 +147,33 @@ export default function HairDresserLogin( { setToken } ) {
                             id="password"
                             autoComplete="current-password"
                             autoFocus
-                            required
                             fullWidth
                             variant="outlined"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             color={loginError ? 'error' : 'primary'}
                         />
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Link
                                 component="button"
                                 type="button"
                                 variant="body2"
                                 sx={{ alignSelf: 'baseline' }}
+                                to={"/auth/password_reset"}
                             >
                                 Forgot your password?
                             </Link>
                         </Box>
                     </FormControl>
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
+                        control={<Checkbox value="remember" color="primary" disabled={loginError}/>}
+                        margin="dense"
+                        label={"Remember Me"}
                     />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        onClick={handleLogin}
                     >
                         Sign in
                     </Button>
@@ -170,11 +182,12 @@ export default function HairDresserLogin( { setToken } ) {
                         fullWidth
                         color={"secondary"}
                         variant="contained"
-                        onClick={handleLogin}//navRegister
+                        onClick={navRegister}
                     >
                         Register for new account
                     </Button>
                 </Box>
+                <PreviousPageButton />
             </SignInContainer>
         </MasterBox>
     )
@@ -197,8 +210,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",
-    alignItems: "space-between",
-    justifyContent: "space-between",
+    justifyContent: "top",
     padding: theme.spacing(3),
     backgroundColor: theme.palette.background.paper,
     borderRadius: theme.shape.borderRadius,

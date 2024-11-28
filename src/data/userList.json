@@ -1,14 +1,14 @@
 {
-    "1": {
-        "email": "stylist@test.com",
-        "password": "password",
-        "userId": 1,
-        "userType": "stylist"
-    },
-    "2": {
+    "276741892685677": {
         "email": "user@test.com",
-        "password": "password",
-        "userId": 10001,
+        "password": 30239160435842,
+        "userId": 102,
         "userType": "standard"
+    },
+    "2575749558319096": {
+        "email": "stylist@test.com",
+        "password": 30239160435842,
+        "userId": 101,
+        "userType": "stylist"
     }
 }

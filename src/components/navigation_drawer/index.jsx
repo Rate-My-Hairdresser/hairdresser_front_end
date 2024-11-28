@@ -10,10 +10,8 @@ import { colors } from "../../general/colors";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
-import { useSelector } from 'react-redux';
 
 export default function TopAnchoredMenu() {
-    const user = useSelector(selectUser);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {

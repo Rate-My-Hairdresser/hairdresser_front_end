@@ -1,10 +1,10 @@
 import {
     Box,
     Button,
-    Checkbox, Divider,
+    Checkbox,
     FormControl,
     FormControlLabel,
-    FormLabel, Grid2,
+    FormLabel,
     Stack,
     TextField,
     Typography
@@ -16,27 +16,11 @@ import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { PreviousPageButton } from "../../components/navigation_drawer/previous";
 
-const cyrb53 = (str, seed = 42) => {
-    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
-    for(let i = 0, ch; i < str.length; i++) {
-        ch = str.charCodeAt(i);
-        h1 = Math.imul(h1 ^ ch, 2654435761);
-        h2 = Math.imul(h2 ^ ch, 1597334677);
-    }
-    h1  = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
-    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-    h2  = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
-    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-  
-    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-};
-
 export default function HairDresserSignUp() {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpw, setConfirmPW] = useState("");
     const [email, setEmail] = useState("");
-    const [unchanged, setUnchanged] = useState(true);
     const [accountError, setaccountError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
@@ -50,25 +34,31 @@ export default function HairDresserSignUp() {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
+        var passError = false;
         if (account.length === 0) {
             setAccountErrorMessage("Account name is empty!");
             setaccountError(true);
+            passError = true;
         }
         if (password.length === 0) {
             setPasswordErrorMessage("Password is empty!");
             setPasswordError(true);
+            passError = true;
         }
         if (email.length === 0) {
             setEmailErrorMessage("Email is empty!");
             setEmailError(true);
+            passError = true;
         }
-        if (!accountError && !passwordError && !emailError && !unchanged) {
-            const data = new FormData(event.currentTarget);
+        if (!accountError && !passwordError && !emailError && !passError) {
+            new FormData(event.currentTarget);
             navLogin();
         } else {
             event.preventDefault();
             return;
         }
+        new FormData(event.currentTarget);
+        navLogin();
     }
 
     const handleCheckbox = (event) => {
@@ -107,7 +97,6 @@ export default function HairDresserSignUp() {
     const checkName = (value) => {
         if (value.length > 0) {
             setaccountError(false);
-            setUnchanged(false);
             setAccount(value);
         } else {
             setaccountError(true);

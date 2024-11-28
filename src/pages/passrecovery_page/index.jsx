@@ -15,8 +15,7 @@ const PasswordRecoveryPage = () => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const [verify, setVerify] = useState("");
-    const [verifyError, setVerifyError] = useState(true);
-    const [verifyErrorMessage, setVerifyErrorMessage] = useState("");
+    const [verifySent, setVerifySent] = useState(false);
 
     const checkEmail = (value) => {
         if (!re.test(value)) {
@@ -29,15 +28,10 @@ const PasswordRecoveryPage = () => {
         setEmail(value);
     }
 
-    const checkVerify = (value) => {
-        if (value !== "A123B456") {
-            setVerifyErrorMessage("Verification code is incorrect");
-            setVerifyError(true);
-        } else {
-            setVerifyErrorMessage("");
-            setVerifyError(false);
+    const sendReset = () => {
+        if (!emailError) {
+            setVerifySent(true);
         }
-        setVerify(value);
     }
 
     return (
@@ -86,10 +80,11 @@ const PasswordRecoveryPage = () => {
                                 onChange={(e) => checkEmail(e.target.value)}
                                 sx={{ ariaLabel: 'email' }}
                             />
-                            <Button variant="contained" size="small" disabled={emailError}>
+                            <Button variant="contained" size="small" onClick={sendReset}>
                                 Send
                             </Button>
                         </FormControl>
+                        {verifySent && <Typography>Reset email has been sent.</Typography>}
                     </CardContent>
                 </Card>
                 <PreviousPageButton />

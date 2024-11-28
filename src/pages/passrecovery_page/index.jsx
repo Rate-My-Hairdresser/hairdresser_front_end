@@ -57,10 +57,10 @@ const PasswordRecoveryPage = () => {
                         >
                             Don't worry, we can reset it for you, with account email.
                         </Typography>
-                        <Typography inline component="h2" variant="h1" sx={{ width: '100%', fontSize: 'clamp(1rem, 10vw, 0.15rem)', wordBreak: "break-word" }}>
+                        <Typography inline="true" component="h2" variant="h1" sx={{ width: '100%', fontSize: 'clamp(1rem, 10vw, 0.15rem)', wordBreak: "break-word" }}>
                             We will send you email with link to reset your password.
                         </Typography>
-                        <Typography inline>
+                        <Typography inline="true">
                             The link will be valid for 30 minutes.
                         </Typography>
                         <FormControl display="flex" sx={{flexDirection: "row"}}>

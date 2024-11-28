@@ -64,7 +64,7 @@ export default function HairDresserLogin( { } ) {
         console.log("SEND");
         //this is where error checking would be added
 
-        if (email.length == 0 || password.length == 0) {
+        if (email.length === 0 || password.length === 0) {
             setLoginErrorMessage("Email or password is missing");
             setLoginError(true);
             event.preventDefault();
@@ -98,7 +98,6 @@ export default function HairDresserLogin( { } ) {
             <SignInContainer margin={"dense"}>
                 <Container />
                 <Typography
-                    inline
                     component="h1"
                     variant="h7"
                     sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}

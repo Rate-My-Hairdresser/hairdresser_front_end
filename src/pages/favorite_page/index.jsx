@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FavoriteRow from '../../components/favorites/favorite_row/index';
 import HomeIcon from '../../components/favorites/homeicon/index';
 import data from '../../components/favorites/data.json';
 import Footer from '../../components/favorites/favorite_footer';
 
 const FavoritesPage = () => {
-    const [favorites, setFavorites] = useState(data);
 
+    //const [favorites, setFavorites] = useState(data);
+    const favorites = data
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             {/* Header Section */}

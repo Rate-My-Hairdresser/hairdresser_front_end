@@ -1,5 +1,4 @@
 import hairdresserData from "../data/hairdresserList.json";
-import { hairServiceFilters } from "../data/filterChips";
 
 /**
  * 
@@ -12,7 +11,6 @@ export const search = (maximumPrice, text, filterChips) => {
     const textWeight = 10;
     const priceWeight = 5;
     const filterWeight = 1;
-    const numberOfResults = 6;
 
     const mapArr = Object.entries(hairdresserData)
         .map(([key, value]) => {

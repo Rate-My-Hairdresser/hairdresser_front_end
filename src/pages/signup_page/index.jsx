@@ -1,10 +1,10 @@
 import {
     Box,
     Button,
-    Checkbox, Divider,
+    Checkbox,
     FormControl,
     FormControlLabel,
-    FormLabel, Grid2,
+    FormLabel,
     Stack,
     TextField,
     Typography
@@ -13,24 +13,52 @@ import {
 import { useNavigate } from "react-router-dom";
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
-import {useState} from "react";
+import { useState } from "react";
+import { PreviousPageButton } from "../../components/navigation_drawer/previous";
 
 export default function HairDresserSignUp() {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmpw, setConfirmPW] = useState("");
+    const [email, setEmail] = useState("");
     const [accountError, setaccountError] = useState(false);
-    const [accountErrorMessage, setaccountErrorMessage] = useState("");
+    const [passwordError, setPasswordError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [accountErrorMessage, setAccountErrorMessage] = useState("");
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+    const [emailErrorMessage, setEmailErrorMessage] = useState("");
     const [isStylist, setisStylist] = useState(false);
 
     const nav = useNavigate();
-    const navLogin = () => nav("/login");
+    const navLogin = () => nav("/auth/login");
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
-        if (accountError) {
+        var passError = false;
+        if (account.length === 0) {
+            setAccountErrorMessage("Account name is empty!");
+            setaccountError(true);
+            passError = true;
+        }
+        if (password.length === 0) {
+            setPasswordErrorMessage("Password is empty!");
+            setPasswordError(true);
+            passError = true;
+        }
+        if (email.length === 0) {
+            setEmailErrorMessage("Email is empty!");
+            setEmailError(true);
+            passError = true;
+        }
+        if (!accountError && !passwordError && !emailError && !passError) {
+            new FormData(event.currentTarget);
+            navLogin();
+        } else {
             event.preventDefault();
             return;
         }
-        const data =new FormData(event.currentTarget);
+        new FormData(event.currentTarget);
+        navLogin();
     }
 
     const handleCheckbox = (event) => {
@@ -43,32 +71,76 @@ export default function HairDresserSignUp() {
 
     function StylistForm() {
         return null;
-        if (isStylist) {
-            return <FormControl>
-                    <FormLabel htmlFor="address">Salon Address</FormLabel>
-                    <TextField
-                        error={accountError}
-                        helperText={accountErrorMessage}
-                        id="address"
-                        type="address"
-                        name="address"
-                        placeholder="Address..."
-                        autoComplete="address"
-                        autoFocus
-                        required
-                        fullWidth
-                        variant="outlined"
-                        color={accountError ? 'error' : 'primary'}
-                        sx={{ ariaLabel: 'address' }}
-                    />
-                </FormControl>
-        } else {
-            return null
-        }
+        // if (isStylist) {
+        //     return <FormControl>
+        //             <FormLabel htmlFor="address">Salon Address</FormLabel>
+        //             <TextField
+        //                 error={accountError}
+        //                 id="address"
+        //                 type="address"
+        //                 name="address"
+        //                 placeholder="Address..."
+        //                 autoComplete="address"
+        //                 autoFocus
+        //                 required
+        //                 fullWidth
+        //                 variant="outlined"
+        //                 color={accountError ? 'error' : 'primary'}
+        //                 sx={{ ariaLabel: 'address' }}
+        //             />
+        //         </FormControl>
+        // } else {
+        //     return null
+        // }
     }
 
-    const funcPrototype = () => {
-        return true;
+    const checkName = (value) => {
+        if (value.length > 0) {
+            setaccountError(false);
+            setAccount(value);
+        } else {
+            setaccountError(true);
+        }
+        setAccount(value);
+    }
+
+    const checkPassword = (value) => {
+        if (value.length < 8) {
+            setPasswordErrorMessage("Password must be at least 8 characters");
+            setPasswordError(true);
+        } else if (value !== confirmpw) {
+            setPasswordErrorMessage("Confirmed password does not match");
+            setPasswordError(true);
+        } else {
+            setPasswordErrorMessage("");
+            setPasswordError(false);
+        }
+        setPassword(value);
+    }
+
+    const checkConfirm = (value) => {
+        if (password.length < 8) {
+            setPasswordErrorMessage("Password must be at least 8 characters");
+            setPasswordError(true);
+        } else if (value !== password) {
+            setPasswordErrorMessage("Confirmed password does not match");
+            setPasswordError(true);
+        } else {
+            setPasswordErrorMessage("");
+            setPasswordError(false);
+        }
+        setConfirmPW(value);
+    }
+
+    const checkEmail = (value) => {
+        if (!re.test(value)) {
+            setEmailErrorMessage("Email need to be an email");
+            setEmailError(true);
+        } else {
+            setEmailErrorMessage("");
+            setEmailError(false);
+        }
+        setEmail(value);
     }
 
     return (
@@ -77,7 +149,7 @@ export default function HairDresserSignUp() {
                     <Typography
                         component="h1"
                         variant="h7"
-                        marginTop="3rem"
+                        marginBottom="3rem"
                         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
                         Register New Account
@@ -107,17 +179,18 @@ export default function HairDresserSignUp() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={account}
+                                onChange={(e) => checkName(e.target.value)}
                                 color={accountError ? 'error' : 'primary'}
                                 sx={{ ariaLabel: 'username' }}
                             />
                         </FormControl>
                         <FormControl>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <FormLabel htmlFor="password">New Password</FormLabel>
+                                <FormLabel htmlFor="password">New Password (Minimum 8 characters)</FormLabel>
                             </Box>
                             <TextField
-                                error={accountError}
-                                helperText={accountErrorMessage}
+                                error={passwordError}
                                 name="password"
                                 placeholder="new password..."
                                 type="password"
@@ -126,29 +199,33 @@ export default function HairDresserSignUp() {
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={accountError ? 'error' : 'primary'}
+                                value={password}
+                                onChange={(e) => checkPassword(e.target.value)}
+                                color={passwordError ? 'error' : 'primary'}
                             />
                         </FormControl>
                         <FormControl>
                             <TextField
-                                error={accountError}
-                                helperText={accountErrorMessage}
+                                error={passwordError}
+                                helperText={passwordErrorMessage}
                                 name="confpassword"
                                 placeholder="confirm password..."
-                                type="confpassword"
+                                type="password"
                                 id="confpassword"
                                 autoFocus
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={accountError ? 'error' : 'primary'}
+                                value={confirmpw}
+                                onChange={(e) => checkConfirm(e.target.value)}
+                                color={passwordError ? 'error' : 'primary'}
                             />
                         </FormControl>
                         <FormControl>
                             <FormLabel htmlFor="email">Email</FormLabel>
                             <TextField
-                                error={accountError}
-                                helperText={accountErrorMessage}
+                                error={emailError}
+                                helperText={emailErrorMessage}
                                 id="email"
                                 type="email"
                                 name="email"
@@ -158,7 +235,9 @@ export default function HairDresserSignUp() {
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={accountError ? 'error' : 'primary'}
+                                value={email}
+                                onChange={(e) => checkEmail(e.target.value)}
+                                color={emailError ? 'error' : 'primary'}
                                 sx={{ ariaLabel: 'email' }}
                             />
                         </FormControl>
@@ -172,11 +251,11 @@ export default function HairDresserSignUp() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={navLogin}
                         >
                             Register
                         </Button>
                     </Box>
+                    <PreviousPageButton />
                 </SignUpContainer>
         </MasterBox>
     )
@@ -184,7 +263,7 @@ export default function HairDresserSignUp() {
 
 const MasterBox = style.div`
     position: fixed;
-    top: 0;
+    top: 5vh;
     left: 0;
     width: 100vw;
     height: 100vh;

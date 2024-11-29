@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectUser } from "../../general/redux/selectors";
-import { styled } from '@mui/material/styles';
 
 export default function HairDresserSignInBtn() {
 
@@ -16,7 +15,7 @@ export default function HairDresserSignInBtn() {
     return (
         <Button
             type={"button"}
-            width={"3rem"}
+            width={"4rem"}
             variant={"contained"}
             onClick={handleLogin}
             sx={{

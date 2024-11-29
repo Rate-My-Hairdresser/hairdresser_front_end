@@ -38,7 +38,7 @@ const HairdresserPage = () => {
             reviewPhoto: photo,
             reviewRating: rating
         })
-    }, [newRating])
+    }, [])
 
     //setReviewNumber(getReviewNumber(currentReviews))
 
@@ -50,7 +50,7 @@ const HairdresserPage = () => {
         }
         setReviewNumber(getReviewNumber(currentReviews))
         
-    }, [newRating])
+    }, [newRating, currentReviews, reviewIn])
 
     return (
         <Grid2 container spacing={3} margin={3}>

@@ -1,25 +1,17 @@
-import {useState} from "react";
 import {
-    Divider,
-    Stack,
     AppBar,
     Container,
     Typography,
     Toolbar,
-    Box
 } from "@mui/material";
-import {useNavigate} from "react-router-dom";
-import {PreviousPageButton} from "./previous";
 import HairDresserUserMenu from "./hairdresser_usermenu";
-import {selectUser} from "../../general/redux/selectors";
-import {useSelector} from "react-redux";
 import {TitleButton} from "./home";
 import { colors } from "../../general/colors";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from "react";
 
 export default function TopAnchoredMenu() {
-    const user = useSelector(selectUser);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -43,7 +35,6 @@ export default function TopAnchoredMenu() {
                                     mr: 2,
                                     display: { xs: 'none', md: 'flex' },
                                     fontWeight: 100,
-                                    color: 'inherit',
                                     textDecoration: 'none',
                                     fontSize: 40,
                                     color: colors.text.primary,
@@ -52,7 +43,7 @@ export default function TopAnchoredMenu() {
                                 Rate My Hairdresser
                             </Typography>
 
-                            <HairDresserUserMenu/>
+                            <HairDresserUserMenu handleClick={handleClick} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                         </Toolbar>
                     </Container>
                 </AppBar>
@@ -67,7 +58,7 @@ const theme2 = createTheme({
             styleOverrides: {
                 dense: {
                     height: 100,
-                    minHeight: 46,
+                    minHeight: 50,
                 }
             }
         }

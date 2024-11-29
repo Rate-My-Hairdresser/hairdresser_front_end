@@ -1,8 +1,8 @@
-import { Box, Modal, InputBase, Input, Chip, Button, IconButton, Slider } from "@mui/material"
+import { Box, Modal, Chip, Button, IconButton, Slider } from "@mui/material"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import CloseIcon from '@mui/icons-material/Close';
-import { HeaderText, MiniHeaderText } from "../../general/Text"
+import { HeaderText } from "../../general/Text"
 import { colors } from "../../general/colors";
 
 

@@ -1,16 +1,13 @@
 import { Avatar, Grid2, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { colors } from "../../../general/colors"
+import { colors } from "../../../general/colors";
 import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
-import styled from "styled-components"
+import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
 
-
 const HairdresserSummary = ({data, reviewNumber}) => {
-
-    // const data = hairData[1];    
 
     return (
         <Container>
@@ -21,7 +18,7 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     </IconButton>
                 </BackContainer>
                 <AvatarBox>
-                <Avatar sx={{ width: 110, height: 110, backgroundColor: colors.dark_background }} />
+                    <Avatar sx={{ width: 110, height: 110, backgroundColor: colors.dark_background }} />
                 </AvatarBox>
                 <HeaderText style={{marginTop: "auto"}}>
                     {data.name}
@@ -41,13 +38,13 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     <Grid2 size={3}>
                         <InfoContainer>
                             <MiniHeaderText>Salon: </MiniHeaderText>
-                            <SubText>&nbsp; {data.salon.name}</SubText>
+                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.name}</SubText> {/* Increased font size here */}
                             <MiniHeaderText>Location: </MiniHeaderText>
-                            <SubText>&nbsp; {data.salon.location}</SubText>
+                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.location}</SubText> {/* Increased font size here */}
                             <MiniHeaderText>Contact Info: </MiniHeaderText>
                             {
                                 Object.entries(data.salon.contact).map(([key, value]) => (
-                                    <SubText key={key}>&nbsp; {key}: {value}</SubText>
+                                    <SubText key={key} style={{ fontSize: '20px' }}>&nbsp; {key}: {value}</SubText> 
                                 ))
                             }
                         </InfoContainer>
@@ -55,20 +52,19 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     <Grid2 size={7}>
                         <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]}/>
                     </Grid2>
-                  
 
-<Grid2 size={2}>
-    {data.filters.map((value, index) => (
-     <Chip 
-     label={value} 
-     key={index} 
-     sx={{ 
-         backgroundColor: colors.dark_background, 
-         marginBottom: '1rem', 
-         marginRight: '0.5rem', 
-     }} 
- />
-    ))}
+                    <Grid2 size={2}>
+                        {data.filters.map((value, index) => (
+                            <Chip 
+                                label={value} 
+                                key={index} 
+                                sx={{ 
+                                    backgroundColor: colors.dark_background, 
+                                    marginBottom: '1rem', 
+                                    marginRight: '0.5rem', 
+                                }} 
+                            />
+                        ))}
                     </Grid2>
                 </Grid2>
             </BottomSection>
@@ -77,8 +73,6 @@ const HairdresserSummary = ({data, reviewNumber}) => {
 }
 
 export default HairdresserSummary;
-
-
 
 const Container = styled.div`
     background-color: ${colors.background};

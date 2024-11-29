@@ -12,16 +12,13 @@ import XIcon from '@mui/icons-material/X';
 import { IconButton, Stack } from "@mui/material";
 import { Link } from 'react-router-dom';
 
-
-
-
 const logos = {
-"instagram": <InstagramIcon style={{ color: colors.dark_background }} />,  // Correct way to use a variable for color
-    "facebook": <FacebookIcon style={{ color: colors.dark_background }}/>,
-    "website": <LanguageIcon style={{ color: colors.dark_background }}/>,
-    "linkedin": <LinkedInIcon style={{ color: colors.dark_background }}/>,
-    "twitter": <XIcon style={{ color: colors.dark_background }}/>,
-    "x": <XIcon style={{ color: colors.dark_background }}/>
+  "instagram": <InstagramIcon style={{ color: colors.dark_background }} />,
+  "facebook": <FacebookIcon style={{ color: colors.dark_background }} />,
+  "website": <LanguageIcon style={{ color: colors.dark_background }} />,
+  "linkedin": <LinkedInIcon style={{ color: colors.dark_background }} />,
+  "twitter": <XIcon style={{ color: colors.dark_background }} />,
+  "x": <XIcon style={{ color: colors.dark_background }} />
 }
 
 const HairDresserSideBio = ({data}) => {
@@ -29,7 +26,7 @@ const HairDresserSideBio = ({data}) => {
     const [saved, setSaved] = useState(false)
 
     const formattedBio = data.biography.split('\n').map((line, index) => (
-        <SubText key={index}>{line}</SubText>
+        <SubText key={index} style={{ fontSize: '20px' }}>{line}</SubText> 
     ));
 
     return (
@@ -37,13 +34,12 @@ const HairDresserSideBio = ({data}) => {
             <FavoriteBox>
                 <IconButton  onClick={() => setSaved(!saved)}>
                     {
-                                saved ? (
-                                    <BookmarkIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
-                                ) : (
-                                    <BookmarkBorderIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
-                                )
+                        saved ? (
+                            <BookmarkIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                        ) : (
+                            <BookmarkBorderIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                        )
                     }
-                    
                 </IconButton>
             </FavoriteBox>
             <TextBox>
@@ -53,7 +49,6 @@ const HairDresserSideBio = ({data}) => {
                 <SubText>
                     {formattedBio}
                 </SubText>
-                
             </TextBox>
             <TextBox style={{borderBottom: 0}}>
                 <HeaderText>
@@ -86,7 +81,6 @@ const FavoriteBox = styled.div`
     border-bottom: 1px solid ${colors.dark_background};
     padding-bottom: 1rem;
     font-family: 'DarkerGrotesque';
-
 `
 
 const TextBox = styled.div`
@@ -96,7 +90,6 @@ const TextBox = styled.div`
     overflow-wrap: break-word;
     border-bottom: 1px solid ${colors.dark_background};
     font-family: 'DarkerGrotesque';
-
 `
 
 const Container = styled.div`
@@ -105,7 +98,6 @@ const Container = styled.div`
     padding: 1rem;
     display: flex;
     flex-direction: column;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
     font-family: 'DarkerGrotesque';
-
 `

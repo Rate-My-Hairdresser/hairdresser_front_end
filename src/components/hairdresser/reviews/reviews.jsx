@@ -41,14 +41,17 @@ const Container = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     position: relative;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+    font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
+    font-size: 20px; /* Set font size to 20px */
 `;
 
 const Title = styled.h2`
     margin: 0 0 1rem 0;
     color: ${colors.primary};
     text-align: center;
+    font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
+
 `;
 
 const ReviewBox = styled(Box)`
@@ -58,15 +61,20 @@ const ReviewBox = styled(Box)`
     padding: 0.5rem;
     border: 1px solid ${colors.dark_background};
     border-radius: 10px;
-
+    font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
+    font-size: 20px; /* Set font size to 20px */
 `;
 
 const ReviewContent = styled.div`
     flex: 1;
+    font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
+    font-size: 20px; /* Set font size to 20px */
 `;
 
 const Comment = styled.p`
     margin-top: 0.5rem;
+    font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
+    font-size: 20px; /* Set font size to 20px */
 `;
 
 const ReviewPhoto = styled.img`
@@ -94,5 +102,5 @@ const LeaveReviewButton = styled.button`
     }
     &:active {
         opacity: 0.4;
-}
+    }
 `;

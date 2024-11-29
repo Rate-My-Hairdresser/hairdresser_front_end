@@ -58,19 +58,22 @@ const HairdresserGallery = ({photos}) => {
                                 alt={key}
                                 loading="lazy"
                             />
-                            <ImageListItemBar
-                                sx={{borderRadius: "0px 0px 15px 15px"}}
-                                title={key}
-                                actionIcon={
-                                    <IconButton
-                                      sx={{ color: 'white' }}
-                                      aria-label={`Fullscreen ${key}`}
-                                      onClick={() => fullscreenPressed(value)}
-                                    >
-                                      <FullscreenIcon />
-                                    </IconButton>
-                                  }
-                            />
+<ImageListItemBar
+    sx={{
+        borderRadius: "0px 0px 15px 15px",
+        backgroundColor: "rgba(0, 0, 0, 0.7)" // Dark background with 70% opacity
+    }}
+    title={key}
+    actionIcon={
+        <IconButton
+            sx={{ color: 'white' }}
+            aria-label={`Fullscreen ${key}`}
+            onClick={() => fullscreenPressed(value)}
+        >
+            <FullscreenIcon />
+        </IconButton>
+    }
+/>
                         </ImageListItem>
                     ))
                 }

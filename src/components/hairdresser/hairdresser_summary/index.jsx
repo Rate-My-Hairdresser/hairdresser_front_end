@@ -1,15 +1,13 @@
 import { Avatar, Grid2, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { colors } from "../../../general/colors"
+import { colors } from "../../../general/colors";
 import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
-import styled from "styled-components"
+import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
 
 const HairdresserSummary = ({data, reviewNumber}) => {
-
-    // const data = hairData[1];
 
     return (
         <Container>
@@ -20,7 +18,7 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     </IconButton>
                 </BackContainer>
                 <AvatarBox>
-                    <Avatar sx={{width: 110, height: 110}}/>
+                    <Avatar sx={{ width: 110, height: 110, backgroundColor: colors.dark_background }} />
                 </AvatarBox>
                 <HeaderText style={{marginTop: "auto"}}>
                     {data.name}
@@ -40,13 +38,13 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     <Grid2 size={3}>
                         <InfoContainer>
                             <MiniHeaderText>Salon: </MiniHeaderText>
-                            <SubText>&nbsp; {data.salon.name}</SubText>
+                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.name}</SubText> {/* Increased font size here */}
                             <MiniHeaderText>Location: </MiniHeaderText>
-                            <SubText>&nbsp; {data.salon.location}</SubText>
+                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.location}</SubText> {/* Increased font size here */}
                             <MiniHeaderText>Contact Info: </MiniHeaderText>
                             {
                                 Object.entries(data.salon.contact).map(([key, value]) => (
-                                    <SubText key={key}>&nbsp; {key}: {value}</SubText>
+                                    <SubText key={key} style={{ fontSize: '20px' }}>&nbsp; {key}: {value}</SubText> 
                                 ))
                             }
                         </InfoContainer>
@@ -54,9 +52,18 @@ const HairdresserSummary = ({data, reviewNumber}) => {
                     <Grid2 size={7}>
                         <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]}/>
                     </Grid2>
+
                     <Grid2 size={2}>
                         {data.filters.map((value, index) => (
-                            <NewChips label={value} key={index}/>
+                            <Chip 
+                                label={value} 
+                                key={index} 
+                                sx={{ 
+                                    backgroundColor: colors.dark_background, 
+                                    marginBottom: '1rem', 
+                                    marginRight: '0.5rem', 
+                                }} 
+                            />
                         ))}
                     </Grid2>
                 </Grid2>
@@ -67,45 +74,57 @@ const HairdresserSummary = ({data, reviewNumber}) => {
 
 export default HairdresserSummary;
 
-const NewChips = styled(Chip)(({}) => ({
-    marginBottom: '1rem',
-    marginRight: '0.5rem'
-}))
-
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
-`
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+    font-family: 'DarkerGrotesque';
+`;
 
 const TopSection = styled.div`
     width: 100%;
     height: 4rem;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
     display: flex;
     justify-content: space-between;
-`
+    font-family: 'DarkerGrotesque';
+`;
+
 const BottomSection = styled.div`
     width: 100%;
     height: 18rem;
     display: flex;
     justify-content: space-between;
-`
+    font-family: 'DarkerGrotesque';
+`;
 
 const RatingContainer = styled.div`
     margin-top: auto;
-`
+    font-family: 'DarkerGrotesque';
+`;
 
-const BackContainer = styled.div``
+const BackContainer = styled.div`
+    font-family: 'DarkerGrotesque';
+`;
 
 const AvatarBox = styled.div`
     margin-top: 0.5rem;
     margin-left: -20%;
-`
+    font-family: 'DarkerGrotesque';
+`;
 
 const InfoContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-`
+    font-family: 'DarkerGrotesque';
+`;
+
+const NewChips = styled(Chip)(({}) => ({
+    marginBottom: '1rem',
+    marginRight: '0.5rem',
+    fontFamily: 'DarkerGrotesque',
+    backgroundColor: colors.black,  // Apply the same background color
+}));

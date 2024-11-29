@@ -122,9 +122,4 @@ const InfoContainer = styled.div`
     font-family: 'DarkerGrotesque';
 `;
 
-const NewChips = styled(Chip)(({}) => ({
-    marginBottom: '1rem',
-    marginRight: '0.5rem',
-    fontFamily: 'DarkerGrotesque',
-    backgroundColor: colors.black,  // Apply the same background color
-}));
+

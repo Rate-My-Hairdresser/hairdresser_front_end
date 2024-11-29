@@ -7,6 +7,8 @@ export const colors = {
     dark_background: '#f8b1ce',
     darker_back: '#f376a9',
     secondaryBackground: 'rgba(248, 177, 206, 0.4)',
+    black: 'black',
+
     text: {
         "primary": "#111111",
         "secondary": "#696969",

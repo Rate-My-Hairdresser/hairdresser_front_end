@@ -13,12 +13,12 @@ import { IconButton, Stack } from "@mui/material";
 import { Link } from 'react-router-dom';
 
 const logos = {
-  "instagram": <InstagramIcon style={{ color: colors.dark_background }} />,
-  "facebook": <FacebookIcon style={{ color: colors.dark_background }} />,
-  "website": <LanguageIcon style={{ color: colors.dark_background }} />,
-  "linkedin": <LinkedInIcon style={{ color: colors.dark_background }} />,
-  "twitter": <XIcon style={{ color: colors.dark_background }} />,
-  "x": <XIcon style={{ color: colors.dark_background }} />
+        "instagram": <InstagramIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
+"facebook": <FacebookIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
+  "website": <LanguageIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
+  "linkedin": <LinkedInIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
+  "twitter": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
+  "x": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
 }
 
 const HairDresserSideBio = ({data}) => {
@@ -57,7 +57,7 @@ const HairDresserSideBio = ({data}) => {
                 <Stack direction="row">
                     {Object.entries(data.links).map(([key, value]) => (
                         <IconButton key={key}>
-                            <Link to={value} target="_blank" rel="noopener noreferrer" style={{height: "24px"}}>
+                            <Link to={value} target="_blank" rel="noopener noreferrer" style={{height: "50px"}}>
                                 {logos[key]}
                             </Link>
                         </IconButton>
@@ -98,6 +98,6 @@ const Container = styled.div`
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
     font-family: 'DarkerGrotesque';
 `

@@ -57,23 +57,43 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
                 </StarContainer>
                 {error && <ErrorMessage>{error}</ErrorMessage>} {/* Display error */}
                 <Stack direction="row" spacing={2}>
-                    <TextField
-                        label="How was your service?"
-                        multiline
-                        rows={4}
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={comment}
-                        onChange={handleCommentChange}
-                    />
-                    {photo && (
-                        <ImageContainer>
-                            <RemoveButton onClick={() => setPhoto(null)}>✕</RemoveButton>
-                            <ImagePreview src={photo} />
-                        </ImageContainer>
-                    )}
-                </Stack>
+                <TextField
+    label="How was your service?"
+    multiline
+    rows={4}
+    variant="outlined"
+    fullWidth
+    margin="normal"
+    value={comment}
+    onChange={handleCommentChange}
+    inputProps={{ maxLength: 200 }} // Set maxLength to 200
+    helperText={`${comment.length}/200 characters`} // Display character count
+    sx={{
+        "& .MuiInputLabel-root": {
+            color: colors.black, // Set the label color to dark_background
+        },
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "#ccc", // Default border color
+            },
+            "&:hover fieldset": {
+                borderColor: "#888", // Border color on hover
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: colors.dark_background, // Use dark background color for border on focus
+            },
+        },
+    }}
+/>
+
+
+    {photo && (
+        <ImageContainer>
+            <RemoveButton onClick={() => setPhoto(null)}>✕</RemoveButton>
+            <ImagePreview src={photo} />
+        </ImageContainer>
+    )}
+</Stack>
                 <ButtonContainer>
                     <input
                         onChange={(e) => handleUpload(e)}

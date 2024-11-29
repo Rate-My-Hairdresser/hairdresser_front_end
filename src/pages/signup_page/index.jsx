@@ -31,7 +31,7 @@ export default function HairDresserSignUp() {
 
     const nav = useNavigate();
     const navLogin = () => nav("/auth/login");
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
         var passError = false;
@@ -71,27 +71,27 @@ export default function HairDresserSignUp() {
 
     function StylistForm() {
         return null;
-        if (isStylist) {
-            return <FormControl>
-                    <FormLabel htmlFor="address">Salon Address</FormLabel>
-                    <TextField
-                        error={accountError}
-                        id="address"
-                        type="address"
-                        name="address"
-                        placeholder="Address..."
-                        autoComplete="address"
-                        autoFocus
-                        required
-                        fullWidth
-                        variant="outlined"
-                        color={accountError ? 'error' : 'primary'}
-                        sx={{ ariaLabel: 'address' }}
-                    />
-                </FormControl>
-        } else {
-            return null
-        }
+        // if (isStylist) {
+        //     return <FormControl>
+        //             <FormLabel htmlFor="address">Salon Address</FormLabel>
+        //             <TextField
+        //                 error={accountError}
+        //                 id="address"
+        //                 type="address"
+        //                 name="address"
+        //                 placeholder="Address..."
+        //                 autoComplete="address"
+        //                 autoFocus
+        //                 required
+        //                 fullWidth
+        //                 variant="outlined"
+        //                 color={accountError ? 'error' : 'primary'}
+        //                 sx={{ ariaLabel: 'address' }}
+        //             />
+        //         </FormControl>
+        // } else {
+        //     return null
+        // }
     }
 
     const checkName = (value) => {

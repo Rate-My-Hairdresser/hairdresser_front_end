@@ -1,7 +1,7 @@
 import {
     Box,
     Button,
-    Checkbox, Divider,
+    Checkbox,
     FormControl,
     FormControlLabel,
     Container,
@@ -15,11 +15,10 @@ import style from "styled-components";
 import { styled } from '@mui/material/styles';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
 
-import { selectUser } from "../../general/redux/selectors";
 import { PreviousPageButton } from "../../components/navigation_drawer/previous/index.jsx";
 
 // Originated from: https://github.com/bryc/code
@@ -39,13 +38,11 @@ const cyrb53 = (str, seed = 42) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
-export default function HairDresserLogin( { } ) {
+export default function HairDresserLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState("");
-
-    let user = useSelector(selectUser);
 
     //const { token, setToken } = useToken();
 
@@ -58,7 +55,7 @@ export default function HairDresserLogin( { } ) {
     const dispatch = useDispatch();
     const navRegister = () => nav("/auth/register");
     const navPrev = () => nav("/");
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const handleSubmit = (event) => {
         console.log("SEND");
@@ -87,7 +84,7 @@ export default function HairDresserLogin( { } ) {
                 event.preventDefault();
                 return;
             } else {
-                const data = new FormData(event.currentTarget);
+                // const data = new FormData(event.currentTarget);
                 navPrev();
             }
         }

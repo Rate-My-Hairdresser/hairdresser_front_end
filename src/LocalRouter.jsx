@@ -5,8 +5,6 @@ import Homepage from "./pages/home_page";import FavoritesPage from './pages/favo
 import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
 import TopAnchoredMenu from "./components/navigation_drawer";
-import styled from "styled-components";
-import { colors } from "./general/colors";
 import PasswordRecoveryPage from "./pages/passrecovery_page";
 
 

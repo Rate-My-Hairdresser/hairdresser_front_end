@@ -2,7 +2,7 @@
 import style from "styled-components";
 import { styled } from '@mui/material/styles';
 import { Card, Typography, Container, Stack, CardContent
-    , TextField, FormControl, Button, Box, FormLabel, Divider
+    , TextField, FormControl, Button
  } from "@mui/material";
 import { useState } from "react";
 import { PreviousPageButton } from "../../components/navigation_drawer/previous";
@@ -12,9 +12,8 @@ const PasswordRecoveryPage = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const [verify, setVerify] = useState("");
     const [verifySent, setVerifySent] = useState(false);
 
     const checkEmail = (value) => {

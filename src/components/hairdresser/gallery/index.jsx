@@ -97,6 +97,8 @@ const Container = styled.div`
     border-radius: 15px;
     padding: 1rem;
     display: flex;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+
     flex-direction: column;
 `
 

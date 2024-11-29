@@ -41,6 +41,8 @@ const Container = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     position: relative;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+
 `;
 
 const Title = styled.h2`
@@ -56,6 +58,7 @@ const ReviewBox = styled(Box)`
     padding: 0.5rem;
     border: 1px solid ${colors.dark_background};
     border-radius: 10px;
+
 `;
 
 const ReviewContent = styled.div`

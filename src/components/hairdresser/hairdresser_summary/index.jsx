@@ -36,18 +36,22 @@ const HairdresserSummary = ({data, reviewNumber}) => {
             <BottomSection>
                 <Grid2 container sx={{height: "100%", width: "100%", padding: 1}} spacing={1}>
                     <Grid2 size={3}>
-                        <InfoContainer>
-                            <MiniHeaderText>Salon: </MiniHeaderText>
-                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.name}</SubText> {/* Increased font size here */}
-                            <MiniHeaderText>Location: </MiniHeaderText>
-                            <SubText style={{ fontSize: '18px' }}>&nbsp; {data.salon.location}</SubText> {/* Increased font size here */}
-                            <MiniHeaderText>Contact Info: </MiniHeaderText>
-                            {
-                                Object.entries(data.salon.contact).map(([key, value]) => (
-                                    <SubText key={key} style={{ fontSize: '20px' }}>&nbsp; {key}: {value}</SubText> 
-                                ))
-                            }
-                        </InfoContainer>
+                    <InfoContainer>
+    <MiniHeaderText>Salon:</MiniHeaderText>
+    <SubText style={{ fontSize: '18px', marginBottom: '8px' }}>{data.salon.name}</SubText>
+    
+    <MiniHeaderText>Location:</MiniHeaderText>
+    <SubText style={{ fontSize: '18px', marginBottom: '8px' }}>{data.salon.location}</SubText>
+    
+    <MiniHeaderText>Contact Info:</MiniHeaderText>
+    {
+        Object.entries(data.salon.contact).map(([key, value]) => (
+            <SubText key={key} style={{ fontSize: '18px', marginBottom: '4px' }}>
+                {key}: {value}
+            </SubText>
+        ))
+    }
+</InfoContainer>
                     </Grid2>
                     <Grid2 size={7}>
                         <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]}/>

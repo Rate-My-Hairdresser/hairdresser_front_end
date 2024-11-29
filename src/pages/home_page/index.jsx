@@ -25,6 +25,7 @@ const Homepage = () => {
     const [coordinateResults, setCoordinateResults] = useState([])
     const [currentHover, setCurrentHover] = useState();
     const [hoveredMarker, setHoveredMarker] = useState()
+    const scaleAmount = 0.2
 
     // search algorithm
     useEffect(() => {
@@ -75,13 +76,13 @@ const Homepage = () => {
     // Determine if any filter or search value is applied
 
     const sideWidth = width/2 -48
-    const slideAmount = Math.abs((height/2-280) - 100 +293.4)
+    const slideAmount = Math.abs((height/2-280) - 100 +293.4) * (1 + scaleAmount)
 
     return (
        <HomepageContainer style={{height: height-100}}>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} maxDistance={maximumDistance} />
             <MainContainer>
-                <LeftContainer style={{width: sideWidth}}>
+                <LeftContainer style={{width: sideWidth, transform: `scale(${1-scaleAmount})`}}>
                     <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: height/2 -280, transform: `translateY(${-slideAmount}px)`} : {marginTop: height/2 -280, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
                         <BigHeader >FIND</BigHeader>
                         <BigHeader >YOUR</BigHeader>
@@ -190,6 +191,7 @@ const MainContainer = styled('div')`
 `;
 
 const LeftBox = styled('div')`
+    
 `
 
 const LeftContainer = styled('div')`
@@ -197,6 +199,7 @@ const LeftContainer = styled('div')`
     flex-direction: column;
     align-items: center;
     margin-top:-100px;
+    
 `;
 
 const RightContainer = styled('div')`
@@ -253,6 +256,6 @@ const SearchResultsBox = styled('div')`
     width: 42rem;
     background-color: ${colors.offwhite};
     border-radius: 15px;
-    max-height: 689.306px;
+    max-height: 70vh;
     overflow-y: scroll;
 `

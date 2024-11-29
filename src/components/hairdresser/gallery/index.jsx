@@ -4,15 +4,12 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Modal, Box } from "@mui/material";
 import { HeaderText } from "../../../general/Text";
-//import tinycolor from "tinycolor2";
-import hairData from "../../../data/hairdresserList.json";
 import { useState } from "react";
-
-const data = hairData[1];
 
 const HairdresserGallery = ({photos}) => {
 
-    const [iconColor, setIconColor] = useState("#FFF")
+    
+    const iconColor = '#FFF' //const [iconColor, setIconColor] = useState("#FFF")
     const [fullscreen, setFullscreen] = useState(false)
     const [fullImage, setFullImage] = useState("")
 
@@ -61,19 +58,22 @@ const HairdresserGallery = ({photos}) => {
                                 alt={key}
                                 loading="lazy"
                             />
-                            <ImageListItemBar
-                                sx={{borderRadius: "0px 0px 15px 15px"}}
-                                title={key}
-                                actionIcon={
-                                    <IconButton
-                                      sx={{ color: 'white' }}
-                                      aria-label={`Fullscreen ${key}`}
-                                      onClick={() => fullscreenPressed(value)}
-                                    >
-                                      <FullscreenIcon />
-                                    </IconButton>
-                                  }
-                            />
+<ImageListItemBar
+    sx={{
+        borderRadius: "0px 0px 15px 15px",
+        backgroundColor: "rgba(0, 0, 0, 0.7)" // Dark background with 70% opacity
+    }}
+    title={key}
+    actionIcon={
+        <IconButton
+            sx={{ color: 'white' }}
+            aria-label={`Fullscreen ${key}`}
+            onClick={() => fullscreenPressed(value)}
+        >
+            <FullscreenIcon />
+        </IconButton>
+    }
+/>
                         </ImageListItem>
                     ))
                 }
@@ -96,10 +96,12 @@ const HairdresserGallery = ({photos}) => {
 export default HairdresserGallery;
 
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
     display: flex;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+
     flex-direction: column;
 `
 

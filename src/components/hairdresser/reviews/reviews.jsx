@@ -44,7 +44,7 @@ const Container = styled.div`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
     font-family: 'DarkerGrotesque', sans-serif; /* Apply DarkerGrotesque font */
     font-size: 20px; /* Set font size to 20px */
-`;
+`;//
 
 const Title = styled.h2`
     margin: 0 0 1rem 0;

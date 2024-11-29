@@ -12,14 +12,13 @@ import XIcon from '@mui/icons-material/X';
 import { IconButton, Stack } from "@mui/material";
 import { Link } from 'react-router-dom';
 
-
 const logos = {
-    "instagram": <InstagramIcon />,
-    "facebook": <FacebookIcon/>,
-    "website": <LanguageIcon/>,
-    "linkedin": <LinkedInIcon/>,
-    "twitter": <XIcon/>,
-    "x": <XIcon/>
+  "instagram": <InstagramIcon style={{ color: colors.dark_background }} />,
+  "facebook": <FacebookIcon style={{ color: colors.dark_background }} />,
+  "website": <LanguageIcon style={{ color: colors.dark_background }} />,
+  "linkedin": <LinkedInIcon style={{ color: colors.dark_background }} />,
+  "twitter": <XIcon style={{ color: colors.dark_background }} />,
+  "x": <XIcon style={{ color: colors.dark_background }} />
 }
 
 const HairDresserSideBio = ({data}) => {
@@ -27,7 +26,7 @@ const HairDresserSideBio = ({data}) => {
     const [saved, setSaved] = useState(false)
 
     const formattedBio = data.biography.split('\n').map((line, index) => (
-        <SubText key={index}>{line}</SubText>
+        <SubText key={index} style={{ fontSize: '20px' }}>{line}</SubText> 
     ));
 
     return (
@@ -35,12 +34,12 @@ const HairDresserSideBio = ({data}) => {
             <FavoriteBox>
                 <IconButton  onClick={() => setSaved(!saved)}>
                     {
-                        saved ?
-                        (<BookmarkIcon style={styles.largeIcon}/>)
-                        :
-                        (<BookmarkBorderIcon style={styles.largeIcon}/>)
+                        saved ? (
+                            <BookmarkIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                        ) : (
+                            <BookmarkBorderIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />
+                        )
                     }
-                    
                 </IconButton>
             </FavoriteBox>
             <TextBox>
@@ -50,7 +49,6 @@ const HairDresserSideBio = ({data}) => {
                 <SubText>
                     {formattedBio}
                 </SubText>
-                
             </TextBox>
             <TextBox style={{borderBottom: 0}}>
                 <HeaderText>
@@ -80,8 +78,9 @@ const styles = {
 
 const FavoriteBox = styled.div`
     text-align: center;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
     padding-bottom: 1rem;
+    font-family: 'DarkerGrotesque';
 `
 
 const TextBox = styled.div`
@@ -89,13 +88,16 @@ const TextBox = styled.div`
     flex-direction: column;
     width: 100%;
     overflow-wrap: break-word;
-    border-bottom: 1px solid ${colors.secondary};
+    border-bottom: 1px solid ${colors.dark_background};
+    font-family: 'DarkerGrotesque';
 `
 
 const Container = styled.div`
-    background-color: ${colors.offwhite};
+    background-color: ${colors.background};
     border-radius: 15px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Increased shadow size */
+    font-family: 'DarkerGrotesque';
 `

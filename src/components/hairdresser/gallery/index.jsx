@@ -49,7 +49,16 @@ const HairdresserGallery = ({photos}) => {
     return (
         <Container id={"review"}>
             <HeaderText>Gallery</HeaderText>
-            <ImageList sx={{height: "30rem"}} cols={3} rowHeight={400}>
+            <ImageList 
+                sx={{
+                    height: "30rem",
+                    '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: colors.dark_background,
+                    },
+                }} 
+                cols={3} 
+                rowHeight={400}
+            >
                 {
                     Object.entries(photos).map(([key, value], index) => (
                         <ImageListItem key={index} >

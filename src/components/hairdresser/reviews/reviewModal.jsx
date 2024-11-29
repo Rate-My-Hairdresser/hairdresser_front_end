@@ -7,13 +7,15 @@ const STAR_COUNT = 5;
 
 const ReviewModal = ({ open, handleClose, onSubmit }) => {
     const [rating, setRating] = useState(0);
-    const [photo, setPhoto] = useState()
+    const [photo, setPhoto] = useState();
     const [hoveredStar, setHoveredStar] = useState(-1);
     const [comment, setComment] = useState("");
+    const [error, setError] = useState(""); // State for the error message
     const fileInputRef = useRef();
 
     const handleStarClick = (index) => {
         setRating(index + 1);
+        setError(""); // Clear error if they click a star
     };
 
     const handleCommentChange = (e) => {
@@ -21,15 +23,19 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
     };
 
     const handleSubmit = () => {
+        if (rating === 0) {
+            setError("Please select a star rating."); // Set error if no rating
+            return;
+        }
         onSubmit(comment, photo, rating);
         handleClose();
     };
 
     const handleUpload = (event) => {
-        const files = event.target.files
+        const files = event.target.files;
         console.log(files);
-        setPhoto(URL.createObjectURL(files[0]))
-    }
+        setPhoto(URL.createObjectURL(files[0]));
+    };
 
     return (
         <Modal open={open} onClose={handleClose}>
@@ -49,6 +55,7 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
                         </Star>
                     ))}
                 </StarContainer>
+                {error && <ErrorMessage>{error}</ErrorMessage>} {/* Display error */}
                 <Stack direction="row" spacing={2}>
                     <TextField
                         label="How was your service?"
@@ -60,18 +67,26 @@ const ReviewModal = ({ open, handleClose, onSubmit }) => {
                         value={comment}
                         onChange={handleCommentChange}
                     />
-                    <ImageContainer>
-                        <ImagePreview src={photo} />
-                    </ImageContainer>
+                    {photo && (
+                        <ImageContainer>
+                            <RemoveButton onClick={() => setPhoto(null)}>✕</RemoveButton>
+                            <ImagePreview src={photo} />
+                        </ImageContainer>
+                    )}
                 </Stack>
                 <ButtonContainer>
-                    <input onChange={(e) => handleUpload(e)} multiple={false} ref={fileInputRef} type="file" accept="image/*" hidden/>
+                    <input
+                        onChange={(e) => handleUpload(e)}
+                        multiple={false}
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        hidden
+                    />
                     <UploadButton onClick={() => fileInputRef.current.click()}>
-                        Upload Image (optional)
+                        {photo ? "Replace Image" : "Upload Image (optional)"}
                     </UploadButton>
-                    <SubmitButton onClick={handleSubmit}>
-                        Submit
-                    </SubmitButton>
+                    <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
                 </ButtonContainer>
             </ModalContent>
         </Modal>
@@ -93,20 +108,28 @@ const ModalContent = styled.div`
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 `;
 
+const ErrorMessage = styled.p`
+    color: black;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+`;
+
 const ImageContainer = styled.div`
     margin-top: 16px;
     margin-bottom: 8px;
     width: 140px;
     height: 125px;
-    // background-color: ${colors.secondary};
-`
+    position: relative;
+`;
 
 const ImagePreview = styled.img`
     width: 140px;
     height: 125px;
     object-fit: cover;
     border-radius: 5px;
-`
+`;
 
 const CloseButton = styled.button`
     position: absolute;
@@ -167,8 +190,30 @@ const UploadButton = styled.button`
     }
 `;
 
+const RemoveButton = styled.button`
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+`;
+
 const SubmitButton = styled.button`
-    background-color: ${colors.star_color};
+    background-color: ${colors.dark_background};
     color: black;
     border: none;
     border-radius: 5px;
@@ -178,7 +223,7 @@ const SubmitButton = styled.button`
     margin-top: 1rem;
 
     &:hover {
-        background-color: ${colors.dark_star};
+        opacity: 0.8;
     }
     &:active {
         opacity: 0.4;

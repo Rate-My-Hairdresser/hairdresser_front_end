@@ -60,7 +60,7 @@ const HairdresserPage = () => {
         <Grid2 container spacing={3} margin={3}>
             <Grid2 size={9}>
                 <Stack direction="column" spacing={"1rem"}>
-                    <HairdresserSummary data={currentHairdresser} reviewNumber={reviewNumber}/>
+                    <HairdresserSummary data={currentHairdresser} reviewNumber={reviewNumber} state={data}/>
                     <HairdresserGallery photos={currentHairdresser.gallery}/>
                     <Reviews reviews={currentReviews} onSubmit={handleReviewSubmit}/>
                 </Stack>

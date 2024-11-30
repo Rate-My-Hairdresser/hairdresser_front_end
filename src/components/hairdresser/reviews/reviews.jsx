@@ -12,7 +12,7 @@ const Reviews = ({reviews, onSubmit}) => {
     const handleClose = () => setOpenModal(false);
 
     return (
-        <Container>
+        <Container id="review">
             <Title>Reviews</Title>
             <LeaveReviewButton onClick={handleOpen}>Leave a Review</LeaveReviewButton>
             {

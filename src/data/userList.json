@@ -3,12 +3,18 @@
         "email": "user@test.com",
         "password": 30239160435842,
         "userId": 102,
-        "userType": "standard"
+        "userType": "standard",
+        "name": "Jane",
+        "lastname": "Doe",
+        "favorites": [1,2,3,4]
     },
     "2575749558319096": {
         "email": "stylist@test.com",
         "password": 30239160435842,
         "userId": 101,
-        "userType": "stylist"
+        "userType": "stylist",
+        "name": "Karen",
+        "lastname": "Blephy",
+        "favorites": [1,2]
     }
 }

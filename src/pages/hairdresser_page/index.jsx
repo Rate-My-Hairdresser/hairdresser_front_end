@@ -10,7 +10,9 @@ const HairdresserPage = () => {
 
     const [reviewIn, setReviewIn] = useState(false);
 
-    const currentHairdresser = hairDresserList[1]
+    var browseId = JSON.parse(sessionStorage.getItem("browseId") || "1");
+
+    const currentHairdresser = hairDresserList[browseId];
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)
     const [reviewNumber, setReviewNumber] = useState(0)
     const [newRating, setNewRating] = useState({

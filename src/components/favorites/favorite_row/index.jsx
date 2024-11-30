@@ -12,6 +12,12 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
 
     const navigate = useNavigate();
 
+    const preloadStylist = () => {
+        var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
+        sessionStorage.setItem("browseId", temp[index]);
+        navigate("/hair_page");
+    }
+
     for(let i = 0; i < ratings.length; i++) {
         ratingTotal += ratings[i].rating
     }
@@ -67,7 +73,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
                             backgroundColor: colors.dark_background,
                             color: colors.text.primary,
                         }}
-                        onClick={() => navigate("/hair_page")}
+                        onClick={preloadStylist}
                     >
                         VISIT PAGE
                     </Button>

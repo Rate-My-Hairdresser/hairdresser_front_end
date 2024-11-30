@@ -6,7 +6,7 @@ import { useNavigate } from "react-router"
 import RemoveIconbutton from "../removeicon"
 
 
-const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
+const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover, index}) => {
 
     let ratingTotal = 0;
 
@@ -22,7 +22,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
             
             <Stack sx={stackStyle} direction="row" spacing={3}>
             <div>
-                <RemoveIconbutton   />
+                <RemoveIconbutton index={index} />
             </div>
                 {
                     Object.keys(images).length > 0 ? <ImageBox src={Object.values(images)[0]}/> : ""

@@ -28,7 +28,6 @@ const Favoritepage = () => {
 
     // search algorithm
     useEffect(() => {
-        console.log(sessionStorage.getItem("favorites"));
         var favoriteIds = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
         //const favoriteIds = ["1", "2", "3", "4"]; // Static list of hairdresser IDs
         const [results, coords] = searchByIds(favoriteIds); // Fetch results and coordinates
@@ -86,7 +85,7 @@ const Favoritepage = () => {
                                 <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
-                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
+                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={index} />
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }

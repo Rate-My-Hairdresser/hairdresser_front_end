@@ -5,7 +5,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import { colors } from "../../../general/colors"
 
 
-export default function RemoveIconbutton() {
+export default function RemoveIconbutton( {index} ) {
+  const arrIndex = index;
+
+  const handleRemove = () => {
+    var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
+    temp.splice(index, 1);
+    sessionStorage.setItem("favorites", temp);
+    console.log("operation handled");
+  }
+
   return (
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Fab 
@@ -22,7 +31,7 @@ export default function RemoveIconbutton() {
         }}  
         aria-label="remove"
       >
-        <CloseIcon />
+        <CloseIcon onClick={handleRemove} />
       </Fab>
     </Box>
   );

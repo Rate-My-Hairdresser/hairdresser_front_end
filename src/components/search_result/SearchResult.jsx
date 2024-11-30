@@ -5,7 +5,7 @@ import { MiniHeaderText, SubText } from "../../general/Text"
 import { useNavigate } from "react-router"
 
 
-const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
+const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover, index}) => {
 
     let ratingTotal = 0;
 
@@ -15,6 +15,12 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMou
         ratingTotal += ratings[i].rating
     }
     const averageRating = ratingTotal / ratings.length
+
+    const preloadStylist = () => {
+        console.log("index into " + index);
+        sessionStorage.setItem("browseId", index);
+        navigate("/hair_page");
+    }
 
     return (
         <ResultBox onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={hover? {  boxShadow: `0.3em 0.3em 1em ${colors.secondary}`} : {}}>
@@ -62,7 +68,7 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMou
                             backgroundColor: colors.dark_background,
                             color: colors.text.primary,
                         }}
-                        onClick={() => navigate("/hair_page")}
+                        onClick={preloadStylist}
                     >
                         VISIT PAGE
                     </Button>

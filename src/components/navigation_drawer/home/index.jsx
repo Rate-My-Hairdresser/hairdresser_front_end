@@ -1,5 +1,5 @@
 import {Home} from "@mui/icons-material";
-import {IconButton, Typography} from "@mui/material";
+import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import { colors } from "../../../general/colors";
 

@@ -24,7 +24,12 @@ const Homepage = () => {
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
     const [currentHover, setCurrentHover] = useState();
-    const [hoveredMarker, setHoveredMarker] = useState()
+    const [hoveredMarker, setHoveredMarker] = useState();
+    const [keyIndices, setKeyIndices] = useState();
+
+    useEffect(() => {
+        sessionStorage.clear()
+    }, []);
 
     // search algorithm
     useEffect(() => {
@@ -32,7 +37,7 @@ const Homepage = () => {
         console.log(results)
         setCoordinateResults(results[1])
         setSearchResults(results[0])
-
+        setKeyIndices(results[2])
     }, [searchValue, filters, maximumPrice]);
 
 
@@ -126,7 +131,7 @@ const Homepage = () => {
                                 <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
-                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
+                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={keyIndices[index]} />
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }

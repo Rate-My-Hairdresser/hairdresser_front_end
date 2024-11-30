@@ -5,13 +5,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import { colors } from "../../../general/colors"
 
 
-export default function RemoveIconbutton( {index} ) {
+export default function RemoveIconbutton( {index, setResult} ) {
 
   const handleRemove = () => {
     var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
     temp.splice(index, 1);
     sessionStorage.setItem("favorites", temp);
-    console.log("operation handled");
+    setResult[1](setResult[0] + 1);
   }
 
   return (

@@ -6,16 +6,19 @@ import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
+import { useNavigate } from 'react-router-dom';
 
-const HairdresserSummary = ({ data, reviewNumber }) => {
+const HairdresserSummary = ({ data, reviewNumber, state }) => {
   // Calculate the total number of reviews
   const numberOfReviews = reviewNumber || 0;
+
+  const navigate = useNavigate();
 
   return (
     <Container>
       <TopSection>
         <BackContainer>
-          <IconButton>
+          <IconButton onClick={() => navigate(-1)}>
             <ArrowBackIosNewIcon />
           </IconButton>
         </BackContainer>
@@ -27,7 +30,7 @@ const HairdresserSummary = ({ data, reviewNumber }) => {
         </HeaderText>
         <RatingContainer>
           <Tooltip title="Jump to ratings" placement="top">
-            <HashLink to="#review" smooth>
+            <HashLink to="/hair_page#review" state={state} smooth>
               <Button>
                 <Stack direction="row" alignItems="center" spacing={0.5}> {/* Reduce spacing to bring closer */}
                   <Rating 

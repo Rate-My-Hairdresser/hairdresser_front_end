@@ -56,11 +56,11 @@ const HairDresserSideBio = ({data}) => {
                 </HeaderText>
                 <Stack direction="row">
                     {Object.entries(data.links).map(([key, value]) => (
-                        <IconButton key={key}>
-                            <Link to={value} target="_blank" rel="noopener noreferrer" style={{height: "50px"}}>
+                        <Link to={value} target="_blank" rel="noopener noreferrer">
+                            <IconButton key={key} style={{display: 'flex', justifyContent: "center", alignItems: "center"}}>
                                 {logos[key]}
-                            </Link>
-                        </IconButton>
+                            </IconButton>
+                        </Link>
                     ))}
                 </Stack>
             </TextBox>

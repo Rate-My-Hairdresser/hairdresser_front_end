@@ -6,7 +6,6 @@ import { colors } from "../../../general/colors"
 
 
 export default function RemoveIconbutton( {index} ) {
-  const arrIndex = index;
 
   const handleRemove = () => {
     var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');

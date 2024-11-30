@@ -17,7 +17,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
         sessionStorage.setItem("browseId", temp[index]);
         navigate("/hair_page");
     }
-
+    
     for(let i = 0; i < ratings.length; i++) {
         ratingTotal += ratings[i].rating
     }

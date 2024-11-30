@@ -85,6 +85,7 @@ const Favoritepage = () => {
                                     {searchResults.map((value, index) => (
                                         <>
                                             <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={index} setResult={[deltaMarker, setDeltaMarker]} />
+
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }

@@ -5,7 +5,7 @@ import { MiniHeaderText, SubText } from "../../general/Text"
 import { useNavigate } from "react-router"
 
 
-const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
+const SearchResult = ({id, name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover}) => {
 
     let ratingTotal = 0;
 
@@ -62,7 +62,7 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMou
                             backgroundColor: colors.dark_background,
                             color: colors.text.primary,
                         }}
-                        onClick={() => navigate("/hair_page")}
+                        onClick={() => navigate("/hair_page", {state: {id: id}})}
                     >
                         VISIT PAGE
                     </Button>

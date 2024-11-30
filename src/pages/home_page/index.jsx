@@ -25,7 +25,7 @@ const Homepage = () => {
     const [coordinateResults, setCoordinateResults] = useState([])
     const [currentHover, setCurrentHover] = useState();
     const [hoveredMarker, setHoveredMarker] = useState()
-    const scaleAmount = 0.2
+    const scaleAmount = (width/2087)-1  // 0.2 <-laptop
 
     // search algorithm
     useEffect(() => {
@@ -127,7 +127,7 @@ const Homepage = () => {
                                 <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
-                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
+                                            <SearchResult id={value.id} hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)}/>
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }

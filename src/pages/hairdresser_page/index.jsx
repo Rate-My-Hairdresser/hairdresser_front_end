@@ -5,12 +5,15 @@ import Reviews from "../../components/hairdresser/reviews/reviews";
 import HairdresserGallery from "../../components/hairdresser/gallery";
 import { useCallback, useEffect, useState } from "react";
 import hairDresserList from "../../data/hairdresserList.json"
+import { useLocation } from "react-router-dom";
 
 const HairdresserPage = () => {
 
+    const data = useLocation().state;
+
     const [reviewIn, setReviewIn] = useState(false);
 
-    const currentHairdresser = hairDresserList[1]
+    const currentHairdresser = hairDresserList[data.id]
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)
     const [reviewNumber, setReviewNumber] = useState(0)
     const [newRating, setNewRating] = useState({

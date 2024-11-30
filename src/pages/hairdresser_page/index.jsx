@@ -6,15 +6,15 @@ import HairdresserGallery from "../../components/hairdresser/gallery";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import hairDresserList from "../../data/hairdresserList.json"
+import { useLocation } from "react-router-dom";
 
 const HairdresserPage = () => {
 
-    const [reviewIn, setReviewIn] = useState(false);
-    
-    const { state } = useLocation();
-    const { browseId } = state;
+    const data = useLocation().state;
 
-    const currentHairdresser = hairDresserList[browseId];
+    const [reviewIn, setReviewIn] = useState(false);
+
+    const currentHairdresser = hairDresserList[data.id]
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)
     const [reviewNumber, setReviewNumber] = useState(0)
     const [newRating, setNewRating] = useState({
@@ -66,7 +66,7 @@ const HairdresserPage = () => {
                 </Stack>
             </Grid2>
             <Grid2 size={3}>
-                <HairDresserSideBio data={currentHairdresser} browseId={browseId} />
+                <HairDresserSideBio data={currentHairdresser} browseId={data.id} />
             </Grid2>
         </Grid2>
     );

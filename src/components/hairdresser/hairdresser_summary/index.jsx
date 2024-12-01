@@ -1,16 +1,65 @@
-import { Avatar, Grid2, IconButton, Tooltip, Button, Chip, Stack } from "@mui/material";
+import { Avatar, Grid2, IconButton, Tooltip, Button, Chip, Stack, TextField } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors";
 import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
-import MapComp from "../../map/MapComp";
+import MapComp, { geocodeAddress } from "../../map/MapComp";
 import { useNavigate } from 'react-router-dom';
+import CheckIcon from '@mui/icons-material/Check';
+import { useState } from "react";
 
-const HairdresserSummary = ({ data, reviewNumber, state }) => {
+const HairdresserSummary = ({ 
+    data, 
+    reviewNumber, 
+    state, 
+    edit = false, 
+    salon = "", 
+    setSalon = () => {}, 
+    salonCheck = () => {},
+    location = "",
+    setLocation = () => {},
+    locationCheck = () => {},
+    coordinates = {}
+  }) => {
+
+  const [salonError, setSalonError] = useState(false)
+  const [locationError, setLocationError] = useState(false)
+
+  const salonFunc = () => {
+    if(salon !== "") {
+      setSalonError(false)
+      salonCheck()
+    } else {
+      setSalonError(true)
+    }
+  }
+
+  const locationFunc = () => {
+    if(location !== "") {
+      //check if the address is valid
+      geocodeAddress(location)
+        .then((location) => {
+          setLocationError(false)
+          locationCheck(location)
+        })
+        .catch((error) => {
+          console.error('Geocoding error')
+          setLocationError(true)
+        })
+      locationCheck()
+    } else {
+      setLocationError(true)
+    }
+  }
+
+
+
+
   // Calculate the total number of reviews
-  const numberOfReviews = reviewNumber || 0;
+  const numberOfReviews = reviewNumber;
+
   const navigate = useNavigate();
   const handleBack = () => navigate(-1);
 
@@ -35,7 +84,7 @@ const HairdresserSummary = ({ data, reviewNumber, state }) => {
                 <Stack direction="row" alignItems="center" spacing={0.5}> {/* Reduce spacing to bring closer */}
                   <Rating 
                     name="read-only" 
-                    value={numberOfReviews > 0 ? 4 : 0} 
+                    value={numberOfReviews > 0 ? 4 : 0}
                     readOnly 
                   />
                   <SubText 
@@ -57,12 +106,32 @@ const HairdresserSummary = ({ data, reviewNumber, state }) => {
         <Grid2 container sx={{ height: "100%", width: "100%", padding: 1 }} spacing={1}>
           <Grid2 size={3}>
             <InfoContainer>
-              <MiniHeaderText style={{ fontSize: '19px' }}>Salon:</MiniHeaderText>
-              <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.name}</SubText>
-
-              <MiniHeaderText style={{ fontSize: '19px' }}>Location:</MiniHeaderText>
-              <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.location}</SubText>
-
+              {edit === false ?
+                <>
+                  <MiniHeaderText style={{ fontSize: '19px' }}>Salon:</MiniHeaderText>
+                  <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.name}</SubText>
+                </>
+              : //EDIT MODE:
+                <Stack direction={"row"}>
+                  <TextField id="Salon" label="Salon name" size="small" value={salon} onChange={(event) => {setSalon(event.target.value)}} error={salonError}/>
+                  <IconButton onClick={salonFunc}>
+                    <CheckIcon />
+                  </IconButton>
+                </Stack>
+              }
+              {edit === false ?
+                <>
+                  <MiniHeaderText style={{ fontSize: '19px' }}>Location:</MiniHeaderText>
+                  <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.location}</SubText>
+                </>
+              : //EDIT MODE:
+                <Stack direction={"row"}>
+                  <TextField id="Location" label="Location" size="small" value={location} onChange={(event) => {setLocation(event.target.value)}} error={locationError}/>
+                  <IconButton onClick={locationFunc}>
+                    <CheckIcon/>
+                  </IconButton>
+                </Stack>
+              }
               <MiniHeaderText style={{ fontSize: '19px' }}>Contact Info:</MiniHeaderText>
               {Object.entries(data.salon.contact).map(([key, value], index) => (
                 <SubText key={key} style={{ fontSize: '19px', marginBottom: '0px', marginTop: '-2px' }}>
@@ -72,7 +141,11 @@ const HairdresserSummary = ({ data, reviewNumber, state }) => {
             </InfoContainer>
           </Grid2>
           <Grid2 size={7} rad>
-            <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]} />
+            {edit ?
+              <MapComp zoomLocation={JSON.stringify(coordinates) !== "{}" ? coordinates : undefined} markers={JSON.stringify(coordinates) !== "{}" ? [coordinates] : []}/>
+            :
+              ""
+            }
           </Grid2>
 
           <Grid2 size={2}>

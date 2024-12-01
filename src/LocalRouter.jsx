@@ -6,6 +6,7 @@ import HairDresserLogin from "./pages/login_page/index";
 import HairDresserSignUp from "./pages/signup_page/index";
 import TopAnchoredMenu from "./components/navigation_drawer";
 import PasswordRecoveryPage from "./pages/passrecovery_page";
+import EditHairdresserPage from "./pages/edit_profile";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="hair_page" element={<HairdresserPage />} />
             <Route path="" element={<Homepage />} />
             <Route path="favorites" element={<FavoritesPage />} />
+            <Route path="edit_profile" element={<EditHairdresserPage />}/>
           </Fragment>
         </Routes>
       </div>

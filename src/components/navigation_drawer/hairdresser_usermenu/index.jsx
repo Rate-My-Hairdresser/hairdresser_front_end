@@ -34,6 +34,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
         dispatch(signOut());
         handleReturn();
     }
+    const handleProfile = () => navigate("/edit_profile");
 
     function stringToColor(string) {
         let hash = 0;
@@ -104,7 +105,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleProfile}>
                         <Avatar sx={{ width: '3rem', height: '3rem' }} {...stringAvatar(name)} /> Your Profile Page
                     </MenuItem>
                     <Divider />

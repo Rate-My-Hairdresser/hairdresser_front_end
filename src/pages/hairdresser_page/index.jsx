@@ -11,7 +11,7 @@ const HairdresserPage = () => {
 
     const [reviewIn, setReviewIn] = useState(false);
     
-    const {state} = useLocation();
+    const { state } = useLocation();
     const { browseId } = state;
 
     const currentHairdresser = hairDresserList[browseId];

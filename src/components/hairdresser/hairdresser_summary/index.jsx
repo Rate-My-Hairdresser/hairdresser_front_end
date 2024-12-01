@@ -18,8 +18,8 @@ const HairdresserSummary = ({ data, reviewNumber }) => {
     <Container>
       <TopSection>
         <BackContainer>
-          <IconButton>
-            <ArrowBackIosNewIcon onClick={handleBack} />
+          <IconButton onClick={handleBack}>
+            <ArrowBackIosNewIcon />
           </IconButton>
         </BackContainer>
         <AvatarBox>

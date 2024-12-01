@@ -66,7 +66,7 @@ const HairdresserPage = () => {
                 </Stack>
             </Grid2>
             <Grid2 size={3}>
-                <HairDresserSideBio data={currentHairdresser}/>
+                <HairDresserSideBio data={currentHairdresser} browseId={browseId} />
             </Grid2>
         </Grid2>
     );

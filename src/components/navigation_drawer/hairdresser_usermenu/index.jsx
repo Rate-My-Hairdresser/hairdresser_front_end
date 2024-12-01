@@ -33,6 +33,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
     const handleLogin = () => navigate("/auth/login");
     const handleLogout = () => {
         dispatch(signOut());
+        handleReturn();
     }
 
     function stringToColor(string) {

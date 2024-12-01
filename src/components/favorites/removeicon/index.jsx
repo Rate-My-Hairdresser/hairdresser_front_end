@@ -27,10 +27,11 @@ export default function RemoveIconbutton( {index, setResult} ) {
             transform: 'scale(1.01)',            
             boxShadow: `0 4px 2px ${colors.secondary}`, 
           },
-        }}  
+        }}
         aria-label="remove"
+        onClick={handleRemove}
       >
-        <CloseIcon onClick={handleRemove} />
+        <CloseIcon />
       </Fab>
     </Box>
   );

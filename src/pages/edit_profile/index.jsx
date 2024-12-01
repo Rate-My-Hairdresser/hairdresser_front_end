@@ -1,18 +1,17 @@
 import { Grid2, Stack } from "@mui/material";
 import HairdresserSummary from "../../components/hairdresser/hairdresser_summary";
 import HairDresserSideBio from "../../components/hairdresser/hairdresser_side_bio";
-import Reviews from "../../components/hairdresser/reviews/reviews"; 
 import HairdresserGallery from "../../components/hairdresser/gallery";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import hairDresserList from "../../data/hairdresserList.json"
-import { useLocation } from "react-router-dom";
+
 
 const EditHairdresserPage = () => {
 
     const [salon, setSalon] = useState("")
     const [location, setLocation] = useState("")
     const [coordinates, setCoordinates] = useState({})
-    const salonCheck = () => {
+    const salonCheck = useCallback(() => {
         setData(prevData => ({
             ...prevData,
             salon: {
@@ -20,9 +19,9 @@ const EditHairdresserPage = () => {
                 name: salon
             }
         }));
-    }
+    }, [salon])
    
-    const locationCheck = (coordinates) => {
+    const locationCheck = useCallback((coordinates) => {
         setCoordinates(coordinates)
         setData(prevData => ({
             ...prevData,
@@ -31,7 +30,7 @@ const EditHairdresserPage = () => {
                 coordinates: coordinates
             }
         }));
-    }
+    }, [])
 
     const [data, setData] = useState({
         "id": null,
@@ -59,30 +58,9 @@ const EditHairdresserPage = () => {
         "maximum_price": null,
         "reviews": []
     })
-
+    console.log(data)
 
     const currentHairdresser = hairDresserList[0]
-    const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)
-    const [reviewNumber, setReviewNumber] = useState(0)
-
-    const getReviewNumber = (array) => {
-        let count = 0;
-        let total = 0;
-        for(let i = 0; i < array.length; i++) {
-            count++;
-            total += array[i].rating;
-        }
-        return total/count;
-        
-    }
-
-
-    //sets the amount of reviews they have
-    // useEffect(() => {
-    
-    //     setReviewNumber(getReviewNumber(currentReviews))
-        
-    // }, [currentReviews])
 
     return (
         <Grid2 container spacing={3} margin={3}>

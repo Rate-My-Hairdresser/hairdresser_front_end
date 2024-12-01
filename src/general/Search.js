@@ -38,8 +38,10 @@ export const search = (maximumPrice, text, filterChips) => {
         .filter(({ stylistRelevance }) => stylistRelevance > 0)
         .sort((a, b) => b.stylistRelevance - a.stylistRelevance);
 
+    console.log(mapArr)
     const filteredResults = mapArr.map(({ key }) => hairdresserData[key]);
     const coordinates = filteredResults.map(result => result.salon.coordinates);
+    const keyResults = mapArr.map(({key}) => Number(key));
 
-    return [filteredResults, coordinates];
+    return [filteredResults, coordinates, keyResults];
 };

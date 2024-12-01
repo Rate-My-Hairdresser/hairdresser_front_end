@@ -12,8 +12,11 @@ const HairdresserPage = () => {
     const data = useLocation().state;
 
     const [reviewIn, setReviewIn] = useState(false);
+    
+    const { state } = useLocation();
+    const { browseId } = state;
 
-    const currentHairdresser = hairDresserList[data.id]
+    const currentHairdresser = hairDresserList[browseId];
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)
     const [reviewNumber, setReviewNumber] = useState(0)
     const [newRating, setNewRating] = useState({
@@ -65,7 +68,7 @@ const HairdresserPage = () => {
                 </Stack>
             </Grid2>
             <Grid2 size={3}>
-                <HairDresserSideBio data={currentHairdresser}/>
+                <HairDresserSideBio data={currentHairdresser} browseId={browseId} />
             </Grid2>
         </Grid2>
     );

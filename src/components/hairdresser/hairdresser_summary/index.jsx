@@ -77,8 +77,8 @@ const HairdresserSummary = ({
           {data.name}
         </HeaderText>
         <RatingContainer>
-          <Tooltip title="Jump to ratings" placement="top">
-            <HashLink to="/hair_page#review" state={state} smooth>
+          <Tooltip title={edit ? "" : "Jump to ratings"} placement="top">
+            <HashLink to={edit ? "" : "/hair_page#review"} state={state} smooth>
               <Button>
                 <Stack direction="row" alignItems="center" spacing={0.5}> {/* Reduce spacing to bring closer */}
                   <Rating 
@@ -143,7 +143,7 @@ const HairdresserSummary = ({
             {edit ?
               <MapComp zoomLocation={JSON.stringify(coordinates) !== "{}" ? coordinates : undefined} markers={JSON.stringify(coordinates) !== "{}" ? [coordinates] : []}/>
             :
-              ""
+              <MapComp zoomLocation={data.salon.coordinates} markers={[data.salon.coordinates]} />
             }
           </Grid2>
 

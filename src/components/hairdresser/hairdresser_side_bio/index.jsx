@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { selectUser } from "../../../general/redux/selectors";
 import styled from "styled-components"
 import { colors } from "../../../general/colors"
 import { HeaderText, SubText } from '../../../general/Text';
@@ -21,9 +23,30 @@ const logos = {
   "x": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
 }
 
-const HairDresserSideBio = ({data}) => {
+const HairDresserSideBio = ({data, browseId}) => {
 
     const [saved, setSaved] = useState(false)
+    const user = useSelector(selectUser)
+
+    useEffect(() => {
+        if (user.signedIn) {
+            var favorites = JSON.parse('[' + sessionStorage.getItem("favorites") + ']');
+            if (favorites.find((e) => e === browseId) !== undefined) {
+                setSaved(true);
+            }
+        }
+    }, [browseId, user.signedIn])
+
+    const addFavorite = () => {
+        var current = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
+        if (saved) {
+            current = current.filter((e) => e !== browseId);
+        } else {
+            current.push(browseId);
+        }
+        sessionStorage.setItem("favorites", current);
+        setSaved(!saved);
+    }
 
     const formattedBio = data.biography.split('\n').map((line, index) => (
         <SubText key={index} style={{ fontSize: '20px' }}>{line}</SubText> 
@@ -32,7 +55,7 @@ const HairDresserSideBio = ({data}) => {
     return (
         <Container>
             <FavoriteBox>
-                <IconButton  onClick={() => setSaved(!saved)}>
+                <IconButton  onClick={addFavorite} disabled={!user.signedIn}>
                     {
                         saved ? (
                             <BookmarkIcon style={{ ...styles.largeIcon, color: colors.dark_background }} />

@@ -6,12 +6,17 @@ import { useNavigate } from "react-router"
 import RemoveIconbutton from "../removeicon"
 
 
-const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover, index}) => {
+const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratings, onMouseEnter, onMouseLeave, hover, index, setResult}) => {
 
     let ratingTotal = 0;
 
     const navigate = useNavigate();
 
+    const preloadStylist = () => {
+        var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
+        navigate("/hair_page", { state: { browseId: temp[index] } });
+    }
+    
     for(let i = 0; i < ratings.length; i++) {
         ratingTotal += ratings[i].rating
     }
@@ -22,7 +27,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
             
             <Stack sx={stackStyle} direction="row" spacing={3}>
             <div>
-                <RemoveIconbutton index={index} />
+                <RemoveIconbutton index={index} setResult={setResult} />
             </div>
                 {
                     Object.keys(images).length > 0 ? <ImageBox src={Object.values(images)[0]}/> : ""
@@ -67,7 +72,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
                             backgroundColor: colors.dark_background,
                             color: colors.text.primary,
                         }}
-                        onClick={() => navigate("/hair_page")}
+                        onClick={preloadStylist}
                     >
                         VISIT PAGE
                     </Button>

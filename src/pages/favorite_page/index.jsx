@@ -32,7 +32,7 @@ const Favoritepage = () => {
         var favoriteIds = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
         //const favoriteIds = ["1", "2", "3", "4"]; // Static list of hairdresser IDs
         const [results, coords] = searchByIds(favoriteIds); // Fetch results and coordinates
-        console.log(results);
+        //console.log(results);
         setCoordinateResults(coords); // Update coordinates state
         setSearchResults(results);   // Update search results state
     }, [deltaMarker]);

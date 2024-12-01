@@ -17,9 +17,7 @@ const SearchResult = ({name, priceLow, priceHigh, labels, images, ratings, onMou
     const averageRating = ratingTotal / ratings.length
 
     const preloadStylist = () => {
-        console.log("index into " + index);
-        sessionStorage.setItem("browseId", index);
-        navigate("/hair_page");
+        navigate("/hair_page", { state: { browseId: index } });
     }
 
     return (

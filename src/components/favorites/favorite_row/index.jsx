@@ -14,8 +14,7 @@ const SearchResultFavorites = ({name, priceLow, priceHigh, labels, images, ratin
 
     const preloadStylist = () => {
         var temp = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
-        sessionStorage.setItem("browseId", temp[index]);
-        navigate("/hair_page");
+        navigate("/hair_page", { state: { browseId: temp[index] } });
     }
     
     for(let i = 0; i < ratings.length; i++) {

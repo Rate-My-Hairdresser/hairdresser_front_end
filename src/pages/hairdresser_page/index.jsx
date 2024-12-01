@@ -4,13 +4,15 @@ import HairDresserSideBio from "../../components/hairdresser/hairdresser_side_bi
 import Reviews from "../../components/hairdresser/reviews/reviews"; 
 import HairdresserGallery from "../../components/hairdresser/gallery";
 import { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import hairDresserList from "../../data/hairdresserList.json"
 
 const HairdresserPage = () => {
 
     const [reviewIn, setReviewIn] = useState(false);
-
-    var browseId = JSON.parse(sessionStorage.getItem("browseId") || "1");
+    
+    const {state} = useLocation();
+    const { browseId } = state;
 
     const currentHairdresser = hairDresserList[browseId];
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)

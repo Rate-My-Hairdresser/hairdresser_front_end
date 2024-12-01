@@ -155,6 +155,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
             </div>
         )
     } else {
+        sessionStorage.clear()
         if (isAuthPath) {
             return null;
         } else {

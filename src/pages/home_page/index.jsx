@@ -27,10 +27,6 @@ const Homepage = () => {
     const [hoveredMarker, setHoveredMarker] = useState();
     const [keyIndices, setKeyIndices] = useState();
 
-    useEffect(() => {
-        sessionStorage.clear()
-    }, []);
-
     // search algorithm
     useEffect(() => {
         const results = search(maximumPrice, searchValue, filters)

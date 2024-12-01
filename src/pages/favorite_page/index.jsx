@@ -24,19 +24,18 @@ const Favoritepage = () => {
     const [searchResults, setSearchResults] = useState([])
     const [coordinateResults, setCoordinateResults] = useState([])
     const [currentHover, setCurrentHover] = useState();
-    const [hoveredMarker, setHoveredMarker] = useState()
+    const [hoveredMarker, setHoveredMarker] = useState();
+    const [deltaMarker, setDeltaMarker] = useState(0);
 
     // search algorithm
     useEffect(() => {
         var favoriteIds = JSON.parse( '[' + sessionStorage.getItem("favorites") + ']');
         //const favoriteIds = ["1", "2", "3", "4"]; // Static list of hairdresser IDs
         const [results, coords] = searchByIds(favoriteIds); // Fetch results and coordinates
-        console.log(results);
+        //console.log(results);
         setCoordinateResults(coords); // Update coordinates state
         setSearchResults(results);   // Update search results state
-    }, []);
-    
-
+    }, [deltaMarker]);
 
     useEffect(() => {
         if(searchResults[currentHover]) {
@@ -85,7 +84,8 @@ const Favoritepage = () => {
                                 <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
-                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={index} />
+                                            <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={index} setResult={[deltaMarker, setDeltaMarker]} />
+
                                             {
                                                 value === searchResults[searchResults.length-1] ? "" : <Divider variant="middle" sx={{borderColor: colors.secondaryBackground}}/>
                                             }

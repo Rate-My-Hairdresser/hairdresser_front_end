@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { SIGN_IN, SIGN_OUT } from './actions';
 import userList from "../../data/userList.json";
-//import stylistData from "../../data/hairdresserList.json";
+import stylistData from "../../data/hairdresserList.json";
 
 const initialUserState = {
   signedIn: false,
@@ -15,18 +15,22 @@ const userReducer = (state = initialUserState, action) => {
     case SIGN_IN:
       
       if (userList[action.payload.hash_id] !== undefined) {
-        if (userList[action.payload.hash_id].password === action.payload.hash_pw) {
+        var target = userList[action.payload.hash_id];
+        if (target.password === action.payload.hash_pw) {
           console.log("HIT")
           // Loading user data as part of login.
           sessionStorage.setItem("token", JSON.stringify(action.payload.hash_id));
 
-          if (userList[action.payload.hash_id].userType === "stylist") {
+          if (target.userType === "stylist") {
             sessionStorage.setItem("isStylist", true);
+            sessionStorage.setItem("selfProfile", stylistData[target.userId]);
           } else {
             sessionStorage.setItem("isStylist", false);
           }
 
-          sessionStorage.setItem("favorites", userList[action.payload.hash_id].favorites);
+          sessionStorage.setItem("favorites", target.favorites);
+          sessionStorage.setItem("name", target.name);
+          sessionStorage.setItem("lastname", target.lastname);
 
           return {
             signedIn: true,

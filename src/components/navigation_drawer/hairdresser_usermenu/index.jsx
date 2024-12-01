@@ -33,9 +33,41 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
     const handleLogin = () => navigate("/auth/login");
     const handleLogout = () => {
         dispatch(signOut());
+        handleReturn();
     }
 
+    function stringToColor(string) {
+        let hash = 0;
+        let i;
+      
+        /* eslint-disable no-bitwise */
+        for (i = 0; i < string.length; i += 1) {
+          hash = string.charCodeAt(i) + ((hash << 5) - hash);
+        }
+      
+        let color = '#';
+      
+        for (i = 0; i < 3; i += 1) {
+          const value = (hash >> (i * 8)) & 0xff;
+          color += `00${value.toString(16)}`.slice(-2);
+        }
+        /* eslint-enable no-bitwise */
+      
+        return color;
+      }
+      
+      function stringAvatar(name) {
+        return {
+          sx: {
+            bgcolor: stringToColor(name),
+          },
+          children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+        };
+      }
+
     if (user.signedIn) {
+        const name = sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname");
+
         return (
             <div style={{marginLeft: 'auto'}}>
             <Fragment>
@@ -49,7 +81,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                         >
-                            <Avatar sx={{ width: '3rem', height: '3rem' }}>M</Avatar>
+                            <Avatar sx={{ width: '3rem', height: '3rem' }} {...stringAvatar(name)} />
                         </IconButton>
                     </Tooltip>
                 </Box>
@@ -91,7 +123,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                     <MenuItem onClick={handleClose}>
-                        <Avatar /> Your Profile Page
+                        <Avatar sx={{ width: '3rem', height: '3rem' }} {...stringAvatar(name)} /> Your Profile Page
                     </MenuItem>
                     <MenuItem onClick={handleFavorite}>
                         <ListItemIcon>
@@ -124,6 +156,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
             </div>
         )
     } else {
+        sessionStorage.clear()
         if (isAuthPath) {
             return null;
         } else {

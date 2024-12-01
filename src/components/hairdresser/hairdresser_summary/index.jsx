@@ -6,16 +6,19 @@ import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp from "../../map/MapComp";
+import {useNavigate} from "react-router-dom";
 
 const HairdresserSummary = ({ data, reviewNumber }) => {
   // Calculate the total number of reviews
   const numberOfReviews = reviewNumber || 0;
+  const navigate = useNavigate();
+  const handleBack = () => navigate(-1);
 
   return (
     <Container>
       <TopSection>
         <BackContainer>
-          <IconButton>
+          <IconButton onClick={handleBack}>
             <ArrowBackIosNewIcon />
           </IconButton>
         </BackContainer>

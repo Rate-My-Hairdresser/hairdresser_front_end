@@ -5,61 +5,11 @@ import { colors } from "../../../general/colors";
 import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
-import MapComp, { geocodeAddress } from "../../map/MapComp";
-import { useNavigate } from 'react-router-dom';
-import CheckIcon from '@mui/icons-material/Check';
-import { useState } from "react";
-
-const HairdresserSummary = ({ 
-    data, 
-    reviewNumber, 
-    state, 
-    edit = false, 
-    salon = "", 
-    setSalon = () => {}, 
-    salonCheck = () => {},
-    location = "",
-    setLocation = () => {},
-    locationCheck = () => {},
-    coordinates = {}
-  }) => {
-
-  const [salonError, setSalonError] = useState(false)
-  const [locationError, setLocationError] = useState(false)
-
-  const salonFunc = () => {
-    if(salon !== "") {
-      setSalonError(false)
-      salonCheck()
-    } else {
-      setSalonError(true)
-    }
-  }
-
-  const locationFunc = () => {
-    if(location !== "") {
-      //check if the address is valid
-      geocodeAddress(location)
-        .then((location) => {
-          setLocationError(false)
-          locationCheck(location)
-        })
-        .catch((error) => {
-          console.error('Geocoding error')
-          setLocationError(true)
-        })
-      locationCheck()
-    } else {
-      setLocationError(true)
-    }
-  }
-
-
-
+import MapComp from "../../map/MapComp";
+import {useNavigate} from "react-router-dom";
 
   // Calculate the total number of reviews
-  const numberOfReviews = reviewNumber;
-
+  const numberOfReviews = reviewNumber || 0;
   const navigate = useNavigate();
   const handleBack = () => navigate(-1);
 
@@ -67,7 +17,7 @@ const HairdresserSummary = ({
     <Container>
       <TopSection>
         <BackContainer>
-          <IconButton onClick={() => navigate(-1)}>
+          <IconButton onClick={handleBack}>
             <ArrowBackIosNewIcon />
           </IconButton>
         </BackContainer>

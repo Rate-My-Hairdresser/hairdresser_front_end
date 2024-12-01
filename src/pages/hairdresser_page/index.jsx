@@ -13,6 +13,9 @@ const HairdresserPage = () => {
     const data = useLocation().state;
 
     const [reviewIn, setReviewIn] = useState(false);
+    
+    const { state } = useLocation();
+    const { browseId } = state;
 
     const currentHairdresser = hairDresserList[data.id]
     const [currentReviews, setCurrentReviews] = useState(currentHairdresser.reviews)

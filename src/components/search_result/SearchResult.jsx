@@ -16,6 +16,10 @@ const SearchResult = ({id, name, priceLow, priceHigh, labels, images, ratings, o
     }
     const averageRating = ratingTotal / ratings.length
 
+    const preloadStylist = () => {
+        navigate("/hair_page", { state: { browseId: index } });
+    }
+
     return (
         <ResultBox onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={hover? {  boxShadow: `0.3em 0.3em 1em ${colors.secondary}`} : {}}>
             <Stack sx={stackStyle} direction="row" spacing={3}>

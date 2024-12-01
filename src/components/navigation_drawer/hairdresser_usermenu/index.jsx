@@ -34,6 +34,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
     const handleLogout = () => {
         dispatch(signOut());
     }
+    const handleProfile = () => navigate("/edit_profile");
 
     if (user.signedIn) {
         return (
@@ -90,7 +91,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleProfile}>
                         <Avatar /> Your Profile Page
                     </MenuItem>
                     <MenuItem onClick={handleFavorite}>

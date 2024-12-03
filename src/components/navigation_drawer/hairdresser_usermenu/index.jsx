@@ -1,24 +1,20 @@
 import {
     Avatar,
     Box,
-    Button, Divider,
-    IconButton, ListItemIcon,
-    Menu,
-    MenuItem,
+    Button,
+    IconButton,
     Tooltip,
 } from "@mui/material";
 
 import { colors } from "../../../general/colors"
 import {Fragment} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { selectUser } from "../../../general/redux/selectors";
-import {Bookmarks, Logout, PersonSearch, Settings} from "@mui/icons-material";
-import {signOut} from "../../../general/redux/actions";
+import MenuSelect from "./variant_menu";
 
 export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorEl }) {
     const user = useSelector(selectUser)
-    const dispatch = useDispatch();
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,14 +24,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
         setAnchorEl(null);
     };
 
-    const handleReturn = () => navigate("/");
-    const handleFavorite = () => navigate("/favorites");
     const handleLogin = () => navigate("/auth/login");
-    const handleProfile = () => navigate("/edit_profile")
-    const handleLogout = () => {
-        dispatch(signOut());
-        handleReturn();
-    }
 
     function stringToColor(string) {
         let hash = 0;
@@ -57,17 +46,18 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
         return color;
       }
       
-      function stringAvatar(name) {
+    function stringAvatar(name) {
         return {
           sx: {
             bgcolor: stringToColor(name),
           },
           children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
         };
-      }
+    }
 
     if (user.signedIn) {
         const name = sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname");
+        const isStylist = sessionStorage.getItem("isStylist")
 
         return (
             <div style={{marginLeft: 'auto'}}>
@@ -86,73 +76,7 @@ export default function HairDresserUserMenu( { handleClick, anchorEl, setAnchorE
                         </IconButton>
                     </Tooltip>
                 </Box>
-                <Menu
-                    anchorEl={anchorEl}
-                    id="account-menu"
-                    open={open}
-                    onClose={handleClose}
-                    onClick={handleClose}
-                    slotProps={{
-                        paper: {
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                    width: 32,
-                                    height: 32,
-                                    ml: -0.5,
-                                    mr: 1,
-                                },
-                                '&::before': {
-                                    content: '""',
-                                    display: 'block',
-                                    position: 'absolute',
-                                    top: 0,
-                                    right: 14,
-                                    width: 10,
-                                    height: 10,
-                                    bgcolor: 'background.paper',
-                                    transform: 'translateY(-50%) rotate(45deg)',
-                                    zIndex: 0,
-                                },
-                            },
-                        },
-                    }}
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                >
-                    <MenuItem onClick={handleProfile}>
-                        <Avatar sx={{ width: '3rem', height: '3rem' }} {...stringAvatar(name)} /> Your Profile Page
-                    </MenuItem>
-                    <MenuItem onClick={handleFavorite}>
-                        <ListItemIcon>
-                            <Bookmarks fontSize="small" />
-                        </ListItemIcon>
-                        Favorite Profiles
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleReturn}>
-                        <ListItemIcon>
-                            <PersonSearch fontSize="small" />
-                        </ListItemIcon>
-                        Return to Main Page
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                        <ListItemIcon>
-                            <Settings fontSize="small" />
-                        </ListItemIcon>
-                        Settings
-                    </MenuItem>
-                    <MenuItem onClick={handleLogout}>
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
-                    </MenuItem>
-                </Menu>
+                <MenuSelect userType={isStylist} name={name} open={open} handleClose={handleClose} anchorEl={anchorEl} stringAvatar={stringAvatar} />
             </Fragment>
             </div>
         )

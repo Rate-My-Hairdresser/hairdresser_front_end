@@ -11,8 +11,10 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
-import { IconButton, Stack } from "@mui/material";
+import { IconButton, Stack, TextField } from "@mui/material";
 import { Link } from 'react-router-dom';
+import CheckIcon from '@mui/icons-material/Check';
+import EditIcon from '@mui/icons-material/Edit';
 
 const logos = {
         "instagram": <InstagramIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
@@ -23,7 +25,43 @@ const logos = {
   "x": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
 }
 
-const HairDresserSideBio = ({data, browseId}) => {
+const EditableBios = ( {editable, formattedBio, rawBio} ) => {
+    const [isEditing, setIsEditing] = useState(false)
+
+    if (isEditing) {
+        return (
+            <TextBox>
+                <Stack direction={"row"} justifyContent={"center"}>
+                    <HeaderText>
+                        Biography
+                    </HeaderText>
+                    <IconButton onClick={(e) => {setIsEditing(false)}} >
+                        <CheckIcon />
+                    </IconButton>
+                </Stack>
+                <TextField id="stylist-glossary" label="Glossary" multiline={true} rows={25} defaultValue={rawBio} variant='filled'/>
+            </TextBox>
+        )
+    } else {
+        return (
+            <TextBox>
+                <Stack direction={"row"} justifyContent={"center"}>
+                    <HeaderText>
+                        Biography
+                    </HeaderText>
+                    {editable ? <IconButton onClick={(e) => {setIsEditing(true)}}   
+                        ><EditIcon />
+                        </IconButton> : null}
+                </Stack>
+                <SubText>
+                    {formattedBio}
+                </SubText>
+            </TextBox>
+        )
+    }
+}
+
+const HairDresserSideBio = ({edit, data, browseId}) => {
 
     const [saved, setSaved] = useState(false)
     const user = useSelector(selectUser)
@@ -66,12 +104,7 @@ const HairDresserSideBio = ({data, browseId}) => {
                 </IconButton>
             </FavoriteBox>
             <TextBox>
-                <HeaderText>
-                    Biography
-                </HeaderText>
-                <SubText>
-                    {formattedBio}
-                </SubText>
+                <EditableBios editable={edit} formattedBio={formattedBio} rawBio={data.biography}/>
             </TextBox>
             <TextBox style={{borderBottom: 0}}>
                 <HeaderText>

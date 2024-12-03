@@ -6,6 +6,7 @@ import { Card, Typography, Container, Stack, CardContent
  } from "@mui/material";
 import { useState } from "react";
 import { PreviousPageButton } from "../../components/navigation_drawer/previous";
+import { colors } from "../../general/colors";
 
 const PasswordRecoveryPage = () => {
 
@@ -43,7 +44,7 @@ const PasswordRecoveryPage = () => {
                             component="h1"
                             variant="h7"
                             sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
-                            paddingLeft={3}
+                            paddingLeft={0}
                             paddingRight={3}
                             paddingBottom={2}
                         >
@@ -79,14 +80,14 @@ const PasswordRecoveryPage = () => {
                                 onChange={(e) => checkEmail(e.target.value)}
                                 sx={{ ariaLabel: 'email' }}
                             />
-                            <Button variant="contained" size="small" onClick={sendReset}>
+                            <Button variant="contained" size="small" style={styles.sendButton} onClick={sendReset}>
                                 Send
                             </Button>
                         </FormControl>
                         {verifySent && <Typography>Reset email has been sent.</Typography>}
                     </CardContent>
+                    <PreviousPageButton />
                 </Card>
-                <PreviousPageButton />
                 <Container />
             </SignInContainer>
         </MasterBox>
@@ -99,24 +100,33 @@ const styles = {
     cardImage: {
         variant: "elevation",
         color: '#421142',
+    },
+
+    sendButton: {
+        backgroundColor: colors.dark_background,
+        color: colors.text.primary,
     }
 }
 
 const MasterBox = style.div`
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: ${colors.background};
+    font-family: 'DarkerGrotesque';
 `
 
 const SignInContainer = styled(Stack)(({ theme }) => ({
     position: 'absolute',
-    height: 'calc((1 - var(--template-frame-height, 0)) * 30dvh)',
+    height: '300px',
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",
     alignItems: "space-between",
     justifyContent: "space-between",
+    textAlign: "center",
     padding: theme.spacing(3),
 }));

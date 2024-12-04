@@ -63,11 +63,11 @@ const PasswordRecoveryPage = () => {
                         <Typography inline="true">
                             The link will be valid for 30 minutes.
                         </Typography>
-                        <FormControl display="flex" sx={{flexDirection: "row"}}>
+                        <FormControl display="flex" margin="dense" sx={{flexDirection: "row"}}>
                             <TextField
                                 label="email"
                                 error={emailError}
-                                helperText={emailErrorMessage}
+                                helperText={emailError? emailErrorMessage : " "}
                                 id="email"
                                 type="email"
                                 name="email"
@@ -105,6 +105,7 @@ const styles = {
     sendButton: {
         backgroundColor: colors.dark_background,
         color: colors.text.primary,
+        height: "55px"
     }
 }
 
@@ -121,7 +122,7 @@ const MasterBox = style.div`
 
 const SignInContainer = styled(Stack)(({ theme }) => ({
     position: 'absolute',
-    height: '300px',
+    height: '350px',
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",

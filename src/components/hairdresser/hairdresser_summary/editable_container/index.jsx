@@ -8,9 +8,10 @@ const EditableContainer = ( { editable, cid, clabel, cvalue, content, setContent
     const [isEditing, setIsEditing] = useState(false)
 
     if (isEditing) {
+        setContent(content)
         return (
             <Stack direction={"row"}>
-                <TextField id={cid} label={clabel} size="small" value={cvalue} onChange={(event) => { setContent(event.target.value) }} error={contentError} />
+                <TextField id={cid} label={clabel} size="small" onChange={(event) => { setContent(event.target.value) }} error={contentError} defaultValue={content} multiline={true} />
                 <IconButton onClick={(e) => {contentFunc(e, setIsEditing)}}>
                     <CheckIcon />
                 </IconButton>

@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../general/redux/actions.js";
 import { userType } from "../../general/redux/actions.js";
+import { colors } from "../../general/colors";
 
 import { PreviousPageButton } from "../../components/navigation_drawer/previous/index.jsx";
 
@@ -97,8 +98,8 @@ export default function HairDresserLogin() {
                 <Typography
                     component="h1"
                     variant="h7"
-                    sx={{ width: '100%', fontSize: 'clamp(3rem, 10vw, 2.15rem)' }}
-                    paddingLeft={4}
+                    sx={{ width: '100%', fontSize: 'clamp(3.5rem, 10vw, 2.15rem)', fontFamily: 'DarkerGrotesque'}}
+                    paddingLeft={0}
                     paddingTop={0}
                     paddingBottom={6}
                 >
@@ -157,6 +158,8 @@ export default function HairDresserLogin() {
                                 variant="body2"
                                 sx={{ alignSelf: 'baseline' }}
                                 to={"/auth/password_reset"}
+                                style = {styles.forgotPassword}
+                                
                             >
                                 Forgot your password?
                             </Link>
@@ -171,6 +174,7 @@ export default function HairDresserLogin() {
                         type="submit"
                         fullWidth
                         variant="contained"
+                        style={styles.signInButton} 
                     >
                         Sign in
                     </Button>
@@ -180,6 +184,7 @@ export default function HairDresserLogin() {
                         color={"secondary"}
                         variant="contained"
                         onClick={navRegister}
+                        style={styles.registerButton} 
                     >
                         Register for new account
                     </Button>
@@ -198,17 +203,39 @@ const MasterBox = style.div`
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: ${colors.background};
+   
 `
 
 const SignInContainer = styled(Stack)(({ theme }) => ({
     position: 'absolute',
-    height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
+    height: '550px',
     width: '33%',
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",
-    justifyContent: "top",
+    justifyContent: "center",
+    textAlign: "center",
     padding: theme.spacing(3),
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor:  "#FFFFFF",
     borderRadius: theme.shape.borderRadius,
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", 
 }));
+
+
+const styles = {
+    signInButton: {
+        backgroundColor: colors.dark_background,
+        color: colors.text.primary,    
+    },
+
+    registerButton: {
+        backgroundColor: "#B7B1F8",
+        color: colors.text.primary      
+    },
+
+    forgotPassword: {
+        color: "#1565c0"
+    }
+}

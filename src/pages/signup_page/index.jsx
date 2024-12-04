@@ -15,6 +15,7 @@ import style from "styled-components";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { PreviousPageButton } from "../../components/navigation_drawer/previous";
+import { colors } from "../../general/colors";
 
 export default function HairDresserSignUp() {
     const [account, setAccount] = useState("");
@@ -150,7 +151,11 @@ export default function HairDresserSignUp() {
                         component="h1"
                         variant="h7"
                         marginBottom="3rem"
-                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+                        sx={{ width: '100%', fontSize: 'clamp(3.5rem, 10vw, 2.15rem)' }}
+                        paddingLeft={0}
+                        paddingTop={0}
+                        paddingBottom={0}  
+                        textAlign = 'center'
                     >
                         Register New Account
                     </Typography>
@@ -251,6 +256,7 @@ export default function HairDresserSignUp() {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            style={styles.registerButton} 
                         >
                             Register
                         </Button>
@@ -263,24 +269,35 @@ export default function HairDresserSignUp() {
 
 const MasterBox = style.div`
     position: fixed;
-    top: 5vh;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: ${colors.background};
+    font-family: 'DarkerGrotesque';
 `
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
     position: 'absolute',
-    height: 'calc((1 - var(--template-frame-height, 0)) * 60dvh)',
+    height: '650px',
     width: '33%',
     minWidth: '32rem',
     display: 'flex',
     flexDirection: "column",
     alignItems: "space-between",
-    justifyContent: "space-between",
+    justifyContent: "center",
     padding: theme.spacing(3),
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#FFFFFF",
     borderRadius: theme.shape.borderRadius,
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", 
 }));
+
+const styles = {
+    registerButton: {
+        backgroundColor: "#B7B1F8",
+        color: colors.text.primary
+    },
+}

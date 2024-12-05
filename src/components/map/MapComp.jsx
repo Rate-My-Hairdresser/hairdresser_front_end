@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AdvancedMarker, APIProvider, Map, Pin } from '@vis.gl/react-google-maps';
 import Skeleton from '@mui/material/Skeleton';
 import { colors } from '../../general/colors';
-import mapStyle from './mapStyle.json';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
 
 const MapComp = ({ markers, mainMarker, zoomLocation }) => {
   const [loading, setLoading] = useState(true);
-  const mapRef = useRef(null); // Ref to store the Map instance
 
   useEffect(() => {
     // Wait for Google Maps to load
@@ -22,20 +20,6 @@ const MapComp = ({ markers, mainMarker, zoomLocation }) => {
     return () => clearInterval(checkGoogleMapsLoaded);
   }, []);
 
-  useEffect(() => {
-
-    console.log(mapRef.current)
-
-    if (mapRef.current && mainMarker) {
-      const mapInstance = mapRef.current; // Access the map instance
-      if (mainMarker.lat && mainMarker.lng) {
-        // mapInstance.setCenter(mainMarker);
-        // mapInstance.setZoom(14);
-        mapInstance.fitToSuppliedMarkers([mainMarker].map(({ _id }) => _id));
-      }
-    }
-  }, [mainMarker]);
-
   return (
     <>
       {!loading ? (
@@ -47,8 +31,6 @@ const MapComp = ({ markers, mainMarker, zoomLocation }) => {
               gestureHandling="greedy"
               disableDefaultUI
               mapId="736dc951678c83c7"
-              styles={mapStyle}
-              ref={mapRef}
             >
               {markers.map((position, index) => (
                 <AdvancedMarker

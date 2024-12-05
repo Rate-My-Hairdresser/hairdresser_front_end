@@ -9,6 +9,7 @@ import MapComp, { geocodeAddress } from "../../map/MapComp";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import EditableContainer from "./editable_container";
+import EditableMultiContainer from "./editable_multi";
 
 const HairdresserSummary = ({ 
     data, 
@@ -57,7 +58,16 @@ const HairdresserSummary = ({
     }
   }
 
-
+  const setContactData = (e, newConttact, setNotPass) => {
+    setData(prevData => ({
+      ...prevData,
+      salon: {
+          ...prevData.salon,
+          contact: newConttact
+      }
+    }));
+    setNotPass(false)
+  }
 
   // Calculate the total number of reviews
   const numberOfReviews = reviewNumber;
@@ -109,12 +119,7 @@ const HairdresserSummary = ({
             <InfoContainer>
               <EditableContainer editable={edit} cid={"Salon"} clabel={"Salon name"} cvalue={salon} content={data.salon.name} setContent={setSalon} contentError={salonError} contentFunc={salonFunc} />
               <EditableContainer editable={edit} cid={"Location"} clabel={"Location"} cvalue={location} content={data.salon.location} setContent={setLocation} contentError={locationError} contentFunc={locationFunc} />
-              <MiniHeaderText style={{ fontSize: '19px' }}>Contact Info:</MiniHeaderText>
-              {Object.entries(data.salon.contact).map(([key, value], index) => (
-                <SubText key={key} style={{ fontSize: '19px', marginBottom: '0px', marginTop: '-2px' }}>
-                  {key}: {value}
-                </SubText>
-              ))}
+              <EditableMultiContainer editable={edit} cid={"Contact Info"} content={data.salon.contact} contentFunc={setContactData} />
             </InfoContainer>
           </Grid2>
           <Grid2 size={7} rad>

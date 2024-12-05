@@ -77,18 +77,18 @@ const EditableLinks = ( {editable, linkdata, setLinkdata} ) => {
         }
     }, [indexing, linkdata])
 
-    const editLink = (e, key) => {
-        setLinkValue(e.target.value)
-        if (e.target.value.length > 0) {
-            temp[key] = e.target.value;
-        } else {
-            delete temp[key];
-        }
-        setLinkdata(temp)
-    }
-
     if (isEditing) {
         var temp = linkdata
+
+        const editLink = (e, key) => {
+            setLinkValue(e.target.value)
+            if (e.target.value.length > 0) {
+                temp[key] = e.target.value;
+            } else {
+                delete temp[key];
+            }
+            setLinkdata(temp)
+        }
 
         return (
             <TextBox style={{borderBottom: 0}}>

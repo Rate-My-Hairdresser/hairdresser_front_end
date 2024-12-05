@@ -2,7 +2,7 @@ import { Avatar, Grid2, IconButton, Tooltip, Button, Chip, Stack } from "@mui/ma
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors";
-import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
+import { SubText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp, { geocodeAddress } from "../../map/MapComp";

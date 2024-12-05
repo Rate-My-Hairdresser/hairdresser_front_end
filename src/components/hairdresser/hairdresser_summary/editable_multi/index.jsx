@@ -4,6 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
     const [isEditing, setIsEditing] = useState(false)
@@ -25,6 +26,12 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
         temp[newLine] = "TBD"
         setTempContent(temp);
         setIsEditing(false);
+        setIsEditing(true);
+    }
+
+    const cancelContent = (e) => {
+        setTempContent(content)
+        setIsEditing(false)
     }
 
     if (isEditing) {
@@ -35,12 +42,15 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
                     <IconButton onClick={(e) => {contentFunc(e, tempContent, setIsEditing)}}>
                         <CheckIcon />
                     </IconButton>
+                    <IconButton onClick={(e) => {cancelContent(e)}}>
+                        <ClearIcon />
+                    </IconButton>
                 </Stack>
                 {Object.entries(tempContent).map(([key,value],index) => (
                     <TextField label={key} size="small" onChange={(e) => { editContent(e, key) }} defaultValue={value} variant="standard" />    
                 ))}
                 <Stack direction={"row"} justifyContent={"space-between"}>
-                    <TextField label={"Add Contact"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
+                    <TextField label={"New Contact to Add"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
                     <IconButton onClick={(e) => { newContent(e) }}>
                         <AddIcon />
                     </IconButton>

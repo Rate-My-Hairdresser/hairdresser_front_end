@@ -11,7 +11,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
-import { IconButton, Stack, TextField } from "@mui/material";
+import { IconButton, MenuItem, Select, Stack, TextField } from "@mui/material";
 import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
@@ -21,12 +21,12 @@ const logos = {
 "facebook": <FacebookIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
   "website": <LanguageIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
   "linkedin": <LinkedInIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
-  "twitter": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
-  "x": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
+  "twitter": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
 }
 
-const EditableBios = ( {editable, formattedBio, rawBio} ) => {
+const EditableBios = ( {editable, formattedBio, rawBio, setTempBios} ) => {
     const [isEditing, setIsEditing] = useState(false)
+    const [x, setX] = useState(rawBio)
 
     if (isEditing) {
         return (
@@ -35,11 +35,14 @@ const EditableBios = ( {editable, formattedBio, rawBio} ) => {
                     <HeaderText>
                         Biography
                     </HeaderText>
-                    <IconButton onClick={(e) => {setIsEditing(false)}} >
+                    <IconButton onClick={(e) => {setIsEditing(false)
+                        setTempBios(x)
+                    }} >
                         <CheckIcon />
                     </IconButton>
                 </Stack>
-                <TextField id="stylist-glossary" label="Glossary" multiline={true} rows={25} defaultValue={rawBio} variant='filled'/>
+                <TextField id="stylist-glossary" label="Glossary" multiline={true} rows={25} defaultValue={rawBio} variant='filled'
+                onChange={(e) => setX(e.target.value)} />
             </TextBox>
         )
     } else {
@@ -61,10 +64,98 @@ const EditableBios = ( {editable, formattedBio, rawBio} ) => {
     }
 }
 
+const EditableLinks = ( {editable, linkdata, setLinkdata} ) => {
+    const [isEditing, setIsEditing] = useState(false)
+    const [indexing, setIndexing] = useState("website");
+    const [linkValue, setLinkValue] = useState('');
+
+    useEffect(() => {
+        if (linkdata[indexing] !== undefined) {
+            setLinkValue(linkdata[indexing])
+        } else {
+            setLinkValue("")
+        }
+    }, [indexing, linkdata])
+
+    const editLink = (e, key) => {
+        setLinkValue(e.target.value)
+        if (e.target.value.length > 0) {
+            temp[key] = e.target.value;
+        } else {
+            delete temp[key];
+        }
+        setLinkdata(temp)
+    }
+
+    if (isEditing) {
+        var temp = linkdata
+
+        return (
+            <TextBox style={{borderBottom: 0}}>
+                <Stack direction={"row"} justifyContent={"center"}>
+                    <HeaderText>
+                        Links
+                    </HeaderText>
+                    <IconButton onClick={(e) => {setIsEditing(false)}} >
+                        <CheckIcon />
+                    </IconButton>
+                </Stack>
+                <Stack direction="row">
+                    <Select
+                        labelId='edit-link-option-label'
+                        id='edit-link-options'
+                        value={indexing}
+                        label=""
+                        onChange={(e) => setIndexing(e.target.value)}
+                        variant='standard'
+                    >
+                        {Object.entries(logos).map(([key, value]) => (
+                            <MenuItem value={key}>
+                                {value}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <TextField id="link-content" 
+                        label="Address"
+                        variant="outlined"
+                        value={linkValue}
+                        onChange={(e) => editLink(e, indexing)}
+                    />
+                </Stack>
+            </TextBox>
+        )
+    } else {
+        return (
+            <TextBox style={{borderBottom: 0}}>
+                <Stack direction={"row"} justifyContent={"center"}>
+                    <HeaderText>
+                        Links
+                    </HeaderText>
+                    {editable ? <IconButton onClick={(e) => {setIsEditing(true)}}   
+                        ><EditIcon />
+                        </IconButton> : null}
+                </Stack>
+                <Stack direction="row">
+                    {Object.entries(linkdata).map(([key, value]) => (
+                        <Link to={value} target="_blank" rel="noopener noreferrer">
+                            <IconButton key={key} style={{display: 'flex', justifyContent: "center", alignItems: "center"}}>
+                                {logos[key]}
+                            </IconButton>
+                        </Link>
+                    ))}
+                </Stack>
+            </TextBox>
+        )
+    }
+}
+
 const HairDresserSideBio = ({edit, data, browseId}) => {
 
     const [saved, setSaved] = useState(false)
     const user = useSelector(selectUser)
+
+    const [tempBios, setTempBios] = useState(data.biography);
+    const [tempLinks, setTempLinks] = useState(data.links);
 
     useEffect(() => {
         if (user.signedIn) {
@@ -86,7 +177,7 @@ const HairDresserSideBio = ({edit, data, browseId}) => {
         setSaved(!saved);
     }
 
-    const formattedBio = data.biography.split('\n').map((line, index) => (
+    const formattedBio = tempBios.split('\n').map((line, index) => (
         <SubText key={index} style={{ fontSize: '20px' }}>{line}</SubText> 
     ));
 
@@ -104,22 +195,9 @@ const HairDresserSideBio = ({edit, data, browseId}) => {
                 </IconButton>
             </FavoriteBox>
             <TextBox>
-                <EditableBios editable={edit} formattedBio={formattedBio} rawBio={data.biography}/>
+                <EditableBios editable={edit} formattedBio={formattedBio} rawBio={tempBios} setTempBios={setTempBios} />
             </TextBox>
-            <TextBox style={{borderBottom: 0}}>
-                <HeaderText>
-                    Links
-                </HeaderText>
-                <Stack direction="row">
-                    {Object.entries(data.links).map(([key, value]) => (
-                        <Link to={value} target="_blank" rel="noopener noreferrer">
-                            <IconButton key={key} style={{display: 'flex', justifyContent: "center", alignItems: "center"}}>
-                                {logos[key]}
-                            </IconButton>
-                        </Link>
-                    ))}
-                </Stack>
-            </TextBox>
+            <EditableLinks editable={edit} linkdata={tempLinks} setLinkdata={setTempLinks} />
         </Container>
     )
 }

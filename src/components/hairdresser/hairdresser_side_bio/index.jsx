@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import { useSelector } from 'react-redux';
 import { selectUser } from "../../../general/redux/selectors";
 import styled from "styled-components"
@@ -11,10 +11,11 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
-import { IconButton, MenuItem, Select, Stack, TextField } from "@mui/material";
+import { IconButton, MenuItem, Modal, Select, Stack, TextField, Box } from "@mui/material";
 import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const logos = {
         "instagram": <InstagramIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
@@ -23,6 +24,18 @@ const logos = {
   "linkedin": <LinkedInIcon style={{ color: colors.dark_background, fontSize: '40px' }} />,
   "twitter": <XIcon style={{ color: colors.dark_background, fontSize: '40px' }} />
 }
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 300,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 const EditableBios = ( {editable, formattedBio, rawBio, setTempBios} ) => {
     const [isEditing, setIsEditing] = useState(false)
@@ -68,6 +81,8 @@ const EditableLinks = ( {editable, linkdata, setLinkdata} ) => {
     const [isEditing, setIsEditing] = useState(false)
     const [indexing, setIndexing] = useState("website");
     const [linkValue, setLinkValue] = useState('');
+    const [oldState, setOldState] = useState('');
+    const [, forceUpdate] = useReducer(x => x+1, 0);
 
     useEffect(() => {
         if (linkdata[indexing] !== undefined) {
@@ -77,76 +92,94 @@ const EditableLinks = ( {editable, linkdata, setLinkdata} ) => {
         }
     }, [indexing, linkdata])
 
-    if (isEditing) {
-        var temp = linkdata
-
-        const editLink = (e, key) => {
-            setLinkValue(e.target.value)
-            if (e.target.value.length > 0) {
-                temp[key] = e.target.value;
-            } else {
-                delete temp[key];
-            }
-            setLinkdata(temp)
-        }
-
-        return (
-            <TextBox style={{borderBottom: 0}}>
-                <Stack direction={"row"} justifyContent={"center"}>
-                    <HeaderText>
-                        Links
-                    </HeaderText>
-                    <IconButton onClick={(e) => {setIsEditing(false)}} >
-                        <CheckIcon />
-                    </IconButton>
-                </Stack>
-                <Stack direction="row">
-                    <Select
-                        labelId='edit-link-option-label'
-                        id='edit-link-options'
-                        value={indexing}
-                        label=""
-                        onChange={(e) => setIndexing(e.target.value)}
-                        variant='standard'
-                    >
-                        {Object.entries(logos).map(([key, value]) => (
-                            <MenuItem value={key}>
-                                {value}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                    <TextField id="link-content" 
-                        label="Address"
-                        variant="outlined"
-                        value={linkValue}
-                        onChange={(e) => editLink(e, indexing)}
-                    />
-                </Stack>
-            </TextBox>
-        )
-    } else {
-        return (
-            <TextBox style={{borderBottom: 0}}>
-                <Stack direction={"row"} justifyContent={"center"}>
-                    <HeaderText>
-                        Links
-                    </HeaderText>
-                    {editable ? <IconButton onClick={(e) => {setIsEditing(true)}}   
-                        ><EditIcon />
-                        </IconButton> : null}
-                </Stack>
-                <Stack direction="row">
-                    {Object.entries(linkdata).map(([key, value]) => (
-                        <Link to={value} target="_blank" rel="noopener noreferrer">
-                            <IconButton key={key} style={{display: 'flex', justifyContent: "center", alignItems: "center"}}>
-                                {logos[key]}
-                            </IconButton>
-                        </Link>
-                    ))}
-                </Stack>
-            </TextBox>
-        )
+    const handleOpen = () => {
+        setOldState(JSON.parse(JSON.stringify(linkdata)));
+        setIsEditing(true);
     }
+
+    const handleClose = () => {
+        forceUpdate();
+    }
+
+    const handleRollback = () => {
+        setLinkdata(oldState);
+        setIsEditing(false);
+    }
+
+    const editLink = (e, key) => {
+        var temp = linkdata
+        setLinkValue(e.target.value)
+        if (e.target.value.length > 0) {
+            temp[key] = e.target.value;
+        } else {
+            delete temp[key];
+        }
+        setLinkdata(temp)
+    }
+
+    return (
+        <>
+        <Modal
+            open={isEditing}
+            onClose={handleClose}
+        >
+            <Box sx={style}>
+                <TextBox style={{borderBottom: 0}}>
+                    <Stack direction="row">
+                        <Select
+                            labelId='edit-link-option-label'
+                            id='edit-link-options'
+                            value={indexing}
+                            label=""
+                            onChange={(e) => setIndexing(e.target.value)}
+                            variant='standard'
+                        >
+                            {Object.entries(logos).map(([key, value]) => (
+                                <MenuItem value={key}>
+                                    {value}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                        <TextField id="link-content" 
+                            label="Address"
+                            variant="outlined"
+                            multiline
+                            value={linkValue}
+                            onChange={(e) => editLink(e, indexing)}
+                        />
+                    </Stack>
+                    <Stack direction={"row"} justifyContent={"center"}>
+                        <IconButton onClick={(e) => {setIsEditing(false)}} >
+                            <CheckIcon />
+                        </IconButton>
+                        <IconButton onClick={(e) => {handleRollback()}} >
+                            <ClearIcon />
+                        </IconButton>
+                    </Stack>
+                </TextBox>
+            </Box>
+        </Modal>
+        <TextBox style={{borderBottom: 0}}>
+            <Stack direction={"row"} justifyContent={"center"}>
+                <HeaderText>
+                    Links
+                </HeaderText>
+                {editable ? <IconButton onClick={(e) => {handleOpen()}}   
+                    ><EditIcon />
+                    </IconButton> : null}
+            </Stack>
+            <Stack direction="row">
+                {Object.entries(linkdata).map(([key, value]) => (
+                    <Link to={value} target="_blank" rel="noopener noreferrer">
+                        <IconButton key={key} style={{display: 'flex', justifyContent: "center", alignItems: "center"}}>
+                            {logos[key]}
+                        </IconButton>
+                    </Link>
+                ))}
+            </Stack>
+        </TextBox>
+        </>
+    )
 }
 
 const HairDresserSideBio = ({edit, data, browseId}) => {

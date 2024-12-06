@@ -35,13 +35,15 @@ const EditableContainer = ( { editable, cid, clabel, cvalue, content, setContent
                 onClose={handleClose}
             >
                 <Box sx={style}>
-                    <TextField id={cid} label={clabel} size="small" onChange={(event) => { setContent(event.target.value) }} error={contentError} defaultValue={content} multiline={true} />
-                    <IconButton onClick={(e) => {contentFunc(e, setIsEditing)}} size="small">
-                        <CheckIcon /> Confirm
-                    </IconButton>
-                    <IconButton onClick={(e) => {setIsEditing(false)}} size="small">
-                        <ClearIcon /> Cancel
-                    </IconButton>
+                    <Stack direction={"column"}>
+                        <TextField id={cid} label={clabel} size="small" onChange={(event) => { setContent(event.target.value) }} error={contentError} defaultValue={content} multiline={true} />
+                        <IconButton onClick={(e) => {contentFunc(e, setIsEditing)}} size="small">
+                            <CheckIcon /> Confirm
+                        </IconButton>
+                        <IconButton onClick={(e) => {setIsEditing(false)}} size="small">
+                            <ClearIcon /> Cancel
+                        </IconButton>
+                    </Stack>
                 </Box>
             </Modal>
             <MiniHeaderText style={{ fontSize: '19px' }}>{cid}:</MiniHeaderText>

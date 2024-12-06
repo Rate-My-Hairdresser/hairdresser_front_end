@@ -1,4 +1,4 @@
-import { IconButton, Modal, Stack, TextField, Box, Divider } from "@mui/material";
+import { IconButton, Modal, Stack, TextField, Box } from "@mui/material";
 import { SubText, MiniHeaderText } from "../../../../general/Text";
 import CheckIcon from '@mui/icons-material/Check';
 import { useReducer, useState } from "react";

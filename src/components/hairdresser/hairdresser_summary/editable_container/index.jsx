@@ -10,10 +10,12 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    justifyContent: 'space-between',
+    width: 230,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
+    padding: '1.5rem',
     p: 4,
 };
 
@@ -33,15 +35,13 @@ const EditableContainer = ( { editable, cid, clabel, cvalue, content, setContent
                 onClose={handleClose}
             >
                 <Box sx={style}>
-                    <Stack direction={"row"} justifyContent={"space-between"}>
-                        <TextField id={cid} label={clabel} size="small" onChange={(event) => { setContent(event.target.value) }} error={contentError} defaultValue={content} multiline={true} />
-                        <IconButton onClick={(e) => {contentFunc(e, setIsEditing)}}>
-                            <CheckIcon />
-                        </IconButton>
-                        <IconButton onClick={(e) => {setIsEditing(false)}}>
-                            <ClearIcon />
-                        </IconButton>
-                    </Stack>
+                    <TextField id={cid} label={clabel} size="small" onChange={(event) => { setContent(event.target.value) }} error={contentError} defaultValue={content} multiline={true} />
+                    <IconButton onClick={(e) => {contentFunc(e, setIsEditing)}} size="small">
+                        <CheckIcon /> Confirm
+                    </IconButton>
+                    <IconButton onClick={(e) => {setIsEditing(false)}} size="small">
+                        <ClearIcon /> Cancel
+                    </IconButton>
                 </Box>
             </Modal>
             <MiniHeaderText style={{ fontSize: '19px' }}>{cid}:</MiniHeaderText>

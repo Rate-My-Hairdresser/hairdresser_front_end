@@ -1,4 +1,4 @@
-import { IconButton, Modal, Stack, TextField, Box } from "@mui/material";
+import { IconButton, Modal, Stack, TextField, Box, Divider } from "@mui/material";
 import { SubText, MiniHeaderText } from "../../../../general/Text";
 import CheckIcon from '@mui/icons-material/Check';
 import { useReducer, useState } from "react";
@@ -11,10 +11,12 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    justifyContent: 'space-between',
+    width: 230,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
+    padding: '1.5rem',
     p: 4,
 };
 
@@ -31,13 +33,18 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
     }
 
     const editContent = (e, key) => {
-        var temp = tempContent;
         if (e.target.value.length > 0) {
+            var temp = tempContent;
             temp[key] = e.target.value;
-        } else {
-            delete temp[key];
+            setTempContent(temp)
         }
-        setTempContent(temp)
+    }
+
+    const deleteContent = (e, key) => {
+        var temp = tempContent;
+        delete temp[key];
+        setTempContent(temp);
+        forceUpdate();
     }
 
     const newContent = (e) => {
@@ -64,24 +71,26 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
             >
                 <Box sx={style}>
                     <Stack direction={"column"}>
-                        <Stack direction={"row"} justifyContent={"space-between"}>
-                            <MiniHeaderText style={{ fontSize: '19px' }}>{cid}:</MiniHeaderText>
-                            <IconButton onClick={(e) => {contentFunc(e, tempContent, setIsEditing)}}>
-                                <CheckIcon />
-                            </IconButton>
-                            <IconButton onClick={(e) => {cancelContent(e)}}>
-                                <ClearIcon />
-                            </IconButton>
-                        </Stack>
                         {Object.entries(tempContent).map(([key,value],index) => (
-                            <TextField label={key} size="small" onChange={(e) => { editContent(e, key) }} defaultValue={value} variant="standard" />    
+                            <Stack direction={"row"} justifyContent={"space-between"}>
+                                <TextField label={key} size="small" onChange={(e) => { editContent(e, key) }} defaultValue={value} variant="standard" />
+                                <IconButton onClick={(e) => { deleteContent(e, key) }}>
+                                    <ClearIcon />
+                                </IconButton>
+                            </Stack>
                         ))}
-                        <Stack direction={"row"} justifyContent={"space-between"}>
-                            <TextField label={"New Contact to Add"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
+                        <Stack direction={"row"} justifyContent={"space-between"} paddingBottom={"1rem"}>
+                            <TextField label={"Kind of Contact to Add"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
                             <IconButton onClick={(e) => { newContent(e) }}>
                                 <AddIcon />
                             </IconButton>
                         </Stack>
+                        <IconButton onClick={(e) => {contentFunc(e, tempContent, setIsEditing)}} size="small">
+                            <CheckIcon /> Confirm
+                        </IconButton>
+                        <IconButton onClick={(e) => {cancelContent(e)}} size="small">
+                            <ClearIcon /> Cancel
+                        </IconButton>
                     </Stack>
                 </Box>
             </Modal>

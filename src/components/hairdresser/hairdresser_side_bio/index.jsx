@@ -30,10 +30,12 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    justifyContent: 'space-between',
+    width: 230,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
+    padding: '1.5rem',
     p: 4,
 };
 
@@ -148,12 +150,12 @@ const EditableLinks = ( {editable, linkdata, setLinkdata} ) => {
                             onChange={(e) => editLink(e, indexing)}
                         />
                     </Stack>
-                    <Stack direction={"row"} justifyContent={"center"}>
-                        <IconButton onClick={(e) => {setIsEditing(false)}} >
-                            <CheckIcon />
+                    <Stack direction={"column"} justifyContent={"center"} paddingTop={"1rem"}>
+                        <IconButton onClick={(e) => {setIsEditing(false)}} size='small'>
+                            <CheckIcon /> Confirm
                         </IconButton>
-                        <IconButton onClick={(e) => {handleRollback()}} >
-                            <ClearIcon />
+                        <IconButton onClick={(e) => {handleRollback()}} size='small'>
+                            <ClearIcon /> Cancel
                         </IconButton>
                     </Stack>
                 </TextBox>

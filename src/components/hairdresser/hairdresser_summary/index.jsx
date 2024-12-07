@@ -1,14 +1,15 @@
-import { Avatar, Grid2, IconButton, Tooltip, Button, Chip, Stack, TextField } from "@mui/material";
+import { Avatar, Grid2, IconButton, Tooltip, Button, Chip, Stack } from "@mui/material";
 import { Rating } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { colors } from "../../../general/colors";
-import { SubText, MiniHeaderText, HeaderText } from "../../../general/Text";
+import { SubText, HeaderText } from "../../../general/Text";
 import styled from "styled-components";
 import { HashLink } from 'react-router-hash-link';
 import MapComp, { geocodeAddress } from "../../map/MapComp";
 import { useNavigate } from 'react-router-dom';
-import CheckIcon from '@mui/icons-material/Check';
 import { useState } from "react";
+import EditableContainer from "./editable_container";
+import EditableMultiContainer from "./editable_multi";
 
 const HairdresserSummary = ({ 
     data, 
@@ -21,22 +22,24 @@ const HairdresserSummary = ({
     location = "",
     setLocation = () => {},
     locationCheck = () => {},
-    coordinates = {}
+    coordinates = {},
+    setData = () => {},
   }) => {
 
   const [salonError, setSalonError] = useState(false)
   const [locationError, setLocationError] = useState(false)
 
-  const salonFunc = () => {
+  const salonFunc = (e, setNotPass) => {
     if(salon !== "") {
       setSalonError(false)
       salonCheck()
+      setNotPass(false)
     } else {
       setSalonError(true)
     }
   }
 
-  const locationFunc = () => {
+  const locationFunc = (e, setNotPass) => {
     if(location !== "") {
       //check if the address is valid
       geocodeAddress(location)
@@ -49,13 +52,22 @@ const HairdresserSummary = ({
           setLocationError(true)
         })
       locationCheck()
+      setNotPass(false)
     } else {
       setLocationError(true)
     }
   }
 
-
-
+  const setContactData = (e, newConttact, setNotPass) => {
+    setData(prevData => ({
+      ...prevData,
+      salon: {
+          ...prevData.salon,
+          contact: newConttact
+      }
+    }));
+    setNotPass(false)
+  }
 
   // Calculate the total number of reviews
   const numberOfReviews = reviewNumber;
@@ -105,38 +117,9 @@ const HairdresserSummary = ({
         <Grid2 container sx={{ height: "100%", width: "100%", padding: 1 }} spacing={1}>
           <Grid2 size={3}>
             <InfoContainer>
-              {edit === false ?
-                <>
-                  <MiniHeaderText style={{ fontSize: '19px' }}>Salon:</MiniHeaderText>
-                  <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.name}</SubText>
-                </>
-              : //EDIT MODE:
-                <Stack direction={"row"}>
-                  <TextField id="Salon" label="Salon name" size="small" value={salon} onChange={(event) => {setSalon(event.target.value)}} error={salonError}/>
-                  <IconButton onClick={salonFunc}>
-                    <CheckIcon />
-                  </IconButton>
-                </Stack>
-              }
-              {edit === false ?
-                <>
-                  <MiniHeaderText style={{ fontSize: '19px' }}>Location:</MiniHeaderText>
-                  <SubText style={{ fontSize: '19px', marginBottom: '8px', marginTop: '-2px' }}>{data.salon.location}</SubText>
-                </>
-              : //EDIT MODE:
-                <Stack direction={"row"}>
-                  <TextField id="Location" label="Location" size="small" value={location} onChange={(event) => {setLocation(event.target.value)}} error={locationError}/>
-                  <IconButton onClick={locationFunc}>
-                    <CheckIcon/>
-                  </IconButton>
-                </Stack>
-              }
-              <MiniHeaderText style={{ fontSize: '19px' }}>Contact Info:</MiniHeaderText>
-              {Object.entries(data.salon.contact).map(([key, value], index) => (
-                <SubText key={key} style={{ fontSize: '19px', marginBottom: '0px', marginTop: '-2px' }}>
-                  {key}: {value}
-                </SubText>
-              ))}
+              <EditableContainer editable={edit} cid={"Salon"} clabel={"Salon name"} cvalue={salon} content={data.salon.name} setContent={setSalon} contentError={salonError} contentFunc={salonFunc} />
+              <EditableContainer editable={edit} cid={"Location"} clabel={"Location"} cvalue={location} content={data.salon.location} setContent={setLocation} contentError={locationError} contentFunc={locationFunc} />
+              <EditableMultiContainer editable={edit} cid={"Contact Info"} content={data.salon.contact} contentFunc={setContactData} />
             </InfoContainer>
           </Grid2>
           <Grid2 size={7} rad>

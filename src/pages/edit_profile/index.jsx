@@ -7,12 +7,15 @@ import hairDresserList from "../../data/hairdresserList.json"
 
 
 const EditHairdresserPage = () => {
+    const id = JSON.parse(sessionStorage.getItem("selfId") || "0")
 
     const [salon, setSalon] = useState("")
     const [location, setLocation] = useState("")
     const [coordinates, setCoordinates] = useState({})
+    const [stylistData, setStylistData] = useState(hairDresserList[id])
+    
     const salonCheck = useCallback(() => {
-        setData(prevData => ({
+        setStylistData(prevData => ({
             ...prevData,
             salon: {
                 ...prevData.salon,
@@ -23,7 +26,7 @@ const EditHairdresserPage = () => {
    
     const locationCheck = useCallback((coordinates) => {
         setCoordinates(coordinates)
-        setData(prevData => ({
+        setStylistData(prevData => ({
             ...prevData,
             salon: {
                 ...prevData.salon,
@@ -32,44 +35,14 @@ const EditHairdresserPage = () => {
         }));
     }, [])
 
-    const [data, setData] = useState({
-        "id": null,
-        "salon": {
-            "name": "",
-            "location": "",
-            "coordinates": {},
-            "contact": {
-
-            }
-        },
-        "name": "",
-        "photo": "",
-        "biography": "",
-        "links": {
-
-        },
-        "gallery": {
-
-        },
-        "filters": [
-
-        ],
-        "minimum_price": null,
-        "maximum_price": null,
-        "reviews": []
-    })
-    console.log(data)
-
-    const currentHairdresser = hairDresserList[0]
-
     return (
         <Grid2 container spacing={3} margin={3}>
             <Grid2 size={9}>
                 <Stack direction="column" spacing={"1rem"}>
                     <HairdresserSummary 
-                        data={currentHairdresser} 
+                        data={stylistData} 
                         reviewNumber={0} 
-                        edit={true} 
+                        edit={true}
                         salon={salon} 
                         setSalon={setSalon}
                         salonCheck={salonCheck}
@@ -77,12 +50,13 @@ const EditHairdresserPage = () => {
                         setLocation={setLocation}
                         locationCheck={locationCheck}
                         coordinates={coordinates}
+                        setData={setStylistData}
                     />
-                    <HairdresserGallery photos={currentHairdresser.gallery}/>
+                    <HairdresserGallery photos={stylistData.gallery}/>
                 </Stack>
             </Grid2>
             <Grid2 size={3}>
-                <HairDresserSideBio data={currentHairdresser}/>
+                <HairDresserSideBio edit={true} data={stylistData}/>
             </Grid2>
         </Grid2>
     );

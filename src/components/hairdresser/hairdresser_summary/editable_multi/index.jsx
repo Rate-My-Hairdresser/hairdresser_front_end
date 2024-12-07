@@ -24,6 +24,7 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
     const [isEditing, setIsEditing] = useState(false)
     const [tempContent, setTempContent] = useState("")
     const [newLine, setNewLine] = useState("")
+    const [lineContent, setLineContent] = useState("")
     const [, forceUpdate] = useReducer(x => x+1, 0)
 
     const openEdit = () => {
@@ -49,7 +50,7 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
 
     const newContent = (e) => {
         var temp = tempContent;
-        temp[newLine] = "TBD"
+        temp[newLine] = lineContent;
         setTempContent(temp);
         forceUpdate();
     }
@@ -73,14 +74,15 @@ const EditableMultiContainer = ( { editable, cid, content, contentFunc} ) => {
                     <Stack direction={"column"}>
                         {Object.entries(tempContent).map(([key,value],index) => (
                             <Stack direction={"row"} justifyContent={"space-between"}>
-                                <TextField label={key} size="small" onChange={(e) => { editContent(e, key) }} defaultValue={value} variant="standard" />
+                                <TextField label={key} size="small" onChange={(e) => { editContent(e, key) }} defaultValue={value} variant="outlined" />
                                 <IconButton onClick={(e) => { deleteContent(e, key) }}>
                                     <ClearIcon />
                                 </IconButton>
                             </Stack>
                         ))}
+                        <TextField label={"Contact Type"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
                         <Stack direction={"row"} justifyContent={"space-between"} paddingBottom={"1rem"}>
-                            <TextField label={"Kind of Contact to Add"} size="small" variant="standard" onChange={(e) => { setNewLine(e.target.value) }} />
+                            <TextField label={"Contact Description"} size="small" variant="standard" onChange={(e) => { setLineContent(e.target.value) }} />
                             <IconButton onClick={(e) => { newContent(e) }}>
                                 <AddIcon />
                             </IconButton>

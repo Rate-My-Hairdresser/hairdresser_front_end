@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { SIGN_IN, SIGN_OUT } from './actions';
 import userList from "../../data/userList.json";
-import stylistData from "../../data/hairdresserList.json";
 
 const initialUserState = {
   signedIn: false,
@@ -23,7 +22,7 @@ const userReducer = (state = initialUserState, action) => {
 
           if (target.userType === "stylist") {
             sessionStorage.setItem("isStylist", true);
-            sessionStorage.setItem("selfProfile", stylistData[target.userId]);
+            sessionStorage.setItem("selfId", target.userId - 1);
           } else {
             sessionStorage.setItem("isStylist", false);
           }

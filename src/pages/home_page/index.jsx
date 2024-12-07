@@ -26,7 +26,7 @@ const Homepage = () => {
     const [currentHover, setCurrentHover] = useState();
     const [hoveredMarker, setHoveredMarker] = useState();
     const [keyIndices, setKeyIndices] = useState();
-    const scaleAmount = (width/2087)-1  // 0.2 <-laptop
+    const scaleAmount = 0.2//(2087/width)-1  // 0.2 <-laptop
 
     // search algorithm
     useEffect(() => {

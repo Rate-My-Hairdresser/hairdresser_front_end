@@ -181,7 +181,6 @@ const BigHeader = styled('h1')`
 //background-color: ${colors.background};
 const HomepageContainer =  styled('div')`
     display: flex;
-    height: 100px;
 `;
 
 const MainContainer = styled('div')`

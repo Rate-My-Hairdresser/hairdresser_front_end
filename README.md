@@ -5,9 +5,13 @@ This project was developed using React and bootstrapped with [Create React App](
 ## Team Members
 
 Nathan Campbell
+
 Kya Broderick
+
 Jonathan Choi
+
 Jahnissi Nwakanma
+
 Althea Anne Louise
 
 ## How to Run the Project

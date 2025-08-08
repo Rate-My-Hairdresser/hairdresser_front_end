@@ -117,7 +117,7 @@ export default Favoritepage;
 
 const BigHeader = styled('h1')`
     font-weight: 400;
-    font-size: 72px;
+    font-size: clamp(48px, 4vw, 72px);
     color: ${colors.text.primary};
     font-family: 'DarkerGrotesque';
     margin: 0px;
@@ -163,9 +163,9 @@ const SearchContainer = styled('div')`
 
 const SearchResultsBox = styled('div')`
     margin-top: 1rem;
-    width: 49rem;
+    width: clamp(32rem, 40vw, 46rem);
     background-color: ${colors.offwhite};
     border-radius: 15px;
-    max-height: 689.306px;
+    max-height: 70vh;
     overflow-y: scroll;
 `

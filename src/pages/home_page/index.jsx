@@ -26,7 +26,7 @@ const Homepage = () => {
     const [currentHover, setCurrentHover] = useState();
     const [hoveredMarker, setHoveredMarker] = useState();
     const [keyIndices, setKeyIndices] = useState();
-    const scaleAmount = 0.2//(width/2087)-1  // 0.2 <-laptop
+    // Removed band-aid scaling; use responsive sizing instead of transform scale
 
     // search algorithm
     useEffect(() => {
@@ -77,13 +77,13 @@ const Homepage = () => {
     // Determine if any filter or search value is applied
 
     const sideWidth = width/2 -48
-    const slideAmount = Math.abs((height/2-280) - 100 +293.4) * (1 + scaleAmount)
+    const slideAmount = Math.abs((height/2-280) - 100 +293.4)
 
     return (
        <HomepageContainer style={{height: height-100}}>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} maxDistance={maximumDistance} />
             <MainContainer>
-                <LeftContainer style={{width: sideWidth, transform: `scale(${1-scaleAmount})`}}>
+                <LeftContainer style={{width: sideWidth}}>
                     <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: height/2 -280, transform: `translateY(${-slideAmount}px)`} : {marginTop: height/2 -280, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
                         <BigHeader >FIND</BigHeader>
                         <BigHeader >YOUR</BigHeader>
@@ -172,7 +172,7 @@ const styles = {
 }
 const BigHeader = styled('h1')`
     font-weight: 400;
-    font-size: 72px;
+    font-size: clamp(48px, 4vw, 72px);
     color: ${colors.text.primary};
     font-family: 'DarkerGrotesque';
     margin: 0px;
@@ -218,7 +218,7 @@ const SearchContainer = styled('div')`
 
 
 const SearchBox =  styled('div')`
-    width: 41rem;
+    width: clamp(32rem, 40vw, 46rem);
     background-color: ${colors.offwhite};
     border-radius: 15px;
     padding-left: 1rem;
@@ -235,7 +235,7 @@ const SearchText = styled(InputBase)(() => ({
     color: '#333333',
     paddingLeft: '1rem',
     width: '100%',
-    fontSize: '30px'
+    fontSize: 'clamp(18px, 1.8vw, 28px)'
 }));
 
 const NewChips = styled(Chip)(() => ({
@@ -253,7 +253,7 @@ const ChipSection =  styled('div')`
 
 const SearchResultsBox = styled('div')`
     margin-top: 1rem;
-    width: 42rem;
+    width: clamp(32rem, 40vw, 46rem);
     background-color: ${colors.offwhite};
     border-radius: 15px;
     max-height: 70vh;

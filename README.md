@@ -18,9 +18,9 @@ Althea Anne Louise
 
 1. Clone this repository via ```git clone https://github.com/Rate-My-Hairdresser/hairdresser_front_end.git```
 2. Switch to cloned git directory via ```cd ./hairdresser_front_end```
-3. Build the app using preferred package manager ```npm build``` or ```yarn build``` etc.
-4. Start the app: ```npm start``` / ```yarn start``` etc.
-5. Open your web browser and go to ```localhost:3000```
+3. Install dependencies using preferred package manager ```npm install``` or ```yarn install``` etc.
+5. Start the app: ```npm start``` / ```yarn start``` etc.
+6. Open your web browser and go to ```localhost:3000```
 
 ## Introduction and Implemented Functions
 

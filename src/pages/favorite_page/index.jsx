@@ -85,7 +85,7 @@ const Favoritepage = () => {
                         <BigHeader style={{color: colors.dark_background}}>Favorites</BigHeader>
                         <SearchContainer div>
                             <Stack direction="column">
-                                <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {border: `3px solid ${colors.dark_background}`} : {}} onMouseLeave={() => setCurrentHover()}>
+                                <SearchResultsBox className="searchResults" style={searchResults.length > 0 ? {} : {display: 'none'}} onMouseLeave={() => setCurrentHover()}>
                                     {searchResults.map((value, index) => (
                                         <>
                                             <SearchResult hover={currentHover === index} name={value.name} priceLow={value.minimum_price} priceHigh={value.maximum_price} labels={value.filters} images={value.gallery} ratings={value.reviews} onMouseEnter={() => setCurrentHover(index)} index={index} setResult={[deltaMarker, setDeltaMarker]} />
@@ -167,9 +167,13 @@ const SearchContainer = styled('div')`
 
 const SearchResultsBox = styled('div')`
     margin-top: 1rem;
-    width: clamp(32rem, 40vw, 46rem);
+    margin-bottom: 2rem;
+    width: 100%;
     background-color: ${colors.offwhite};
     border-radius: 15px;
-    max-height: 70vh;
+    border: 3px solid ${colors.dark_background};
+    padding-left: 1rem;
+    box-sizing: border-box;
+    max-height: calc(70vh - 4rem);
     overflow-y: scroll;
 `

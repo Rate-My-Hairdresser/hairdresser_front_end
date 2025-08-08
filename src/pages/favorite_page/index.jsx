@@ -68,16 +68,20 @@ const Favoritepage = () => {
     
 
 
-    
+
     const sideWidth = width/2 -48
     const slideAmount = Math.abs((height/2-280) - 100 +293.4)
+
+    // Adjust margin to account for topbar and ensure text is properly centered
+    const adjustedMarginTop = Math.max(height/2 - 280, 120); // Minimum 120px from top to clear topbar
+    const adjustedMarginTopDefault = Math.max(height/10, 120); // Minimum 120px for default state
 
     return (
        <HomepageContainer style={{height: height-100}}>
             <FilterModal options={hairServiceFilters} selected={filters} open={modalVisible} onClose={handleClose} onApply={handleApply} maxPrice={maximumPrice} maxDistance={maximumDistance} />
             <MainContainer>
                 <LeftContainer style={{width: sideWidth}}>
-                    <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: height/2-280, transform: `translateY(${-slideAmount}px)`} : {marginTop: height/10, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
+                    <LeftBox style={ (searchValue.length > 0 || filters.length > 0 || maximumPrice) ? {marginTop: adjustedMarginTop, transform: `translateY(${-slideAmount}px)`} : {marginTop: adjustedMarginTopDefault, transform: 'translateY(0px)'}} className={`container ${(searchValue.length > 0 || filters.length > 0 || maximumPrice) ? ''  : 'slide-down'}`} >
                         <BigHeader style={{color: colors.dark_background}}>Favorites</BigHeader>
                         <SearchContainer div>
                             <Stack direction="column">

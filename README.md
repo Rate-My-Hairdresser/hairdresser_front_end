@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Rate My Hairdresser
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed using React and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Team Members
 
-In the project directory, you can run:
+Nathan Campbell
 
-### `npm start`
+Kya Broderick
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Jonathan Choi
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Jahnissi Nwakanma
 
-### `npm test`
+Althea Anne Louise
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Run the Project
 
-### `npm run build`
+1. Clone this repository via ```git clone https://github.com/Rate-My-Hairdresser/hairdresser_front_end.git```
+2. Switch to cloned git directory via ```cd ./hairdresser_front_end```
+3. Build the app using preferred package manager ```npm build``` or ```yarn build``` etc.
+4. Start the app: ```npm start``` / ```yarn start``` etc.
+5. Open your web browser and go to ```localhost:3000```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Introduction and Implemented Functions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Searching for Stylist
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can search hairdresser using interface on home screen. Search result will update in real time. User can also apply additional filter to narrow the result.
 
-### `npm run eject`
+All searched stylist will be marked on the map interface so that user can intuitively know their location.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Logging In and Registration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+User and Stylist can login via using login button at top right. For testing purpose, following two accounts are available.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+email: ```user@test.com``` password: ```password```
+email: ```stylist@test.com``` password: ```password```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Both account registration and sign in page will detect incorrect input and warn the user.
 
-## Learn More
+Once logged in, top right location where login button was used to be placed will be changed to user avatar icon with user's initial.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Normal User account
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When logged in as normal user, clicking avatar icon will show options to access favorite page, settings page, and logout.
+Favorite page is implemented, in which user can add or remove their favorite while they are logged in. Interface will also reflect the change.
 
-### Code Splitting
+#### Stylist User account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When logged in as stylist user, clicking avatar icon will show options to access their profile page, settings page, and logout.
+Profile page is implemented. When profile page is accessed this way, profile page will contain edit button (Pen-like Icon) which will allow user to edit aspect of their profile page.
+Salon Name, Salon Location, Contact Info, Bio, and Links can be edited. User can cancel during their editing. If confirmed, change will be applied to the page based on what user typed in.
